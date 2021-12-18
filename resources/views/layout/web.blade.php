@@ -64,7 +64,8 @@
                         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
                             <span class="dropdown-item dropdown-header">{{Auth::user()->name}}</span>
                             <div class="dropdown-divider"></div>
-                            <a href="{{ url('edit-user-profile/'.Auth::user()->id) }}" class="dropdown-item">
+
+                            <a href="{{ route('users.edit',Auth::user()->id) }}" class="dropdown-item">
                                 <i class="fas fa-user mr-2"></i>تعديل بينات المستخدم
                             </a>
                             <div class="dropdown-divider"></div>
