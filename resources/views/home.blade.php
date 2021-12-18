@@ -9,17 +9,17 @@
             <div class="info-box">
 
                 <span class="info-box-icon bg-info elevation-1">
-                          <a href="cases-projects.html">
+                          <a href="{{route('cases.index')}}">
                           <i class="fas fa-project-diagram"></i>
                         </a>
                         </span>
 
                 <div class="info-box-content">
-                    <a href="cases-projects.html">
-                        <span class="info-box-text">المشاريع</span>
+                    <a href="{{route('cases.index')}}">
+                        <span class="info-box-text">القضايا</span>
                     </a>
                     <span class="info-box-number">
-                  8
+                {{$cases}}
               </span>
                 </div>
                 <!-- /.info-box-content -->
@@ -31,16 +31,17 @@
             <div class="info-box mb-3">
 
                 <span class="info-box-icon bg-danger elevation-1">
-                          <a href="tasks-unfinished.html">
+                          <a href="{{route('un-finish')}}">
                           <i class="fas fa-tasks"></i>
                         </a>
+
                         </span>
 
                 <div class="info-box-content">
-                    <a href="tasks-unfinished.html">
+                    <a href="{{route('un-finish')}}">
                         <span class="info-box-text">المهام غير المنجزة</span>
                     </a>
-                    <span class="info-box-number">1</span>
+                    <span class="info-box-number"> {{$unfinsh}}</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -52,15 +53,15 @@
         <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
                 <span class="info-box-icon bg-success elevation-1">
-                      <a href="tasks-done.html">
+                      <a href="{{route('finish')}}">
                       <i class="fas fa-check"></i>
                     </a>
                   </span>
                 <div class="info-box-content">
-                    <a href="tasks-done.html">
+                    <a href="{{route('finish')}}">
                         <span class="info-box-text">المهام المنجزة</span>
                     </a>
-                    <span class="info-box-number">4</span>
+                    <span class="info-box-number"> {{$finsh}}</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -71,13 +72,13 @@
             <div class="info-box mb-3">
 
                 <span class="info-box-icon bg-warning elevation-1">
-                          <a href="court-comming.html"><i class="fas fa-gavel"></i> </a></span>
+                          <a href="{{route('court-comming')}}"><i class="fas fa-gavel"></i> </a></span>
 
                 <div class="info-box-content">
-                    <a href="court-comming.html">
+                    <a href="{{route('court-comming')}}">
                         <span class="info-box-text">جلسات بالإنتظار</span>
                     </a>
-                    <span class="info-box-number">2</span>
+                    <span class="info-box-number"> {{$commingSessions}}</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -87,25 +88,11 @@
     </div>
     <div class="row">
         <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
-                <span class="info-box-icon bg-warning elevation-1">
-                      <a href="court-past.html">
-                      <i class="fas fa-folder"></i>
-                    </a></span>
-                <div class="info-box-content">
-                    <a href="court-past.html">
-                        <span class="info-box-text">جلسات سابقة</span>
-                    </a>
-                    <span class="info-box-number">
-                  10
-              </span>
-                </div>
-                <!-- /.info-box-content -->
-            </div>
+
             <!-- /.info-box -->
         </div>
         <!-- /.col -->
-        <div class="col-12 col-sm-6 col-md-3">
+        {{-- <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
                 <span class="info-box-icon bg-success elevation-1">
                       <a href="invoices.html">
@@ -119,11 +106,11 @@
                 <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
-        </div>
+        </div> --}}
         <!-- /.col -->
         <!-- fix for small devices only -->
         <div class="clearfix hidden-md-up"></div>
-        <div class="col-12 col-sm-6 col-md-3">
+        {{-- <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
                 <span class="info-box-icon bg-info elevation-1">
                       <a href="procedures.html">
@@ -137,9 +124,9 @@
                 <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
-        </div>
+        </div> --}}
         <!-- /.col -->
-        <div class="col-12 col-sm-6 col-md-3">
+        {{-- <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
                 <span class="info-box-icon bg-danger elevation-1">
                       <a href="dates.html">
@@ -154,22 +141,37 @@
                 <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
-        </div>
+        </div> --}}
         <!-- /.col -->
     </div>
 
     <div class="row">
         <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box">
+                <span class="info-box-icon bg-warning elevation-1">
+                      <a href="{{route('court-old')}}">
+                      <i class="fas fa-folder"></i>
+                    </a></span>
+                <div class="info-box-content">
+                    <a href="{{route('court-old')}}">
+                        <span class="info-box-text">جلسات سابقة</span>
+                    </a>
+                    <span class="info-box-number">
+                        {{$oldSessions}}
+              </span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <div class="info-box">
                 <span class="info-box-icon bg-success elevation-1">
-                      <a href="clients.html">
+                      <a href="{{route('client')}}">
                       <i class="fas fa-users"></i>
                       </a></span>
                 <div class="info-box-content">
-                    <a href="clients.html">
+                    <a href="{{route('client')}}">
                         <span class="info-box-text">العملاء</span></a>
                     <span class="info-box-number">
-                  10
+                        {{$clients}}
               </span>
                 </div>
                 <!-- /.info-box-content -->
@@ -180,13 +182,13 @@
          <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
                 <span class="info-box-icon bg-success elevation-1">
-                      <a href="roles.html">
+                      <a href="{{route('users.index')}}">
                       <i class="fas fa-user-friends"></i>
                     </a></span>
                 <div class="info-box-content">
-                    <a href="roles.html">
+                    <a href="{{route('users.index')}}">
                         <span class="info-box-text">المستخدمين</span></a>
-                    <span class="info-box-number">2</span>
+                    <span class="info-box-number"> {{$users}}</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -197,13 +199,13 @@
         <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
                 <span class="info-box-icon bg-warning elevation-1">
-                      <a href="adversaries.html">
+                      <a href="{{route('Oppenont')}}">
                       <i class="fas fa-users"></i>
                     </a></span>
                 <div class="info-box-content">
-                    <a href="adversaries.html">
+                    <a href="{{route('Oppenont')}}">
                         <span class="info-box-text">الخصوم</span></a>
-                    <span class="info-box-number">4</span>
+                    <span class="info-box-number"> {{$oppont}}</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
