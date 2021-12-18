@@ -1,0 +1,8 @@
+Panel:
+https://talabtcp.ly:2083/
+user:talabtcp
+pass:nt8^6UvYvg2U
+--------------
+https://hospitals.talabtcp.ly/public/login
+user:Admin@demo.com
+pass:123456
