@@ -40,6 +40,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('attach-opponent', 'App\Http\Controllers\CasesController@attachOppontent')->name('attach-opponent');
     Route::get('editClient/search', 'App\Http\Controllers\CasesController@editClient')->name('editClient.search');
     Route::get('editOpponent/search', 'App\Http\Controllers\CasesController@editOpponent')->name('editOpponent.search');
+//archiveCase
+Route::post('archiveCase', 'App\Http\Controllers\CasesController@archiveCase')->name('archiveCase');
 
     //case members
     Route::resource('case-member', 'App\Http\Controllers\CaseMembersController');

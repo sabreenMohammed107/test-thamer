@@ -483,5 +483,10 @@ if($case){
     }
 
     // case members cruds
+ public function archiveCase(Request $request){
+$case=Cases::where('id',$request->get('case_id'))->first();
+$case->update(['case_status_id'=>2]);
+return redirect()->back()->withInput()->with('flash_success', 'تم أرشفة القضية');
 
+ }
 }

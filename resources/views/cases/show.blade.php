@@ -425,9 +425,37 @@
                                                         </form>
 
                                                         <div class="card-footer">
-                                                            <button type="submit" class="btn btn-primary">تحويل إلي الارشيف</button>
-                                                        </div>
 
+                                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                            data-target="#archive{{ $case->id }}">تحويل إلي الارشيف</button>
+                                                        </div>
+ <!-- archive Modal -->
+ <div class="modal fade dir-rtl" id="archive{{ $case->id }}" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="{{ route('archiveCase') }}" method="POST">
+                @csrf
+                <input type="hidden" name="case_id" value="{{ $case->id }}">
+                <div class="modal-header bg-light">
+                    <h5 class="modal-title" id="exampleModalLabel">تأكيد الأرشفة</h5>
+                    <button type="button" class="close m-0 p-0 text-white" data-dismiss="modal"
+                        aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <h3><i class="fas fa-fire text-primary"></i></h3>
+                    <h4>تأكيد تحويل القضية للارشيف</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
+                    <button type="submit" class="btn btn-success">تأكيد</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="custom-tabs-one-2" role="tabpanel" aria-labelledby="custom-tabs-one-2-tab">
