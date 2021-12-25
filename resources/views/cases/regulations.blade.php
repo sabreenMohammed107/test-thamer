@@ -10,7 +10,7 @@
             <th>تاريخ اللائحة </th>
             <th>تاريخ التسليم</th>
             <th>الزميل المكلف</th>
-
+<th>الحالة</th>
             <!--<th>ملاحظات</th>-->
             <th>انجاز</th>
             <th>الإجراءات</th>
@@ -20,10 +20,10 @@
         @foreach ($regulations as $index=>$row)
         <tr>
             <th>{{ $index + 1 }}</th>
-            <th>{{$row->facts}}</th>
-            <th>{{$row->defenses}}</th>
-            <th>{{$row->requirements}}</th>
-            <th>{{$row->text}}</th>
+            <th>{{ Str::limit($row->facts, 50) }}</th>
+            <th>{{ Str::limit($row->defenses, 50) }}</th>
+            <th>{{ Str::limit($row->requirements, 50) }}</th>
+            <th>{{ Str::limit($row->text, 50) }}</th>
             <?php
             $task=App\Models\Case_members_task::where([['task_type_id',1],['case_id', '=', $row->case_id], ['member_id', '=',  $row->member_id], ['task_date', '=', $row->regulation_date]])->first();
             ?>
@@ -31,6 +31,7 @@
             <th>@if($task){{date('Y/m/d', strtotime($task->end_date))}}@endif </th>
             <th>{{$row->member->name ?? ''}}</th>
             <!--<th>ملاحظات</th>-->
+            <th>@if($task->task_status_id==1) منجزة @else غير منجزة @endif</th>
             <th>
                 <div class="btn-group">
                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#done3{{ $row->id }}"><i class="fas fa-check" title="view"></i></button>
@@ -151,7 +152,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="">تاريخ اللائحة</label>
-                                    <input type="text" class="form-control txt-rtl hijri-date-default"
+                                    <input type="text" autocomplete="off" class="form-control txt-rtl hijri-date-default"
                                                         value=""
                                                         name="regulation_date" id="inputEmail3" placeholder="{{ date('d-m-Y', strtotime($row->regulation_date)) }}">
                                 </div>
@@ -163,7 +164,7 @@
                                 <div class="form-group">
 
                                     <label for="">تاريخ التسليم </label>
-                                    <input type="text" class="form-control txt-rtl hijri-date-default"
+                                    <input type="text" autocomplete="off" class="form-control txt-rtl hijri-date-default"
                                     value=  ""
                                     name="regulation_end_date" id="inputEmail3" placeholder="@if($task){{ date('d-m-Y', strtotime($task->end_date))}}@endif">
                                 </div>
@@ -253,7 +254,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="">تاريخ اللائحة</label>
-                                    <input type="text" class="form-control txt-rtl hijri-date-default"
+                                    <input type="text" autocomplete="off" class="form-control txt-rtl hijri-date-default"
                                                         value=""
                                                         name="regulation_date" id="inputEmail3" placeholder="@if($task){{ date('d-m-Y', strtotime($row->regulation_date))}}@endif">
                                 </div>
@@ -264,7 +265,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="">تاريخ التسليم </label>
-                                    <input type="text" class="form-control txt-rtl hijri-date-default"
+                                    <input type="text" autocomplete="off" class="form-control txt-rtl hijri-date-default"
                                     value=""
                                     name="regulation_end_date" id="inputEmail3" placeholder="@if($task){{ date('d-m-Y', strtotime($task->end_date))}}@endif">
                                 </div>
@@ -361,14 +362,14 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="">تاريخ اللائحة</label>
-                                    <input type="text" value=""
+                                    <input type="text" autocomplete="off" value=""
                                     class="form-control txt-rtl hijri-date-default" name="regulation_date" class="form-control" id="">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="">تاريخ التسليم </label>
-                                    <input type="text" value=""
+                                    <input type="text" autocomplete="off" value=""
                                      class="form-control txt-rtl hijri-date-default" name="regulation_end_date" class="form-control" id="">
                                 </div>
                             </div>

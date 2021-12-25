@@ -90,7 +90,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>تاريخ الدفعة </label>
-                                    <input type="text" class="form-control txt-rtl hijri-date-default"
+                                    <input type="text" autocomplete="off" class="form-control txt-rtl hijri-date-default"
                                     value=""
                                     name="installment_date" id="inputEmail3" placeholder="{{ date('d-m-Y', strtotime($row->installment_date)) }}">
 
@@ -150,7 +150,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>تاريخ الدفعة </label>
-                                    <input type="text" class="form-control txt-rtl hijri-date-default"
+                                    <input type="text" autocomplete="off" class="form-control txt-rtl hijri-date-default"
                                     value=""
                                     name="installment_date" id="inputEmail3" placeholder="{{ date('d-m-Y', strtotime($row->installment_date)) }}">
 
@@ -216,7 +216,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>تاريخ الدفعة </label>
-                                        <input type="text" value=""
+                                        <input type="text" autocomplete="off" value=""
                                         class="form-control txt-rtl hijri-date-default" name="installment_date" class="form-control" id="">
 
                                     </div>

@@ -28,6 +28,12 @@
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
+            <strong>رقم الهوية:</strong>
+            {!! Form::text('n_id', null, array('placeholder' => 'رقم الهوية','class' => 'form-control')) !!}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
             <strong>البريد الإلكتروني:</strong>
             {!! Form::text('email', null, array('placeholder' => 'البريد الإلكتروني','class' => 'form-control')) !!}
         </div>

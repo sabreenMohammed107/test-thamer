@@ -47,7 +47,7 @@
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label for="">تاريخ الميلاد</label>
-                        <input type="text" value="{{date('Y/m/d', strtotime($opponent->birth_date))}}"
+                        <input type="text" autocomplete="off" value="{{date('Y/m/d', strtotime($opponent->birth_date))}}"
                             name="birth_date" class="form-control txt-rtl hijri-date-default"
                             id="">
                     </div>

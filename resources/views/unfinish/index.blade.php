@@ -39,7 +39,7 @@
 
                             <th> {{ $row->case->name ?? '' }}</th>
                             <th>{{ $row->case->file_no ?? ''}}</th>
-                            <th>{{ $row->client->name ?? ''}}</th>
+                            <th>{{ $row->case->client->name ?? ''}}</th>
 
                             <th>{{ date('Y/m/d', strtotime($row->task_date)) }}</th>
                             <th>{{ date('Y/m/d', strtotime($row->end_date)) }}</th>

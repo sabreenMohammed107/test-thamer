@@ -222,7 +222,7 @@ class LetterController extends Controller
     public function done(Request $request){
 
         $letter=Letter::where('id', $request->get('letter'))->first();
-        $task=Case_members_task::where([['task_type_id',3],['case_id', '=', $request->case_id], ['member_id', '=',  $letter->member_id], ['task_date', '=', $letter->letter_date]])->first();
+        $task=Case_members_task::where([['task_type_id',3],['case_id', '=', $request->case_id]])->first();
         $tasks = [
 
             'task_status_id' => 1

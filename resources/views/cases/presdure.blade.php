@@ -99,7 +99,7 @@
                                                             <div class="col-sm-6">
                                                                 <div class="form-group">
                                                                     <label for="">تاريخ اللائحة</label>
-                                                                    <input type="text"
+                                                                    <input type="text" autocomplete="off"
                                                                         class="form-control txt-rtl hijri-date-default"
                                                                         value="" name="regulation_date" id="inputEmail3"
                                                                         placeholder="{{ date('d-m-Y', strtotime($regulation->regulation_date)) }}">
@@ -109,7 +109,7 @@
                                                             <div class="col-sm-6">
                                                                 <div class="form-group">
                                                                     <label for="">تاريخ التسليم </label>
-                                                                    <input type="text"
+                                                                    <input type="text" autocomplete="off"
                                                                         class="form-control txt-rtl hijri-date-default"
                                                                         value="" name="regulation_end_date"
                                                                         id="inputEmail3"
@@ -186,7 +186,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="">تاريخ المذكرة</label>
-                                        <input type="text" class="form-control txt-rtl hijri-date-default"
+                                        <input type="text" autocomplete="off" class="form-control txt-rtl hijri-date-default"
                                         value=""
                                         name="diary_date" id="inputEmail3" placeholder="{{ date('d-m-Y', strtotime($diary->diary_date)) }}">
 
@@ -196,7 +196,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="">تاريخ التسليم </label>
-                                        <input type="text" class="form-control txt-rtl hijri-date-default"
+                                        <input type="text" autocomplete="off" class="form-control txt-rtl hijri-date-default"
                                         value=  ""
                                         name="diary_end_date" id="inputEmail3" placeholder="{{ date('d-m-Y', strtotime($row->end_date))}}">
                                                                        </div>
@@ -271,7 +271,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="">تاريخ الخطاب </label>
-                                    <input type="text" class="form-control txt-rtl hijri-date-default"
+                                    <input type="text" autocomplete="off" class="form-control txt-rtl hijri-date-default"
                                         value=""
                                         name="letter_date" id="inputEmail3" placeholder="{{ date('d-m-Y', strtotime($letter->letter_date)) }}">
 
@@ -281,7 +281,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="">تاريخ التسليم </label>
-                                    <input type="text" class="form-control txt-rtl hijri-date-default"
+                                    <input type="text" autocomplete="off" class="form-control txt-rtl hijri-date-default"
                                     value=  ""
                                     name="letter_end_date" id="inputEmail3" placeholder="{{ date('d-m-Y', strtotime($row->end_date))}}">
                                                                    </div>
@@ -361,7 +361,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="">تاريخ الإلتماس </label>
-                                    <input type="text" class="form-control txt-rtl hijri-date-default"
+                                    <input type="text" autocomplete="off" class="form-control txt-rtl hijri-date-default"
                                     value=""
                                     name="petition_date" id="inputEmail3" placeholder="{{ date('d-m-Y', strtotime($petition->petition_date)) }}">
                             </div>
@@ -369,7 +369,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="">تاريخ التسليم </label>
-                                    <input type="text" class="form-control txt-rtl hijri-date-default"
+                                    <input type="text" autocomplete="off" class="form-control txt-rtl hijri-date-default"
                                     value=  ""
                                     name="petition_end_date" id="inputEmail3" placeholder="{{ date('d-m-Y', strtotime($row->end_date))}}">
 

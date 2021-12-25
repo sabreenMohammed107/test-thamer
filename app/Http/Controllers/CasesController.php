@@ -442,7 +442,7 @@ if($case){
             $case = Cases::where('id', $request->get('case_id'))->first();
             $case->client_id = $request->get('client_id');
             $case->update();
-            return redirect()->route($this->routeName . 'create')->with('flash_success', $this->message);
+            return redirect()->route($this->routeName .  'edit',$case->id)->with('flash_success', $this->message);
 
         } catch (\Exception $e) {
             // return redirect()->back()->withInput()->with('flash_danger', 'حدث خطأ الرجاء معاودة المحاولة في وقت لاحق');
@@ -458,7 +458,7 @@ if($case){
             $case = Cases::where('id', $request->get('case_id'))->first();
             $case->opponent_id = $request->get('opponent_id');
             $case->update();
-            return redirect()->route($this->routeName . 'create')->with('flash_success', $this->message);
+            return redirect()->route($this->routeName . 'edit',$case->id)->with('flash_success', $this->message);
 
         } catch (\Exception $e) {
             // return redirect()->back()->withInput()->with('flash_danger', 'حدث خطأ الرجاء معاودة المحاولة في وقت لاحق');

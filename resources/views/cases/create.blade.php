@@ -68,6 +68,7 @@
                                                                             <input type="text"
                                                                                 value="dd-mm-YYYY"
                                                                                 name="start_date"
+                                                                                autocomplete="off"
                                                                                 class="form-control txt-rtl hijri-date-default"
                                                                                 id="">
                                                                         </div>
@@ -533,7 +534,7 @@
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label for="">تاريخ الميلاد</label>
-                                                <input type="text" value="{{ old('birth_date', date('d-m-Y')) }}"
+                                                <input type="text" autocomplete="off" value="{{ old('birth_date', date('d-m-Y')) }}"
                                                     name="birth_date" class="form-control txt-rtl hijri-date-default"
                                                     id="">
                                             </div>
@@ -672,7 +673,7 @@
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label for="">تاريخ الميلاد</label>
-                                                <input type="text" value="{{ old('birth_date', date('Y/m/d')) }}"
+                                                <input type="text" autocomplete="off" value="{{ old('birth_date', date('Y/m/d')) }}"
                                                     name="birth_date" class="form-control txt-rtl hijri-date-default"
                                                     id="">
                                             </div>

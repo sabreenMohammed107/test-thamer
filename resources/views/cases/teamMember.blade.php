@@ -116,7 +116,7 @@
                                                 <label for="inputEmail3" class="col-sm-4 col-form-label">تاريخ
                                                     التكليف</label>
                                                 <div class="col-sm-8">
-                                                    <input type="text" class="form-control txt-rtl hijri-date-default"
+                                                    <input type="text" autocomplete="off" class="form-control txt-rtl hijri-date-default"
                                                         value=""
                                                         name="incharge_date" pattern="" id="inputEmail3" placeholder="{{ date('Y/m/d', strtotime($row->incharge_date)) }}">
                                                 </div>
@@ -181,7 +181,7 @@
                                                 <label for="inputEmail3" class="col-sm-5 col-form-label">تاريخ
                                                     التسليم</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text"  value=""  name="regulation_end_date"
+                                                    <input type="text" autocomplete="off" value=""  name="regulation_end_date"
                                                         class="form-control txt-rtl hijri-date-default" id="" @if (isset($task1)) placeholder="{{ date('Y/m/d', strtotime($task1->end_date)) }}" @endif>
                                                 </div>
                                             </div>
@@ -202,7 +202,7 @@
                                                 <label for="inputEmail3" class="col-sm-5 col-form-label">تاريخ
                                                     التسليم</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text"  name="diary_end_date"
+                                                    <input type="text" autocomplete="off"  name="diary_end_date"
                                                         class="form-control txt-rtl hijri-date-default" id="" @if (isset($task2)) placeholder="{{ date('Y/m/d', strtotime($task2->end_date)) }}" @endif >
                                                 </div>
                                             </div>
@@ -223,7 +223,7 @@
                                                 <label for="inputEmail3" class="col-sm-5 col-form-label">تاريخ
                                                     التسليم</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" value="" name="letter_end_date"
+                                                    <input type="text" autocomplete="off" value="" name="letter_end_date"
                                                         class="form-control txt-rtl hijri-date-default" @if (isset($task3)) placeholder="{{ date('Y/m/d', strtotime($task3->end_date)) }}" @endif  id="">
                                                 </div>
                                             </div>
@@ -246,7 +246,7 @@
                                                 <label for="inputEmail3" class="col-sm-5 col-form-label">تاريخ
                                                     التسليم</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text"  value=""  name="petition_end_date"
+                                                    <input type="text" autocomplete="off" value=""  name="petition_end_date"
                                                         class="form-control txt-rtl hijri-date-default" id="" @if (isset($task4)) placeholder="{{ date('Y/m/d', strtotime($task4->end_date)) }}" @endif>
                                                 </div>
                                             </div>
@@ -307,7 +307,7 @@
                                                 <label for="inputEmail3" class="col-sm-4 col-form-label">تاريخ
                                                     التكليف</label>
                                                 <div class="col-sm-8">
-                                                    <input type="text" class="form-control txt-rtl hijri-date-default"
+                                                    <input type="text" autocomplete="off" class="form-control txt-rtl hijri-date-default"
                                                         value=""
                                                         name="incharge_date" pattern="" id="inputEmail3" placeholder="{{ date('Y/m/d', strtotime($row->incharge_date)) }}">
                                                 </div>
@@ -373,7 +373,7 @@
                                                 <label for="inputEmail3" class="col-sm-5 col-form-label">تاريخ
                                                     التسليم</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text"  value=""  name="regulation_end_date"
+                                                    <input type="text" autocomplete="off" value=""  name="regulation_end_date"
                                                         class="form-control txt-rtl hijri-date-default" id="" @if (isset($task1)) placeholder="{{ date('Y/m/d', strtotime($task1->end_date)) }}" @endif>
                                                 </div>
                                             </div>
@@ -394,7 +394,7 @@
                                                 <label for="inputEmail3" class="col-sm-5 col-form-label">تاريخ
                                                     التسليم</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text"  name="diary_end_date"
+                                                    <input type="text" autocomplete="off" name="diary_end_date"
                                                         class="form-control txt-rtl hijri-date-default" id="" @if (isset($task2)) placeholder="{{ date('Y/m/d', strtotime($task2->end_date)) }}" @endif >
                                                 </div>
                                             </div>
@@ -415,7 +415,7 @@
                                                 <label for="inputEmail3" class="col-sm-5 col-form-label">تاريخ
                                                     التسليم</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" value="" name="letter_end_date"
+                                                    <input type="text" autocomplete="off" value="" name="letter_end_date"
                                                         class="form-control txt-rtl hijri-date-default" @if (isset($task3)) placeholder="{{ date('Y/m/d', strtotime($task3->end_date)) }}" @endif  id="">
                                                 </div>
                                             </div>
@@ -438,7 +438,7 @@
                                                 <label for="inputEmail3" class="col-sm-5 col-form-label">تاريخ
                                                     التسليم</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text"  value=""  name="petition_end_date"
+                                                    <input type="text" autocomplete="off" value=""  name="petition_end_date"
                                                         class="form-control txt-rtl hijri-date-default" id="" @if (isset($task4)) placeholder="{{ date('Y/m/d', strtotime($task4->end_date)) }}" @endif>
                                                 </div>
                                             </div>
@@ -503,7 +503,7 @@
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-4 col-form-label">تاريخ التكليف</label>
                                     <div class="col-sm-8">
-                                        <input type="text" value=""
+                                        <input type="text" value="" autocomplete="off"
                                             name="incharge_date" class="form-control txt-rtl hijri-date-default" id="">
                                     </div>
                                 </div>
@@ -550,7 +550,7 @@
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-5 col-form-label">تاريخ التسليم</label>
                                     <div class="col-sm-7">
-                                        <input type="text" value=""
+                                        <input type="text" value="" autocomplete="off"
                                         name="regulation_end_date" class="form-control txt-rtl hijri-date-default" id="">                                    </div>
                                 </div>
                             </div>
@@ -569,7 +569,7 @@
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-5 col-form-label">تاريخ التسليم</label>
                                     <div class="col-sm-7">
-                                        <input type="text" value=""
+                                        <input type="text" value="" autocomplete="off"
                                         name="diary_end_date" class="form-control txt-rtl hijri-date-default" id="">                                    </div>
                                 </div>
                             </div>
@@ -588,7 +588,7 @@
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-5 col-form-label">تاريخ التسليم</label>
                                     <div class="col-sm-7">
-                                        <input type="text" value=""
+                                        <input type="text" value="" autocomplete="off"
                                         name="letter_end_date" class="form-control txt-rtl hijri-date-default" id="">                                    </div>
                                 </div>
                             </div>
@@ -606,7 +606,7 @@
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-5 col-form-label">تاريخ التسليم</label>
                                     <div class="col-sm-7">
-                                        <input type="text" value=""
+                                        <input type="text" value="" autocomplete="off"
                                         name="petition_end_date" class="form-control txt-rtl hijri-date-default" id="">                                    </div>
                                 </div>
                             </div>

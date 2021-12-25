@@ -100,7 +100,7 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label for="">تاريخ الجلسة </label>
-                                                <input type="text" class="form-control txt-rtl hijri-date-default"
+                                                <input type="text" autocomplete="off" class="form-control txt-rtl hijri-date-default"
                                                     value="" name="session_date" id="inputEmail3"
                                                     placeholder="{{ date('d-m-Y', strtotime($row->session_date)) }}">
 
@@ -168,7 +168,7 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label for="">تاريخ الجلسة </label>
-                                                <input type="text" class="form-control txt-rtl hijri-date-default"
+                                                <input type="text" autocomplete="off" class="form-control txt-rtl hijri-date-default"
                                                     value="" name="session_date" id="inputEmail3"
                                                     placeholder="{{ date('d-m-Y', strtotime($row->session_date)) }}">
 
@@ -238,7 +238,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="">تاريخ الجلسة </label>
-                                    <input type="text" value="" class="form-control txt-rtl hijri-date-default"
+                                    <input type="text" autocomplete="off" value="" class="form-control txt-rtl hijri-date-default"
                                         name="session_date" class="form-control" id="">
 
                                 </div>

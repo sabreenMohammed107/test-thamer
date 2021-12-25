@@ -224,7 +224,7 @@ class DairyController extends Controller
     public function done(Request $request){
 
         $diary=Diary::where('id', $request->get('diary'))->first();
-        $task=Case_members_task::where([['task_type_id',2],['case_id', '=', $request->case_id], ['member_id', '=',  $diary->member_id], ['task_date', '=', $diary->diary_date]])->first();
+        $task=Case_members_task::where([['task_type_id',2],['case_id', '=', $request->case_id]])->first();
         $tasks = [
 
             'task_status_id' => 1

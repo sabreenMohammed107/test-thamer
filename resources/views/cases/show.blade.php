@@ -66,7 +66,7 @@
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">تاريخ بدايه القضيه </label>
-                                                                            <input type="text" value="{{date('Y/m/d', strtotime($case->start_date))}}"
+                                                                            <input type="text" autocomplete="off" value="{{date('Y/m/d', strtotime($case->start_date))}}"
                                                                             name="start_date" placeholder="{{date('Y/m/d', strtotime($case->start_date))}}" class="form-control txt-rtl hijri-date-default"
                                                                             id="">
                                                                         </div>
@@ -259,7 +259,7 @@
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">تاريخ الميلاد</label>
-                        <input type="text" readonly @if($case->oppon) value="{{date('Y/m/d', strtotime($case->client->birth_date))}}" @endif
+                        <input type="text" autocomplete="off" readonly @if($case->oppon) value="{{date('Y/m/d', strtotime($case->client->birth_date))}}" @endif
                             name="birth_date" class="form-control txt-rtl hijri-date-default"
                             id="">
                                                                         </div>
@@ -352,7 +352,7 @@
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">تاريخ الميلاد</label>
-                                                                            <input type="text" @if($case->oppon) value="{{date('Y/m/d', strtotime($case->oppon->birth_date))}}" @endif
+                                                                            <input type="text" autocomplete="off" @if($case->oppon) value="{{date('Y/m/d', strtotime($case->oppon->birth_date))}}" @endif
                                                                                 name="birth_date" class="form-control txt-rtl hijri-date-default"
                                                                                 id="">
                                                                         </div>

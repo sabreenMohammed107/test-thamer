@@ -26,6 +26,12 @@
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
+            <strong>رقم الهويه:</strong>
+            {{ $user->n_id }}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
             <strong>البريد الإلكتروني:</strong>
             {{ $user->email }}
         </div>

@@ -7,7 +7,7 @@
             <th>تاريخ المذكرة </th>
             <th>تاريخ التسليم</th>
             <th>الزميل المكلف</th>
-
+            <th> الحاله</th>
             <th>ملاحظات</th>
             <th>انجاز</th>
             <th>الإجراءات</th>
@@ -17,7 +17,7 @@
         @foreach ($diaries as $index=>$row)
         <tr>
             <th>{{ $index + 1 }}</th>
-            <th>{!!$row->text!!}</th>
+            <th>{{ Str::limit($row->text, 50) }}</th>
             <?php
             $task=App\Models\Case_members_task::where([['task_type_id',2],['case_id', '=', $row->case_id], ['member_id', '=',  $row->member_id], ['task_date', '=', $row->diary_date]])->first();
             ?>
@@ -25,7 +25,7 @@
             <th>@if($task){{date('Y/m/d', strtotime($task->end_date))}}@endif </th>
 
             <th>{{$row->member->name ?? ''}}</th>
-
+            <th>@if($task->task_status_id==1) منجزة @else غير منجزة @endif</th>
             <th>{{$row->notes}}</th>
             <th>
                 <div class="btn-group">
@@ -128,7 +128,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="">تاريخ المذكرة</label>
-                                        <input type="text" class="form-control txt-rtl hijri-date-default"
+                                        <input type="text" autocomplete="off" class="form-control txt-rtl hijri-date-default"
                                         value=""
                                         name="diary_date" id="inputEmail3" placeholder="{{ date('d-m-Y', strtotime($row->diary_date)) }}">
 
@@ -140,7 +140,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="">تاريخ التسليم </label>
-                                        <input type="text" class="form-control txt-rtl hijri-date-default"
+                                        <input type="text" autocomplete="off" class="form-control txt-rtl hijri-date-default"
                                         value=  ""
                                         name="diary_end_date" id="inputEmail3" placeholder="@if($task){{ date('d-m-Y', strtotime($task->end_date))}}@endif">
                                                                        </div>
@@ -205,7 +205,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="">تاريخ المذكرة</label>
-                                        <input type="text" class="form-control txt-rtl hijri-date-default"
+                                        <input type="text" autocomplete="off" class="form-control txt-rtl hijri-date-default"
                                         value=""
                                         name="diary_date" id="inputEmail3" placeholder="{{ date('d-m-Y', strtotime($row->diary_date)) }}">
 
@@ -217,7 +217,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="">تاريخ التسليم </label>
-                                        <input type="text" class="form-control txt-rtl hijri-date-default"
+                                        <input type="text" autocomplete="off" class="form-control txt-rtl hijri-date-default"
                                         value=  ""
                                         name="diary_end_date" id="inputEmail3" placeholder="@if($task){{ date('d-m-Y', strtotime($task->end_date))}}@endif">
                                                                        </div>
@@ -289,14 +289,14 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="">تاريخ المذكرة</label>
-                                        <input type="text" value=""
+                                        <input type="text" autocomplete="off" value=""
                                         class="form-control txt-rtl hijri-date-default" name="diary_date" class="form-control" id="">
                                       </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="">تاريخ التسليم </label>
-                                        <input type="text" value=""
+                                        <input type="text" autocomplete="off" value=""
                                         class="form-control txt-rtl hijri-date-default" name="diary_end_date" class="form-control" id="">
 
                                     </div>

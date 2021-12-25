@@ -232,7 +232,7 @@ class RegulationController extends Controller
     public function done(Request $request){
 
         $regulation=Interceptions_regulation::where('id', $request->get('regulation'))->first();
-        $task=Case_members_task::where([['task_type_id',1],['case_id', '=', $request->case_id], ['member_id', '=',  $regulation->member_id], ['task_date', '=', $regulation->regulation_date]])->first();
+        $task=Case_members_task::where([['task_type_id',1],['case_id', '=', $request->case_id]])->first();
         $tasks = [
 
             'task_status_id' => 1
