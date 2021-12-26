@@ -302,12 +302,12 @@ class CasesController extends Controller
         // Delete File ..
 
         try {
-            // $members = Case_members::where('case_id', $id)->get();
-            // if ($members) {
-            //     foreach ($members as $member) {
-            //         $member->delete();
-            //     }
-            // }
+            $members = Case_members::where('case_id', $id)->get();
+            if ($members) {
+                foreach ($members as $member) {
+                    $member->delete();
+                }
+            }
 
             // $row->member()->delete();
             $row->delete();

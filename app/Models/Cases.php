@@ -9,8 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Cases extends Model
 {
-    use HasFactory,SoftDeletes, CascadeSoftDeletes;
-    protected $cascadeDeletes = ['member'];
+
     protected $fillable = [
         'name',
         'start_date',
@@ -57,7 +56,7 @@ class Cases extends Model
 
     public function member()
     {
-        return $this->hasMany('App\Models\Cases','case_id','id');
+        return $this->hasMany('App\Models\Case_members','case_id','id');
     }
 
     // this is a recommended way to declare event handlers
