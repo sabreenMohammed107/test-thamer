@@ -32,7 +32,7 @@
                     </div>
                 </th>
 
-                <th>ملاحظات</th>
+                <th>{{ $row->notes }}</th>
                 <th>
                     <div class="btn-group">
                         <?php
@@ -148,7 +148,7 @@
                                                         <button type="button" class="btn btn-secondary"
                                                             data-dismiss="modal">إلغاء</button>
                                                         {{-- <button type="button" class="btn btn-success">تأكيد</button> --}}
-                                                    </div>
+                                                        </div>
                                                 </form>
                                             </div>
 
@@ -158,261 +158,287 @@
                             @endif
                         @elseif ($row->task_type_id==2)
 
-                                    @if (isset($diary))
-                                    <button type="button" class="btn btn-default" data-toggle="modal"
-                                        data-target="#view-tab21{{ $diary->id }}"><i class="fas fa-eye"
-                                            title="view"></i></button>
-                                             <!-- View Tab-4 Modal -->
-    <div class="modal fade dir-rtl" id="view-tab21{{ $diary->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-light">
-                    <h5 class="modal-title" id="exampleModalLabel">عرض بيانات المذكرات </h5>
-                    <button type="button" class="close m-0 p-0 text-white" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body text-center">
-                    <h3><i class="fas fa-edit text-success"></i></h3>
-                    <form role="form">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <label>نص المذكرة</label>
-                                        <textarea  name="text" class="form-control content2" rows="20">{{$diary->text}}</textarea>
+                            @if (isset($diary))
+                                <button type="button" class="btn btn-default" data-toggle="modal"
+                                    data-target="#view-tab21{{ $diary->id }}"><i class="fas fa-eye"
+                                        title="view"></i></button>
+                                <!-- View Tab-4 Modal -->
+                                <div class="modal fade dir-rtl" id="view-tab21{{ $diary->id }}" tabindex="-1"
+                                    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-light">
+                                                <h5 class="modal-title" id="exampleModalLabel">عرض بيانات المذكرات
+                                                </h5>
+                                                <button type="button" class="close m-0 p-0 text-white"
+                                                    data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body text-center">
+                                                <h3><i class="fas fa-edit text-success"></i></h3>
+                                                <form role="form">
+                                                    <div class="card-body">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <div class="form-group">
+                                                                    <label>نص المذكرة</label>
+                                                                    <textarea name="text" class="form-control content2"
+                                                                        rows="20">{{ $diary->text }}</textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
+                                                                    <label for="">تاريخ المذكرة</label>
+                                                                    <input type="text" autocomplete="off"
+                                                                        class="form-control txt-rtl hijri-date-default"
+                                                                        value="" name="diary_date" id="inputEmail3"
+                                                                        placeholder="{{ date('d-m-Y', strtotime($diary->diary_date)) }}">
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
+                                                                    <label for="">تاريخ التسليم </label>
+                                                                    <input type="text" autocomplete="off"
+                                                                        class="form-control txt-rtl hijri-date-default"
+                                                                        value="" name="diary_end_date" id="inputEmail3"
+                                                                        placeholder="{{ date('d-m-Y', strtotime($row->end_date)) }}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
+                                                                    <label for="">الزميل المكلف</label>
+                                                                    <select class="custom-select dynamic"
+                                                                        name="member_id" id="member_id">
+                                                                        <option>اختر </option>
+
+                                                                        @foreach ($users as $type)
+                                                                            <option
+                                                                                {{ $diary->member_id == $type->id ? 'selected' : '' }}
+                                                                                value="{{ $type->id }}">
+                                                                                {{ $type->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-sm-12">
+                                                                <div class="form-group">
+                                                                    <label>ملاحظات </label>
+                                                                    <textarea name="notes" class="form-control"
+                                                                        rows="5">{{ $diary->notes }}</textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.card-body -->
+
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">إلغاء</button>
+                                                {{-- <button type="button" class="btn btn-success">تأكيد</button> --}}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="">تاريخ المذكرة</label>
-                                        <input type="text" autocomplete="off" class="form-control txt-rtl hijri-date-default"
-                                        value=""
-                                        name="diary_date" id="inputEmail3" placeholder="{{ date('d-m-Y', strtotime($diary->diary_date)) }}">
-
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="">تاريخ التسليم </label>
-                                        <input type="text" autocomplete="off" class="form-control txt-rtl hijri-date-default"
-                                        value=  ""
-                                        name="diary_end_date" id="inputEmail3" placeholder="{{ date('d-m-Y', strtotime($row->end_date))}}">
-                                                                       </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="">الزميل المكلف</label>
-                                        <select class="custom-select dynamic" name="member_id"
-                                    id="member_id">
-                                    <option>اختر </option>
-
-                                    @foreach ($users as $type)
-                                        <option
-                                            {{ $diary->member_id == $type->id ? 'selected' : '' }}
-                                            value="{{ $type->id }}">
-                                            {{ $type->name }}</option>
-                                    @endforeach
-                                </select>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <label>ملاحظات </label>
-                                        <textarea name="notes" class="form-control" rows="5">{{$diary->notes}}</textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.card-body -->
-
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
-                    {{-- <button type="button" class="btn btn-success">تأكيد</button> --}}
-                </div>
-            </div>
-        </div>
-    </div>
-                                            @endif
+                            @endif
 
                         @elseif ($row->task_type_id==3)
 
-                                    @if (isset($letter))
+                            @if (isset($letter))
 
-                                    <button type="button" class="btn btn-default" data-toggle="modal"
-                                        data-target="#view-tab22{{ $letter->id }}"><i class="fas fa-eye"
-                                            title="view"></i></button>
-                                            <!-- View Tab-5 Modal -->
-<div class="modal fade dir-rtl" id="view-tab22{{ $letter->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-light">
-                <h5 class="modal-title" id="exampleModalLabel">عرض بيانات الخطابات </h5>
-                <button type="button" class="close m-0 p-0 text-white" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body text-center">
-                <h3><i class="fas fa-edit text-success"></i></h3>
-                <form role="form">
+                                <button type="button" class="btn btn-default" data-toggle="modal"
+                                    data-target="#view-tab22{{ $letter->id }}"><i class="fas fa-eye"
+                                        title="view"></i></button>
+                                <!-- View Tab-5 Modal -->
+                                <div class="modal fade dir-rtl" id="view-tab22{{ $letter->id }}" tabindex="-1"
+                                    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-light">
+                                                <h5 class="modal-title" id="exampleModalLabel">عرض بيانات الخطابات
+                                                </h5>
+                                                <button type="button" class="close m-0 p-0 text-white"
+                                                    data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body text-center">
+                                                <h3><i class="fas fa-edit text-success"></i></h3>
+                                                <form role="form">
 
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <label>نص الخطاب </label>
-                                    <textarea  name="text" class="form-control content" rows="20">{{$letter->text}}</textarea>
+                                                    <div class="card-body">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <div class="form-group">
+                                                                    <label>نص الخطاب </label>
+                                                                    <textarea name="text" class="form-control content"
+                                                                        rows="20">{{ $letter->text }}</textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
+                                                                    <label for="">تاريخ الخطاب </label>
+                                                                    <input type="text" autocomplete="off"
+                                                                        class="form-control txt-rtl hijri-date-default"
+                                                                        value="" name="letter_date" id="inputEmail3"
+                                                                        placeholder="{{ date('d-m-Y', strtotime($letter->letter_date)) }}">
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
+                                                                    <label for="">تاريخ التسليم </label>
+                                                                    <input type="text" autocomplete="off"
+                                                                        class="form-control txt-rtl hijri-date-default"
+                                                                        value="" name="letter_end_date" id="inputEmail3"
+                                                                        placeholder="{{ date('d-m-Y', strtotime($row->end_date)) }}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
+                                                                    <label for="">رقم الصادر</label>
+                                                                    <input type="text" value="{{ $letter->letter_no }}"
+                                                                        name="letter_no" class="form-control" id="">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
+                                                                    <label for="">الزميل المكلف</label>
+                                                                    <select class="custom-select dynamic"
+                                                                        name="member_id" id="member_id">
+                                                                        <option>اختر </option>
+
+                                                                        @foreach ($users as $type)
+                                                                            <option
+                                                                                {{ $letter->member_id == $type->id ? 'selected' : '' }}
+                                                                                value="{{ $type->id }}">
+                                                                                {{ $type->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <div class="form-group">
+                                                                    <label>ملاحظات </label>
+                                                                    <textarea name="notes" class="form-control"
+                                                                        rows="5">{{ $letter->notes }}</textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- /.card-body -->
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">إلغاء</button>
+                                                {{-- <button type="button" class="btn btn-success">تأكيد</button> --}}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="">تاريخ الخطاب </label>
-                                    <input type="text" autocomplete="off" class="form-control txt-rtl hijri-date-default"
-                                        value=""
-                                        name="letter_date" id="inputEmail3" placeholder="{{ date('d-m-Y', strtotime($letter->letter_date)) }}">
-
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="">تاريخ التسليم </label>
-                                    <input type="text" autocomplete="off" class="form-control txt-rtl hijri-date-default"
-                                    value=  ""
-                                    name="letter_end_date" id="inputEmail3" placeholder="{{ date('d-m-Y', strtotime($row->end_date))}}">
-                                                                   </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="">رقم الصادر</label>
-                                    <input type="text" value="{{$letter->letter_no}}" name="letter_no" class="form-control" id="">
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="">الزميل المكلف</label>
-                                    <select class="custom-select dynamic" name="member_id"
-                                id="member_id">
-                                <option>اختر </option>
-
-                                @foreach ($users as $type)
-                                    <option
-                                        {{ $letter->member_id == $type->id ? 'selected' : '' }}
-                                        value="{{ $type->id }}">
-                                        {{ $type->name }}</option>
-                                @endforeach
-                            </select>
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <label>ملاحظات </label>
-                                    <textarea name="notes" class="form-control" rows="5">{{$letter->notes}}</textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- /.card-body -->
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
-                {{-- <button type="button" class="btn btn-success">تأكيد</button> --}}
-            </div>
-        </div>
-    </div>
-</div>
-                                    @endif
+                            @endif
                         @elseif ($row->task_type_id==4)
 
-                                    @if (isset($petition))
+                            @if (isset($petition))
 
-                                    <button type="button" class="btn btn-default" data-toggle="modal"
-                                        data-target="#view-tab23{{ $petition->id }}"><i class="fas fa-eye"
-                                            title="view"></i></button>
-                                            <!-- View Tab-9 Modal -->
-<div class="modal fade dir-rtl" id="view-tab23{{$petition->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-light">
-                <h5 class="modal-title" id="exampleModalLabel">عرض بيانات الإلتماس </h5>
-                <button type="button" class="close m-0 p-0 text-white" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-            </div>
-            <div class="modal-body text-center">
-                <h3><i class="fas fa-edit text-success"></i></h3>
-                <form role="form">
+                                <button type="button" class="btn btn-default" data-toggle="modal"
+                                    data-target="#view-tab23{{ $petition->id }}"><i class="fas fa-eye"
+                                        title="view"></i></button>
+                                <!-- View Tab-9 Modal -->
+                                <div class="modal fade dir-rtl" id="view-tab23{{ $petition->id }}" tabindex="-1"
+                                    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-light">
+                                                <h5 class="modal-title" id="exampleModalLabel">عرض بيانات الإلتماس
+                                                </h5>
+                                                <button type="button" class="close m-0 p-0 text-white"
+                                                    data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body text-center">
+                                                <h3><i class="fas fa-edit text-success"></i></h3>
+                                                <form role="form">
 
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <label>نص الإلتماس </label>
-                                    <textarea  name="text" class="form-control content" rows="20">{{$petition->text}}</textarea>
+                                                    <div class="card-body">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <div class="form-group">
+                                                                    <label>نص الإلتماس </label>
+                                                                    <textarea name="text" class="form-control content"
+                                                                        rows="20">{{ $petition->text }}</textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
+                                                                    <label for="">تاريخ الإلتماس </label>
+                                                                    <input type="text" autocomplete="off"
+                                                                        class="form-control txt-rtl hijri-date-default"
+                                                                        value="" name="petition_date" id="inputEmail3"
+                                                                        placeholder="{{ date('d-m-Y', strtotime($petition->petition_date)) }}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
+                                                                    <label for="">تاريخ التسليم </label>
+                                                                    <input type="text" autocomplete="off"
+                                                                        class="form-control txt-rtl hijri-date-default"
+                                                                        value="" name="petition_end_date"
+                                                                        id="inputEmail3"
+                                                                        placeholder="{{ date('d-m-Y', strtotime($row->end_date)) }}">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
+                                                                    <label for="">الزميل المكلف</label>
+                                                                    <select class="custom-select dynamic"
+                                                                        name="member_id" id="member_id">
+                                                                        <option>اختر </option>
+
+                                                                        @foreach ($users as $type)
+                                                                            <option
+                                                                                {{ $petition->member_id == $type->id ? 'selected' : '' }}
+                                                                                value="{{ $type->id }}">
+                                                                                {{ $type->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-sm-12">
+                                                                <div class="form-group">
+                                                                    <label>ملاحظات </label>
+                                                                    <textarea name="notes" class="form-control"
+                                                                        rows="5">{{ $petition->notes }}</textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- /.card-body -->
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">إلغاء</button>
+                                                {{-- <button type="button" class="btn btn-success">تأكيد</button> --}}
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="">تاريخ الإلتماس </label>
-                                    <input type="text" autocomplete="off" class="form-control txt-rtl hijri-date-default"
-                                    value=""
-                                    name="petition_date" id="inputEmail3" placeholder="{{ date('d-m-Y', strtotime($petition->petition_date)) }}">
-                            </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="">تاريخ التسليم </label>
-                                    <input type="text" autocomplete="off" class="form-control txt-rtl hijri-date-default"
-                                    value=  ""
-                                    name="petition_end_date" id="inputEmail3" placeholder="{{ date('d-m-Y', strtotime($row->end_date))}}">
-
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="">الزميل المكلف</label>
-                                    <select class="custom-select dynamic" name="member_id"
-                                    id="member_id">
-                                    <option>اختر </option>
-
-                                    @foreach ($users as $type)
-                                        <option
-                                            {{ $petition->member_id == $type->id ? 'selected' : '' }}
-                                            value="{{ $type->id }}">
-                                            {{ $type->name }}</option>
-                                    @endforeach
-                                </select>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <label>ملاحظات </label>
-                                    <textarea name="notes" class="form-control" rows="5">{{$petition->notes}}</textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- /.card-body -->
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
-                {{-- <button type="button" class="btn btn-success">تأكيد</button> --}}
-            </div>
-        </div>
-    </div>
-
-</div>
-                                            @endif
+                            @endif
                         @endif
                     </div>
                 </th>
