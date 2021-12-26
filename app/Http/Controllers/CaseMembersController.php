@@ -259,6 +259,7 @@ class CaseMembersController extends Controller
                 if(!empty($request->get('regulation_end_date'))){
             $tasks['end_date']=Carbon::parse($request->get('regulation_end_date'));
                 }
+
                 Case_members_task::create($tasks);
             } else {
 

@@ -31,9 +31,9 @@
                         <button type="button" class="btn btn-default" data-toggle="modal"
                             data-target="#view-tab2{{ $row->id }}"><i class="fas fa-eye"
                                 title="view"></i></button>
-                        <button type="button" class="btn btn-default" data-toggle="modal"
+                        {{-- <button type="button" class="btn btn-default" data-toggle="modal"
                             data-target="#edit-tab2{{ $row->id }}"><i class="fas fa-edit"
-                                title="edit"></i></button>
+                                title="edit"></i></button> --}}
                         {{-- <button type="button" class="btn btn-default"><i class="fas fa-print" title="print"></i></button> --}}
                         @can('cases-delete')
                     <button type="button" class="btn btn-default" data-toggle="modal"
