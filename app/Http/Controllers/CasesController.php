@@ -246,11 +246,11 @@ class CasesController extends Controller
 
         ]);
 
-        // DB::beginTransaction();
-        // try
-        // {
-        //     // Disable foreign key checks!
-        //     DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        DB::beginTransaction();
+        try
+        {
+            // Disable foreign key checks!
+            DB::statement('SET FOREIGN_KEY_CHECKS=0;');
             $input = $request->except(['_token', 'start_date']);
             if (!empty($request->get('start_date'))) {
                 $input['start_date'] = Carbon::parse($request->get('start_date'));
@@ -273,21 +273,26 @@ class CasesController extends Controller
                 if (!empty($request->get('start_date'))) {
                     $data['incharge_date'] = Carbon::parse($request->get('start_date'));
                 }
-                $caseMember->update($data);
+                if($caseMember){
+                    $caseMember->update($data);
+                }else{
+                    Case_members::create($data);
+                }
+
             }
-            // DB::commit();
-            // // Enable foreign key checks!
-            // DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+            DB::commit();
+            // Enable foreign key checks!
+            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
             return redirect()->route($this->routeName . 'edit', $id)->with('flash_success', $this->message);
             // return redirect()->back()->with(['flash_success'=> $this->message,'case_id'=>$case->id]);
 
-        // } catch (\Throwable $e) {
-        //     // throw $th;
-        //     DB::rollback();
-        //     // return redirect()->back()->withInput()->with('flash_danger', 'حدث خطأ الرجاء معاودة المحاولة في وقت لاحق');
+        } catch (\Throwable $e) {
+            // throw $th;
+            DB::rollback();
+            // return redirect()->back()->withInput()->with('flash_danger', 'حدث خطأ الرجاء معاودة المحاولة في وقت لاحق');
 
-        //     return redirect()->back()->withInput()->with('flash_danger', $e->getMessage());
-        // }
+            return redirect()->back()->withInput()->with('flash_danger', $e->getMessage());
+        }
     }
 
     /**
