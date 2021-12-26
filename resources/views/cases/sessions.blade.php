@@ -8,7 +8,7 @@
             <th>تاريخ الجلسة </th>
             <th>الزميل المكلف</th>
             <th>ملاحظات</th>
-            <th>انجاز</th>
+            {{-- <th>انجاز</th> --}}
             <th>الإجراءات</th>
         </tr>
     </thead>
@@ -20,12 +20,12 @@
                 <th>{{ date('Y/m/d', strtotime($row->session_date)) }}</th>
                 <th>{{ $row->member->name ?? '' }}</th>
                 <th>{{ $row->notes }}</th>
-                <th>
+                {{-- <th>
                     <div class="btn-group">
                         <button type="button" @if($task->task_status_id==1) disabled @endif class="btn btn-default" data-toggle="modal" data-target="#done"><i
                                 class="fas fa-check" title="view"></i></button>
                     </div>
-                </th>
+                </th> --}}
                 <th>
                     <div class="btn-group">
                         <button type="button" class="btn btn-default" data-toggle="modal"
