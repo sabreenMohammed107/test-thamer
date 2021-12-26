@@ -158,7 +158,7 @@
                                 </div>
                             </div>
                             <?php
-                            $task=App\Models\Case_members_task::where([['task_type_id',1],['case_id', '=',$row->case_id], ['member_id', '=',  $row->member_id], ['task_date', '=', $row->updated_at]])->first();
+                            $task=App\Models\Case_members_task::where([['task_type_id',1],['case_id', '=',$row->case_id], ['member_id', '=',  $row->member_id], ['task_date', '=', $row->regulation_date]])->first();
                             ?>
                             <div class="col-sm-6">
                                 <div class="form-group">
