@@ -47,9 +47,11 @@
                                                 <li class="nav-item">
                                                     <a class="nav-link" id="custom-tabs-one-7-tab" data-toggle="pill" href="#custom-tabs-one-7" role="tab" aria-controls="custom-tabs-one-7" aria-selected="false">المرفقات </a>
                                                 </li>
+                                                @hasrole('Admin')
                                                 <li class="nav-item">
                                                     <a class="nav-link" id="custom-tabs-one-8-tab" data-toggle="pill" href="#custom-tabs-one-8" role="tab" aria-controls="custom-tabs-one-8" aria-selected="false"> دفعات الأتعاب</a>
                                                 </li>
+                                                @endhasrole
                                                 <li class="nav-item">
                                                     <a class="nav-link" id="custom-tabs-one-10-tab" data-toggle="pill" href="#custom-tabs-one-10" role="tab" aria-controls="custom-tabs-one-10" aria-selected="false"> اجراءات القضيه </a>
                                                 </li>
