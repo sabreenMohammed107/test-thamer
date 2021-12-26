@@ -259,7 +259,7 @@ $task = App\Models\Case_members_task::where([['task_type_id', 4], ['case_id', '=
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
-                            <button type="button" class="btn btn-success">تأكيد</button>
+                            {{-- <button type="button" class="btn btn-success">تأكيد</button> --}}
                         </div>
                     </div>
                 </div>

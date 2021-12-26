@@ -303,7 +303,7 @@
                     <!-- /.card-body -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
-                        <button type="button" class="btn btn-success">تأكيد</button>
+                        {{-- <button type="button" class="btn btn-success">تأكيد</button> --}}
                     </div>
                 </form>
             </div>
