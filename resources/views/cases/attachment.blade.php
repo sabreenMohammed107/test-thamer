@@ -30,7 +30,7 @@
                 <div class="btn-group">
                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#view-tab7{{$row->id}}"><i class="fas fa-eye" title="view"></i></button>
                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#edit-tab7{{$row->id}}"><i class="fas fa-edit" title="edit"></i></button>
-                    <button type="button" class="btn btn-default"><i class="fas fa-print" title="print"></i></button>
+                    {{-- <button type="button" class="btn btn-default"><i class="fas fa-print" title="print"></i></button> --}}
                     @can('cases-delete')
                     <button type="button" class="btn btn-default" data-toggle="modal"
                     data-target="#del7{{ $row->id }}"><i class="fas fa-trash-alt"></i></button>
