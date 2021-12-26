@@ -26,11 +26,11 @@
             <th>@if($task){{date('Y/m/d', strtotime($task->end_date))}}@endif </th>
             <th>{{$row->letter_no}}</th>
             <th>{{$row->member->name ?? ''}}</th>
-            <th>@if($task->task_status_id==1) منجزة @else غير منجزة @endif</th>
+            <th>@if($task && $task->task_status_id==1) منجزة @else غير منجزة @endif</th>
             <th>{{$row->notes}}</th>
             <th>
                 <div class="btn-group">
-                    <button type="button"  @if($task->task_status_id==1) disabled @endif class="btn btn-default" data-toggle="modal" data-target="#done2{{ $row->id }}"><i class="fas fa-check" title="view"></i></button>
+                    <button type="button"  @if($task && $task->task_status_id==1) disabled @endif class="btn btn-default" data-toggle="modal" data-target="#done2{{ $row->id }}"><i class="fas fa-check" title="view"></i></button>
                 </div>
             </th>
             <th>
