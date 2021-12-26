@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Dyrynda\Database\Support\CascadeSoftDeletes;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Cases extends Model
 {
-    use HasFactory;
-
+    use HasFactory,SoftDeletes, CascadeSoftDeletes;
+    protected $cascadeDeletes = ['member'];
     protected $fillable = [
         'name',
         'start_date',
