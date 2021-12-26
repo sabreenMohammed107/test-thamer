@@ -162,7 +162,7 @@
                                                                                     <option
                                                                                         {{ $row->case_type_id == $type->id ? 'selected' : '' }}
                                                                                         value="{{ $type->id }}">
-                                                                                        {{ $type->name }}</option>
+                                                                                        {{ $type->type }}</option>
                                                                                 @endforeach
                                                                             </select>
                                                                         </div>
