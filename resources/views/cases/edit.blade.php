@@ -787,7 +787,7 @@
 
                             },
                             success: function(result) {
-                                alert(result)
+
                                 $('#collapseOne').html(result);
 
 
@@ -808,7 +808,7 @@
 
                             },
                             success: function(result) {
-                                alert(result)
+
                                 $('#collapseOne').html(result);
 
 
