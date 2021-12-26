@@ -176,7 +176,7 @@ class RegulationController extends Controller
                 $tasks['end_date'] = Carbon::parse($request->get('regulation_end_date'));
             }
 
-            $task = Case_members_task::where([['task_type_id', 2], ['case_id', '=', $request->get('case_id')], ['member_id', '=', $request->get('member_id')], ['task_date', '=', Interceptions_regulation::findOrFail($id)->updated_at]])
+            $task = Case_members_task::where([['task_type_id', 2], ['case_id', '=', $request->get('case_id')], ['member_id', '=', $request->get('member_id')], ['task_date', '=', Interceptions_regulation::findOrFail($id)->regulation_date]])
                 ->first();
                 if ($task) {
                     $task->update($tasks);
