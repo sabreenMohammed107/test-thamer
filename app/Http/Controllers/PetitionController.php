@@ -225,7 +225,7 @@ class PetitionController extends Controller
     public function done(Request $request){
 
         $petition=Petition::where('id', $request->get('petition'))->first();
-        $task=Case_members_task::where([['task_type_id',4],['case_id', '=', $request->case_id]])->first();
+        $task=Case_members_task::where([['task_type_id',4],['case_id', '=', $request->case_id],['task_date','=',$petition->petition_date]])->first();
         $tasks = [
 
             'task_status_id' => 1
