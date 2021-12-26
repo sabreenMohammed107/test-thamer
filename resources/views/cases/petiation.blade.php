@@ -150,7 +150,7 @@ $task = App\Models\Case_members_task::where([['task_type_id', 4], ['case_id', '=
 
                                             </div>
                                         </div>
-                                        <div class="col-sm-6">
+                                        {{-- <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label for="">الزميل المكلف</label>
                                                 <select class="custom-select dynamic" name="member_id" id="member_id">
@@ -163,7 +163,7 @@ $task = App\Models\Case_members_task::where([['task_type_id', 4], ['case_id', '=
                                                     @endforeach
                                                 </select>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
                                         <div class="col-sm-12">
                                             <div class="form-group">

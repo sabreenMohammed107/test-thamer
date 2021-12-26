@@ -154,7 +154,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-6">
+                            {{-- <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="">الزميل المكلف</label>
                                     <select class="custom-select dynamic" name="member_id"
@@ -169,7 +169,7 @@
                                 @endforeach
                             </select>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label>ملاحظات </label>
