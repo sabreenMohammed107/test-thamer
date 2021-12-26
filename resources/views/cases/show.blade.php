@@ -476,9 +476,11 @@
                                                 <div class="tab-pane fade" id="custom-tabs-one-7" role="tabpanel" aria-labelledby="custom-tabs-one-7-tab">
                                                @include('cases.attachment')
                                                 </div>
+                                                @hasrole('Admin')
                                                 <div class="tab-pane fade" id="custom-tabs-one-8" role="tabpanel" aria-labelledby="custom-tabs-one-8-tab">
                                           @include('cases.fees')
                                                 </div>
+                                                @endhasrole
                                                 <div class="tab-pane fade" id="custom-tabs-one-9" role="tabpanel" aria-labelledby="custom-tabs-one-9-tab">
                                                @include('cases.petiation')
                                                 </div>
