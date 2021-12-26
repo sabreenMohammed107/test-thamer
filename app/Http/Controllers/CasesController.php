@@ -139,7 +139,7 @@ class CasesController extends Controller
                     'active' => 1,
                     'controlled_by' => Auth::user()->id,
                 ];
-               Case_members::create($data);
+                Case_members::create($data);
             }
             DB::commit();
             // Enable foreign key checks!
@@ -175,29 +175,29 @@ class CasesController extends Controller
         $client = new Person();
         $opponent = new Person();
         //team member
-        $members=Case_members::where('case_id',$id)->get();
-        $users=User::all();
+        $members = Case_members::where('case_id', $id)->get();
+        $users = User::all();
 
         // $member_regulation=Interceptions_regulation::where([['general_account','=',$request->get('general_account')],['help_account','=',$request->get('help_account')]]);
         // regulation
-      $regulations=Interceptions_regulation::where('case_id',$id)->get();
-      //letters
-      $letters=Letter::where('case_id',$id)->get();
-      //diaries
-      $diaries=Diary::where('case_id',$id)->get();
-      //petition
-      $petitions=Petition::where('case_id',$id)->get();
-      //sessions
-      $sessions=Session::where('case_id',$id)->get();
-      //attach
-      $attachments=Attachment::where('case_id',$id)->get();
-      //fees
-      $fees=Fees_installment::where('case_id',$id)->get();
+        $regulations = Interceptions_regulation::where('case_id', $id)->get();
+        //letters
+        $letters = Letter::where('case_id', $id)->get();
+        //diaries
+        $diaries = Diary::where('case_id', $id)->get();
+        //petition
+        $petitions = Petition::where('case_id', $id)->get();
+        //sessions
+        $sessions = Session::where('case_id', $id)->get();
+        //attach
+        $attachments = Attachment::where('case_id', $id)->get();
+        //fees
+        $fees = Fees_installment::where('case_id', $id)->get();
 //presdure
-$presdures=Case_members_task::where('case_id',$id)->get();
+        $presdures = Case_members_task::where('case_id', $id)->get();
         return view($this->viewName . 'show', compact('case', 'opponent', 'client', 'courts', 'branches', 'caseTypes', 'clients', 'oppenonts', 'nationalities', 'cities'
-    ,'members','users',
-'regulations','letters','diaries','petitions','sessions','attachments','fees','presdures'));
+            , 'members', 'users',
+            'regulations', 'letters', 'diaries', 'petitions', 'sessions', 'attachments', 'fees', 'presdures'));
 
     }
 
@@ -252,7 +252,7 @@ $presdures=Case_members_task::where('case_id',$id)->get();
             // Disable foreign key checks!
             DB::statement('SET FOREIGN_KEY_CHECKS=0;');
             $input = $request->except(['_token', 'start_date']);
-            if(!empty($request->get('start_date'))){
+            if (!empty($request->get('start_date'))) {
                 $input['start_date'] = Carbon::parse($request->get('start_date'));
             }
 
@@ -262,7 +262,7 @@ $presdures=Case_members_task::where('case_id',$id)->get();
 
             //save case member totaly=1 ,partly =2
             if ($request->get('current_resposible_id')) {
-                $caseMember=Case_members::where('case_id',$id)->first();
+                $caseMember = Case_members::where('case_id', $id)->first();
                 $data = [
 
                     'member_id' => $request->get('current_resposible_id'),
@@ -270,7 +270,7 @@ $presdures=Case_members_task::where('case_id',$id)->get();
                     'active' => 1,
                     'controlled_by' => Auth::user()->id,
                 ];
-                if(!empty($request->get('start_date'))){
+                if (!empty($request->get('start_date'))) {
                     $data['incharge_date'] = Carbon::parse($request->get('start_date'));
                 }
                 $caseMember->update($data);
@@ -278,7 +278,7 @@ $presdures=Case_members_task::where('case_id',$id)->get();
             DB::commit();
             // Enable foreign key checks!
             DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-            return redirect()->route($this->routeName . 'edit',$id)->with('flash_success', $this->message);
+            return redirect()->route($this->routeName . 'edit', $id)->with('flash_success', $this->message);
             // return redirect()->back()->with(['flash_success'=> $this->message,'case_id'=>$case->id]);
 
         } catch (\Throwable $e) {
@@ -302,12 +302,14 @@ $presdures=Case_members_task::where('case_id',$id)->get();
         // Delete File ..
 
         try {
-           $members= Case_members::where('case_id',$id)->get();
-           if($members){
-foreach($members as $member){
-$member->delete();
-}
-           }
+            $members = Case_members::where('case_id', $id)->get();
+dd($members);
+            if ($members) {
+                foreach ($members as $member) {
+                    $member->delete();
+                }
+            }
+
             // $row->member()->delete();
             $row->delete();
             return redirect()->route($this->routeName . 'index')->with('flash_success', 'تم الحذف بنجاح !');
@@ -385,12 +387,12 @@ $member->delete();
             $input['birth_date'] = Carbon::parse($request->get('birth_date'));
             $oppontonent = Person::create($input);
 // dd($request->get('case_id'));
-$case = Cases::where('id', $request->get('case_id'))->first();
+            $case = Cases::where('id', $request->get('case_id'))->first();
 
-if($case){
-    $case->client_id = $oppontonent->id;
-    $case->update();
-}
+            if ($case) {
+                $case->client_id = $oppontonent->id;
+                $case->update();
+            }
 
             DB::commit();
             // Enable foreign key checks!
@@ -447,7 +449,7 @@ if($case){
             $case = Cases::where('id', $request->get('case_id'))->first();
             $case->client_id = $request->get('client_id');
             $case->update();
-            return redirect()->route($this->routeName .  'edit',$case->id)->with('flash_success', $this->message);
+            return redirect()->route($this->routeName . 'edit', $case->id)->with('flash_success', $this->message);
 
         } catch (\Exception $e) {
             // return redirect()->back()->withInput()->with('flash_danger', 'حدث خطأ الرجاء معاودة المحاولة في وقت لاحق');
@@ -463,7 +465,7 @@ if($case){
             $case = Cases::where('id', $request->get('case_id'))->first();
             $case->opponent_id = $request->get('opponent_id');
             $case->update();
-            return redirect()->route($this->routeName . 'edit',$case->id)->with('flash_success', $this->message);
+            return redirect()->route($this->routeName . 'edit', $case->id)->with('flash_success', $this->message);
 
         } catch (\Exception $e) {
             // return redirect()->back()->withInput()->with('flash_danger', 'حدث خطأ الرجاء معاودة المحاولة في وقت لاحق');
@@ -488,10 +490,11 @@ if($case){
     }
 
     // case members cruds
- public function archiveCase(Request $request){
-$case=Cases::where('id',$request->get('case_id'))->first();
-$case->update(['case_status_id'=>2]);
-return redirect()->back()->withInput()->with('flash_success', 'تم أرشفة القضية');
+    public function archiveCase(Request $request)
+    {
+        $case = Cases::where('id', $request->get('case_id'))->first();
+        $case->update(['case_status_id' => 2]);
+        return redirect()->back()->withInput()->with('flash_success', 'تم أرشفة القضية');
 
- }
+    }
 }
