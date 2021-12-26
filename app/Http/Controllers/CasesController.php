@@ -302,7 +302,12 @@ $presdures=Case_members_task::where('case_id',$id)->get();
         // Delete File ..
 
         try {
-            Case_members::where('case_id',$id)->delete();
+           $members= Case_members::where('case_id',$id)->get();
+           if($members){
+foreach($members as $member){
+$member->delete();
+}
+           }
             // $row->member()->delete();
             $row->delete();
             return redirect()->route($this->routeName . 'index')->with('flash_success', 'تم الحذف بنجاح !');
