@@ -40,18 +40,40 @@ class ShowSettingsController extends Controller
     }
 
     public function courtComming(){
-$commingSessions=Session::whereDate('session_date','>',Carbon::today()->toDateString())->get();
+        $user = Auth::user();
+        if ($user->hasRole('Admin')) {
+            $commingSessions=Session::whereDate('session_date','>',Carbon::today()->toDateString())->get();
+
+        } else {
+            $commingSessions=Session::whereDate('session_date','>',Carbon::today()->toDateString())->where('member_id',$user->id)->get();
+        }
+// $commingSessions=Session::whereDate('session_date','>',Carbon::today()->toDateString())->get();
 return view('court-comming.index',compact('commingSessions'));
 
     }
 //exec_dision_no
     public function courtOld(){
-        $oldSessions=Session::whereDate('session_date','<',Carbon::today()->toDateString())->get();
+        $user = Auth::user();
+        if ($user->hasRole('Admin')) {
+            $oldSessions=Session::whereDate('session_date','<',Carbon::today()->toDateString())->get();
+
+        } else {
+            $oldSessions=Session::whereDate('session_date','<',Carbon::today()->toDateString())->where('member_id',$user->id)->get();
+        }
+        // $oldSessions=Session::whereDate('session_date','<',Carbon::today()->toDateString())->get();
         return view('court-old.index',compact('oldSessions'));
 
             }
 
             public function dision(){
+                $user = Auth::user();
+                if ($user->hasRole('Admin')) {
+                    $data=Cases::whereNotNull('exec_dision_no')->get();
+
+                } else {
+                    $data=Cases::whereNotNull('exec_dision_no')->where('current_resposible_id', $user->id)->get();
+
+                }
                 $data=Cases::whereNotNull('exec_dision_no')->get();
                 return view('dision.index',compact('data'));
 
