@@ -9,15 +9,33 @@ use App\Models\Cases;
 use App\Models\Session;
 use App\Models\Person;
 use Carbon\Carbon;
+use Auth;
 class ShowSettingsController extends Controller
 {
 
     public function unfinish(){
-        $unfinsh=Case_members_task::where('task_status_id','=',2)->get();
+        $user = Auth::user();
+        if ($user->hasRole('Admin')) {
+            $unfinsh=Case_members_task::where('task_status_id','=',2)->orderBy('id', 'DESC')->get();
+
+        } else {
+            $unfinsh=Case_members_task::where('task_status_id','=',2)->where('member_id',$user->id)->orderBy('id', 'DESC')->get();
+
+        }
+
+        // $unfinsh=Case_members_task::where('task_status_id','=',2)->get();
         return view('unfinish.index',compact('unfinsh'));
     }
     public function finish(){
-        $finsh=Case_members_task::where('task_status_id','=',1)->get();
+        $user = Auth::user();
+        if ($user->hasRole('Admin')) {
+            $finsh=Case_members_task::where('task_status_id','=',1)->orderBy('id', 'DESC')->get();
+
+        } else {
+            $finsh=Case_members_task::where('task_status_id','=',1)->where('member_id',$user->id)->orderBy('id', 'DESC')->get();
+
+        }
+        // $finsh=Case_members_task::where('task_status_id','=',1)->get();
         return view('finish.index',compact('finsh'));
     }
 
