@@ -74,7 +74,7 @@ return view('court-comming.index',compact('commingSessions'));
                     $data=Cases::whereNotNull('exec_dision_no')->where('current_resposible_id', $user->id)->get();
 
                 }
-                $data=Cases::whereNotNull('exec_dision_no')->get();
+                // $data=Cases::whereNotNull('exec_dision_no')->get();
                 return view('dision.index',compact('data'));
 
                     }
