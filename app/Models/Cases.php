@@ -56,7 +56,7 @@ class Cases extends Model
 
     public function member()
     {
-        return $this->hasMany('App\Models\Case_members','case_id','id');
+        return $this->hasMany('App\Models\Case_members');
     }
 
     // this is a recommended way to declare event handlers
