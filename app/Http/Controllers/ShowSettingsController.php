@@ -102,13 +102,13 @@ return view('court-comming.index',compact('commingSessions'));
 
                                             public function Oppenonts(){
                                                 $data=Person::where('preson_type','=',1)->get();
-                                                return view('oppenont.index',compact('data'));
+                                                return view('Oppenont.index',compact('data'));
 
                                                     }
                                                     //showopp
                                                     public function showoppenont($id){
                                                         $row=Person::where('id',$id)->first();
-                                                        return view('oppenont.show',compact('row'));
+                                                        return view('Oppenont.show',compact('row'));
 
                                                             }
 }
