@@ -41,10 +41,10 @@ class CasesController extends Controller
     protected $errormessage;
     public function __construct(Cases $object)
     {
-        $this->middleware('permission:cases-list|cases-create|cases-edit|cases-delete', ['only' => ['index', 'store']]);
-        $this->middleware('permission:cases-create', ['only' => ['create', 'store']]);
-        $this->middleware('permission:cases-edit', ['only' => ['edit', 'update']]);
-        $this->middleware('permission:cases-delete', ['only' => ['destroy']]);
+        // $this->middleware('permission:cases-list|cases-create|cases-edit|cases-delete', ['only' => ['index', 'store']]);
+        // $this->middleware('permission:cases-create', ['only' => ['create', 'store']]);
+        // $this->middleware('permission:cases-edit', ['only' => ['edit', 'update']]);
+        // $this->middleware('permission:cases-delete', ['only' => ['destroy']]);
 
         $this->object = $object;
         $this->viewName = 'cases.';
