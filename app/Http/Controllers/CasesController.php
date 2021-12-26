@@ -303,6 +303,7 @@ class CasesController extends Controller
 
         try {
             $members = Case_members::where('case_id', $id)->get();
+            dd($members);
             if ($members) {
                 foreach ($members as $member) {
                     $member->delete();
