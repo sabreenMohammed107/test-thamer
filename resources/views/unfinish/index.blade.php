@@ -22,6 +22,7 @@
                             <th>تاريخ التكليف</th>
                             <th>تاريخ الإنتهاء</th>
                             <th>المكلف بها</th>
+                            <th>النوع</th>
                             <th>ملاحظات </th>
                             <th>الحاله </th>
                         </tr>
@@ -44,6 +45,7 @@
                             <th>{{ date('Y/m/d', strtotime($row->task_date)) }}</th>
                             <th>{{ date('Y/m/d', strtotime($row->end_date)) }}</th>
                             <th>{{ $row->member->name ?? '' }}</th>
+                            <th>{{ $row->task_description}} </th>
                             <th>{{ $row->notes}} </th>
                             <th>@if($row->end_date > $yesterday && $row->end_date <= $today) اوشكت تنتهى @elseif ($row->end_date < $yesterday) انتهت @else لم تنتهى @endif </th>
                         </tr>
