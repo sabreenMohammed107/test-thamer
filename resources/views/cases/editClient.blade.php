@@ -16,7 +16,7 @@
                         <select class="custom-select" name="nationality_id">
                             @foreach ($nationalities as $type)
                                 <option
-                                    {{ $row->client->nationality_id == $type->id ? 'selected' : '' }}
+                                   @if($row->client) {{$row->client &&  $row->client->nationality_id == $type->id ? 'selected' : '' }} @endif
                                     value="{{ $type->id }}">
                                     {{ $type->name }}</option>
                             @endforeach
