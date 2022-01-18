@@ -125,25 +125,25 @@
 
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-12">
                                 <div class="form-group">
                                     <label>الوقائع</label>
                                     <textarea  name="facts" class="form-control" rows="5">{{$row->facts}}</textarea>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-12">
                                 <div class="form-group">
                                     <label>الدفوع</label>
                                     <textarea name="defenses" class="form-control" rows="5">{{$row->defenses}}</textarea>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-12">
                                 <div class="form-group">
                                     <label>الطلبات</label>
                                     <textarea name="requirements" class="form-control" rows="5">{{$row->requirements}}</textarea>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-12">
                                 <div class="form-group">
                                     <label>نص</label>
                                     <textarea name="text" class="form-control" rows="5">{{$row->text}}</textarea>

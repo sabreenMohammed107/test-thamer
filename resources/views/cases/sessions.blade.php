@@ -231,7 +231,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <label>ضبط الجلسة </label>
+                                    <label> طلبات الجلسة </label>
                                     <textarea id="mytextarea " name="text" class="form-control " rows="10"></textarea>
                                 </div>
                             </div>
@@ -257,7 +257,7 @@
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <label>ملاحظات </label>
+                                    <label>تقرير الجلسة </label>
                                     <textarea name="notes" class="form-control" rows="5"></textarea>
                                 </div>
                             </div>

@@ -24,8 +24,12 @@
                                         <div class="card-header p-0 pt-1 bg-white">
                                             <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
                                                 <li class="nav-item">
+                                                    <a class="nav-link" id="custom-tabs-one-10-tab" data-toggle="pill" href="#custom-tabs-one-10" role="tab" aria-controls="custom-tabs-one-10" aria-selected="false"> اجراءات القضيه </a>
+                                                </li>
+                                                <li class="nav-item">
                                                     <a class="nav-link active" id="custom-tabs-one-1-tab" data-toggle="pill" href="#custom-tabs-one-1" role="tab" aria-controls="custom-tabs-one-1" aria-selected="true">ملف القضية</a>
                                                 </li>
+
                                                 <li class="nav-item">
                                                     <a class="nav-link" id="custom-tabs-one-2-tab" data-toggle="pill" href="#custom-tabs-one-2" role="tab" aria-controls="custom-tabs-one-2" aria-selected="false">فريق العمل</a>
                                                 </li>
@@ -52,9 +56,7 @@
                                                     <a class="nav-link" id="custom-tabs-one-8-tab" data-toggle="pill" href="#custom-tabs-one-8" role="tab" aria-controls="custom-tabs-one-8" aria-selected="false"> دفعات الأتعاب</a>
                                                 </li>
                                                 @endhasrole
-                                                <li class="nav-item">
-                                                    <a class="nav-link" id="custom-tabs-one-10-tab" data-toggle="pill" href="#custom-tabs-one-10" role="tab" aria-controls="custom-tabs-one-10" aria-selected="false"> اجراءات القضيه </a>
-                                                </li>
+
                                             </ul>
                                         </div>
                                         <div class="card-body">
@@ -147,6 +149,7 @@
                                                                             </select>
                                                                         </div>
                                                                     </div>
+                                                                    @hasrole('Admin')
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">نوع الاتعاب</label>
@@ -162,6 +165,7 @@
                                                                             </select>
                                                                         </div>
                                                                     </div>
+                                                                    @endhasrole
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">رقم الشكوي في الشرطه</label>

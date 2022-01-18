@@ -33,7 +33,7 @@
                         $today = Carbon\Carbon::tomorrow();
                         ?>
                         @foreach ($unfinsh as $index => $row)
-                        <tr class=" @if($row->end_date > $yesterday && $row->end_date <= $today) text-danger @elseif ($row->end_date < $yesterday) text-white @else text-warning @endif "
+                        <tr class=" @if($row->end_date > $yesterday && $row->end_date <= $today) text-warning @elseif ($row->end_date < $yesterday) text-danger @else text-white @endif "
                    >
                             <th>{{ $index + 1 }}</th>
                         {{-- <tr class="text-warning"> --}}
