@@ -490,8 +490,34 @@
                                                 <div class="tab-pane fade" id="custom-tabs-one-9" role="tabpanel" aria-labelledby="custom-tabs-one-9-tab">
                                                @include('cases.petiation')
                                                 </div>
-                                                <div class="tab-pane fade" id="custom-tabs-one-10" role="tabpanel" aria-labelledby="custom-tabs-one-10-tab">
-
+                                                <div class="tab-pane fade mb-3" id="custom-tabs-one-10" role="tabpanel" aria-labelledby="custom-tabs-one-10-tab">
+                                                <span><h6> إضافة إجراء </span>
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-default btn-flat">
+                                                            <i class="fas fa-check"></i>
+                                                            لوائح اعتراضية
+                                                        </button>
+                                                        <button type="button" class="btn btn-default btn-flat">
+                                                            <i class="fas fa-check"></i>
+                                                            مذكرات
+                                                        </button>
+                                                        <button type="button" class="btn btn-default btn-flat">
+                                                            <i class="fas fa-check"></i>
+                                                          خطابات
+                                                        </button>
+                                                        <button type="button" class="btn btn-default btn-flat">
+                                                            <i class="fas fa-check"></i>
+                                                            التماس إعادة النظر
+                                                          </button>
+                                                          <button type="button" class="btn btn-default btn-flat">
+                                                            <i class="fas fa-check"></i>
+                                                            جلسات
+                                                          </button>
+                                                          <button type="button" class="btn btn-default btn-flat">
+                                                            <i class="fas fa-check"></i>
+                                                            المرفقات
+                                                          </button>
+                                                      </div>
                                 @include('cases.presdure')
                                                 </div>
                                             </div>
