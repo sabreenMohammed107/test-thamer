@@ -491,33 +491,151 @@
                                                @include('cases.petiation')
                                                 </div>
                                                 <div class="tab-pane fade mb-3" id="custom-tabs-one-10" role="tabpanel" aria-labelledby="custom-tabs-one-10-tab">
-                                                <span><h6> إضافة إجراء </span>
+                                                
                                                     <div class="btn-group">
+                                                        <span><h6> إضافة إجراء </span>
                                                         <button type="button" class="btn btn-default btn-flat">
-                                                            <i class="fas fa-check"></i>
+                                                            <i class="fas fa-list-ul"></i>
                                                             لوائح اعتراضية
                                                         </button>
                                                         <button type="button" class="btn btn-default btn-flat">
-                                                            <i class="fas fa-check"></i>
+                                                            <i class="fas fa-list-ul"></i>
                                                             مذكرات
                                                         </button>
                                                         <button type="button" class="btn btn-default btn-flat">
-                                                            <i class="fas fa-check"></i>
+                                                            <i class="fas fa-list-ul"></i>
                                                           خطابات
                                                         </button>
                                                         <button type="button" class="btn btn-default btn-flat">
-                                                            <i class="fas fa-check"></i>
+                                                            <i class="fas fa-list-ul"></i>
                                                             التماس إعادة النظر
                                                           </button>
                                                           <button type="button" class="btn btn-default btn-flat">
-                                                            <i class="fas fa-check"></i>
+                                                            <i class="fas fa-list-ul"></i>
                                                             جلسات
                                                           </button>
                                                           <button type="button" class="btn btn-default btn-flat">
-                                                            <i class="fas fa-check"></i>
+                                                            <i class="fas fa-list-ul"></i>
                                                             المرفقات
                                                           </button>
                                                       </div>
+{{-- ///////////////////////////////////////////////////////////////////////////////// --}}
+                                                   <br>
+                                                      <div class="btn-group-vertical">
+                                                        <span class="mb-2"><b> <i class="fas fa-list-ul"></i> إضافة إجراء </b> </span>
+                                                        <button type="button" class="btn btn-info text-right">
+                                                            <i class="fas fa-check-square"></i>
+                                                            لوائح اعتراضية
+                                                        </button>
+                                                        <button type="button" class="btn btn-info text-right">
+                                                            <i class="fas fa-check-square"></i>
+                                                            مذكرات
+                                                        </button>
+                                                        <button type="button" class="btn btn-info text-right">
+                                                            <i class="fas fa-check-square"></i>
+                                                            خطابات
+                                                        </button>
+                                                        <button type="button" class="btn btn-info text-right">
+                                                            <i class="fas fa-check-square"></i>
+                                                            التماس إعادة النظر
+                                                        </button>
+                                                        <button type="button" class="btn btn-info text-right">
+                                                            <i class="fas fa-check-square"></i>
+                                                            جلسات
+                                                        </button>
+                                                        <button type="button" class="btn btn-info text-right">
+                                                            <i class="fas fa-check-square"></i>
+                                                            المرفقات
+                                                        </button>
+                                                        <br>
+                                                      </div>
+
+                                                      <div class="btn-group-vertical">
+                                                        <span class="mb-2"><b> <i class="fas fa-list-ul"></i> إضافة إجراء </b> </span>
+                                                        <button type="button" class="btn btn-default text-right">
+                                                            <i class="fas fa-check-circle"></i>
+                                                            لوائح اعتراضية
+                                                        </button>
+                                                        <button type="button" class="btn btn-default text-right">
+                                                            <i class="fas fa-check-circle"></i>
+                                                            مذكرات
+                                                        </button>
+                                                        <button type="button" class="btn btn-default text-right">
+                                                            <i class="fas fa-check-circle"></i>
+                                                            خطابات
+                                                        </button>
+                                                        <button type="button" class="btn btn-default text-right">
+                                                            <i class="fas fa-check-circle"></i>
+                                                            التماس إعادة النظر
+                                                        </button>
+                                                        <button type="button" class="btn btn-default text-right">
+                                                            <i class="fas fa-check-circle"></i>
+                                                            جلسات
+                                                        </button>
+                                                        <button type="button" class="btn btn-default text-right">
+                                                            <i class="fas fa-check-circle"></i>
+                                                            المرفقات
+                                                        </button>
+                                                        <br>
+                                                      </div>
+
+                                                      <div class="btn-group">
+                                                        <button type="button" class="btn btn-info"> إضافة إجراء </button>
+                                                        <button type="button" class="btn btn-info dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                          <span class="sr-only">Toggle Dropdown</span>
+                                                        </button>
+                                                        <div class="dropdown-menu" role="menu">
+                                                          <a class="dropdown-item" href="#">لوائح اعتراضية</a>
+                                                          <a class="dropdown-item" href="#">مذكرات</a>
+                                                          <a class="dropdown-item" href="#">خطابات</a>
+                                                          <a class="dropdown-item" href="#">التماس إعادة النظر</a>
+                                                          <a class="dropdown-item" href="#">جلسات</a>
+                                                          <a class="dropdown-item" href="#">المرفقات</a>
+                                                        </div>
+                                                      </div>
+
+                                                      <div class="btn-group">
+                                                        <button type="button" class="btn btn-default"> إضافة إجراء </button>
+                                                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                          <span class="sr-only">Toggle Dropdown</span>
+                                                        </button>
+                                                        <div class="dropdown-menu" role="menu">
+                                                          <a class="dropdown-item" href="#">لوائح اعتراضية</a>
+                                                          <a class="dropdown-item" href="#">مذكرات</a>
+                                                          <a class="dropdown-item" href="#">خطابات</a>
+                                                          <a class="dropdown-item" href="#">التماس إعادة النظر</a>
+                                                          <a class="dropdown-item" href="#">جلسات</a>
+                                                          <a class="dropdown-item" href="#">المرفقات</a>
+                                                        </div>
+                                                      </div>
+
+                                                      <div class="card">
+                                                        <div class="card-header">
+                                                          <h3 class="card-title"> إضافة إجراء </h3>
+                                                        </div>
+                                                        <div class="card-body">
+                                                          <a class="btn btn-app">
+                                                            <i class="fas fa-edit"></i> لوائح اعتراضية
+                                                          </a>
+                                                          <a class="btn btn-app">
+                                                            <i class="fas fa-list"></i> مذكرات
+                                                          </a>
+                                                          <a class="btn btn-app">
+                                                            <i class="fas fa-envelope"></i> خطابات
+                                                          </a>
+                                                          <a class="btn btn-app">
+                                                            <i class="fas fa-save"></i> التماس إعادة النظر
+                                                          </a>
+                                                          <a class="btn btn-app">
+                                                            <i class="fas fa-bullhorn"></i> جلسات
+                                                          </a>
+                                                          <a class="btn btn-app">
+                                                            <i class="fas fa-barcode"></i> المرفقات
+                                                          </a>
+                                                        </div>
+                                                        <!-- /.card-body -->
+                                                      </div>
+
                                 @include('cases.presdure')
                                                 </div>
                                             </div>
