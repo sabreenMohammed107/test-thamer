@@ -46,6 +46,9 @@
 
                             {{-- <a @if (isset($regulation)) href="{{route('regulation.show', $regulation->id) }}" @endif class="btn btn-default"><i class="fas fa-eye" title="view"></i></a> --}}
                             @if (isset($regulation))
+                            <button type="button" class="btn btn-default" data-toggle="modal"
+                            data-target="#view-tab20{{ $regulation->id }}"><i class="fas fa-edit"
+                                title="view"></i></button>
                                 <button type="button" class="btn btn-default" data-toggle="modal"
                                     data-target="#view-tab20{{ $regulation->id }}"><i class="fas fa-eye"
                                         title="view"></i></button>
@@ -250,7 +253,9 @@
                         @elseif ($row->task_type_id==3)
 
                             @if (isset($letter))
-
+                            <button type="button" class="btn btn-default" data-toggle="modal"
+                            data-target="#view-tab20{{ $letter->id }}"><i class="fas fa-edit"
+                                title="view"></i></button>
                                 <button type="button" class="btn btn-default" data-toggle="modal"
                                     data-target="#view-tab22{{ $letter->id }}"><i class="fas fa-eye"
                                         title="view"></i></button>

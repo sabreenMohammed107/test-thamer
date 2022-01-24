@@ -24,16 +24,25 @@
                                         <div class="card-header p-0 pt-1 bg-white">
                                             <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
                                                 <li class="nav-item">
-                                                    <a class="nav-link" id="custom-tabs-one-10-tab" data-toggle="pill" href="#custom-tabs-one-10" role="tab" aria-controls="custom-tabs-one-10" aria-selected="false"> اجراءات القضيه </a>
+                                                    <a class="nav-link active" id="custom-tabs-one-10-tab"
+                                                        data-toggle="pill" href="#custom-tabs-one-10" role="tab"
+                                                        aria-controls="custom-tabs-one-10" aria-selected="false"> اجراءات
+                                                        القضيه </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link active" id="custom-tabs-one-1-tab" data-toggle="pill" href="#custom-tabs-one-1" role="tab" aria-controls="custom-tabs-one-1" aria-selected="true">ملف القضية</a>
+                                                    <a class="nav-link " id="custom-tabs-one-1-tab" data-toggle="pill"
+                                                        href="#custom-tabs-one-1" role="tab"
+                                                        aria-controls="custom-tabs-one-1" aria-selected="true">ملف
+                                                        القضية</a>
                                                 </li>
 
                                                 <li class="nav-item">
-                                                    <a class="nav-link" id="custom-tabs-one-2-tab" data-toggle="pill" href="#custom-tabs-one-2" role="tab" aria-controls="custom-tabs-one-2" aria-selected="false">فريق العمل</a>
+                                                    <a class="nav-link" id="custom-tabs-one-2-tab" data-toggle="pill"
+                                                        href="#custom-tabs-one-2" role="tab"
+                                                        aria-controls="custom-tabs-one-2" aria-selected="false">فريق
+                                                        العمل</a>
                                                 </li>
-                                                <li class="nav-item">
+                                                {{-- <li class="nav-item">
                                                     <a class="nav-link" id="custom-tabs-one-3-tab" data-toggle="pill" href="#custom-tabs-one-3" role="tab" aria-controls="custom-tabs-one-3" aria-selected="false">لوائح اعتراضية</a>
                                                 </li>
                                                 <li class="nav-item">
@@ -50,18 +59,22 @@
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" id="custom-tabs-one-7-tab" data-toggle="pill" href="#custom-tabs-one-7" role="tab" aria-controls="custom-tabs-one-7" aria-selected="false">المرفقات </a>
-                                                </li>
+                                                </li> --}}
                                                 @hasrole('Admin')
-                                                <li class="nav-item">
-                                                    <a class="nav-link" id="custom-tabs-one-8-tab" data-toggle="pill" href="#custom-tabs-one-8" role="tab" aria-controls="custom-tabs-one-8" aria-selected="false"> دفعات الأتعاب</a>
-                                                </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" id="custom-tabs-one-8-tab" data-toggle="pill"
+                                                            href="#custom-tabs-one-8" role="tab"
+                                                            aria-controls="custom-tabs-one-8" aria-selected="false"> دفعات
+                                                            الأتعاب</a>
+                                                    </li>
                                                 @endhasrole
 
                                             </ul>
                                         </div>
                                         <div class="card-body">
                                             <div class="tab-content" id="custom-tabs-one-tabContent">
-                                                <div class="tab-pane fade show active" id="custom-tabs-one-1" role="tabpanel" aria-labelledby="custom-tabs-one-1-tab">
+                                                <div class="tab-pane fade " id="custom-tabs-one-1" role="tabpanel"
+                                                    aria-labelledby="custom-tabs-one-1-tab">
                                                     <div class="card card-primary">
                                                         <!-- form start -->
                                                         <form role="form">
@@ -70,21 +83,27 @@
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">تاريخ بدايه القضيه </label>
-                                                                            <input type="text" autocomplete="off" value="{{date('Y/m/d', strtotime($case->start_date))}}"
-                                                                            name="start_date" placeholder="{{date('Y/m/d', strtotime($case->start_date))}}" class="form-control txt-rtl hijri-date-default"
-                                                                            id="">
+                                                                            <input type="text" autocomplete="off"
+                                                                                value="{{ date('Y/m/d', strtotime($case->start_date)) }}"
+                                                                                name="start_date"
+                                                                                placeholder="{{ date('Y/m/d', strtotime($case->start_date)) }}"
+                                                                                class="form-control txt-rtl hijri-date-default"
+                                                                                id="">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">رقم الملف</label>
-                                                                            <input type="text"  value="{{ $case->file_no }}" class="form-control" id="" disabled>
+                                                                            <input type="text"
+                                                                                value="{{ $case->file_no }}"
+                                                                                class="form-control" id="" disabled>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">اسم القضيه</label>
-                                                                            <input type="text" value="{{ $case->name }}" class="form-control" id="" disabled>
+                                                                            <input type="text" value="{{ $case->name }}"
+                                                                                class="form-control" id="" disabled>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
@@ -104,35 +123,41 @@
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">رقم قرار التنفيذ </label>
-                                                                            <input type="text"  value="{{ $case->exec_dision_no }}" class="form-control" id="">
+                                                                            <input type="text"
+                                                                                value="{{ $case->exec_dision_no }}"
+                                                                                class="form-control" id="">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">الفرع</label>
                                                                             <select class="custom-select dynamic"
-                                                                            name="branch_id" id="branch_id">
-                                                                            <option>اختر </option>
+                                                                                name="branch_id" id="branch_id">
+                                                                                <option>اختر </option>
 
-                                                                            @foreach ($branches as $type)
-                                                                                <option
-                                                                                    {{ $case->branch_id == $type->id ? 'selected' : '' }}
-                                                                                    value="{{ $type->id }}">
-                                                                                    {{ $type->name }}</option>
-                                                                            @endforeach
-                                                                        </select>
+                                                                                @foreach ($branches as $type)
+                                                                                    <option
+                                                                                        {{ $case->branch_id == $type->id ? 'selected' : '' }}
+                                                                                        value="{{ $type->id }}">
+                                                                                        {{ $type->name }}</option>
+                                                                                @endforeach
+                                                                            </select>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">رقم القضيه في المحكمه</label>
-                                                                            <input type="text"  value="{{$case->court_case_no }}" class="form-control" id="" disabled>
+                                                                            <input type="text"
+                                                                                value="{{ $case->court_case_no }}"
+                                                                                class="form-control" id="" disabled>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">الصفه القانونيه للعميل</label>
-                                                                            <input type="text"  value="{{ $case->client_low_description}}" class="form-control" id="" disabled>
+                                                                            <input type="text"
+                                                                                value="{{ $case->client_low_description }}"
+                                                                                class="form-control" id="" disabled>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
@@ -150,43 +175,48 @@
                                                                         </div>
                                                                     </div>
                                                                     @hasrole('Admin')
-                                                                    <div class="col-sm-3">
-                                                                        <div class="form-group">
-                                                                            <label for="">نوع الاتعاب</label>
-                                                                            <select class="custom-select" id="fees_type"
-                                                                                name="fees_type">
-                                                                                <option
-                                                                                    {{ $case->fees_type == 0 ? 'selected' : '' }}
-                                                                                    value="0">كاش</option>
-                                                                                <option
-                                                                                    {{ $case->fees_type == 1 ? 'selected' : '' }}
-                                                                                    value="1"> قسط</option>
+                                                                        <div class="col-sm-3">
+                                                                            <div class="form-group">
+                                                                                <label for="">نوع الاتعاب</label>
+                                                                                <select class="custom-select" id="fees_type"
+                                                                                    name="fees_type">
+                                                                                    <option
+                                                                                        {{ $case->fees_type == 0 ? 'selected' : '' }}
+                                                                                        value="0">كاش</option>
+                                                                                    <option
+                                                                                        {{ $case->fees_type == 1 ? 'selected' : '' }}
+                                                                                        value="1"> قسط</option>
 
-                                                                            </select>
+                                                                                </select>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
                                                                     @endhasrole
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">رقم الشكوي في الشرطه</label>
-                                                                            <input type="text"  value="{{ $case->police_escalation_no }}" class="form-control" id="" disabled>
+                                                                            <input type="text"
+                                                                                value="{{ $case->police_escalation_no }}"
+                                                                                class="form-control" id="" disabled>
                                                                         </div>
                                                                     </div>
                                                                     @hasrole('Admin')
-                                                                    <div class="col-sm-3">
-                                                                        <div class="form-group">
-                                                                            <label for="">قيمه الاتعاب</label>
-                                                                            <input type="text"
-                                                                                value="{{ $case->case_fees }}" readonly
-                                                                                name="case_fees" class="form-control"
-                                                                                id="">
+                                                                        <div class="col-sm-3">
+                                                                            <div class="form-group">
+                                                                                <label for="">قيمه الاتعاب</label>
+                                                                                <input type="text"
+                                                                                    value="{{ $case->case_fees }}" readonly
+                                                                                    name="case_fees" class="form-control"
+                                                                                    id="">
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                @endhasrole
+                                                                    @endhasrole
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
-                                                                            <label for="">رقم القضيه في النيابة العامة</label>
-                                                                            <input type="text"  value="{{ $case->public_prosecutor_case_no }}" class="form-control" id="" disabled>
+                                                                            <label for="">رقم القضيه في النيابة
+                                                                                العامة</label>
+                                                                            <input type="text"
+                                                                                value="{{ $case->public_prosecutor_case_no }}"
+                                                                                class="form-control" id="" disabled>
                                                                         </div>
                                                                     </div>
 
@@ -194,21 +224,26 @@
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">الدائره</label>
-                                                                            <input type="text" value="{{ $case->circle_no}}" class="form-control" id="" disabled>
+                                                                            <input type="text"
+                                                                                value="{{ $case->circle_no }}"
+                                                                                class="form-control" id="" disabled>
                                                                         </div>
                                                                     </div>
 
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">اسم الخبير </label>
-                                                                            <input type="text"   value="{{ $case->expert_name }}" class="form-control" id="" disabled>
+                                                                            <input type="text"
+                                                                                value="{{ $case->expert_name }}"
+                                                                                class="form-control" id="" disabled>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3"></div>
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
                                                                             <label for="">الوصف</label>
-                                                                            <textarea class="form-control" rows="3" disabled>{{ $case->notes }}</textarea>
+                                                                            <textarea class="form-control" rows="3"
+                                                                                disabled>{{ $case->notes }}</textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -226,13 +261,16 @@
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">اسم العميل</label>
-                                                                            <input type="text" value="{{$case->client->name ?? ''}}" class="form-control" id="" disabled>
+                                                                            <input type="text"
+                                                                                value="{{ $case->client->name ?? '' }}"
+                                                                                class="form-control" id="" disabled>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">الجنسية</label>
-                                                                            <select class="custom-select" name="nationality_id" disabled>
+                                                                            <select class="custom-select"
+                                                                                name="nationality_id" disabled>
                                                                                 @foreach ($nationalities as $type)
                                                                                     <option
                                                                                         {{ $case->client->nationality_id == $type->id ? 'selected' : '' }}
@@ -245,13 +283,16 @@
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">رقم الهوية</label>
-                                                                            <input type="text" value="{{ $case->client->identity_no ?? '' }}" class="form-control" id="" disabled>
+                                                                            <input type="text"
+                                                                                value="{{ $case->client->identity_no ?? '' }}"
+                                                                                class="form-control" id="" disabled>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">نوع الهوية</label>
-                                                                            <select class="custom-select" name="identity_type_id" disabled>
+                                                                            <select class="custom-select"
+                                                                                name="identity_type_id" disabled>
                                                                                 <option value="0"
                                                                                     {{ $case->oppon && $case->client->identity_type_id == 0 ? 'selected' : '' }}>
                                                                                     Passport</option>
@@ -265,17 +306,20 @@
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">تاريخ الميلاد</label>
-                        <input type="text" autocomplete="off" readonly @if($case->oppon) value="{{date('Y/m/d', strtotime($case->client->birth_date))}}" @endif
-                            name="birth_date" class="form-control txt-rtl hijri-date-default"
-                            id="">
+                                                                            <input type="text" autocomplete="off" readonly
+                                                                                @if ($case->oppon) value="{{ date('Y/m/d', strtotime($case->client->birth_date)) }}" @endif name="birth_date"
+                                                                                class="form-control txt-rtl hijri-date-default"
+                                                                                id="">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">المدينة</label>
-                                                                            <select class="custom-select" name="city_id" disabled>
+                                                                            <select class="custom-select" name="city_id"
+                                                                                disabled>
                                                                                 @foreach ($cities as $type)
-                                                                                    <option {{ $case->client->city_id == $type->id ? 'selected' : '' }}
+                                                                                    <option
+                                                                                        {{ $case->client->city_id == $type->id ? 'selected' : '' }}
                                                                                         value="{{ $type->id }}">
                                                                                         {{ $type->name }}</option>
                                                                                 @endforeach
@@ -285,38 +329,50 @@
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">رقم الجوال</label>
-                                                                            <input type="text"  value="{{ $case->client->mobile ??'' }}" class="form-control" id="" disabled>
+                                                                            <input type="text"
+                                                                                value="{{ $case->client->mobile ?? '' }}"
+                                                                                class="form-control" id="" disabled>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">البريد الالكتروني</label>
-                                                                            <input type="text" value="{{ $case->client->email??'' }}"  class="form-control" id="" disabled>
+                                                                            <input type="text"
+                                                                                value="{{ $case->client->email ?? '' }}"
+                                                                                class="form-control" id="" disabled>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">فاكس</label>
-                                                                            <input type="text" value="{{ $case->client->fax ?? ''}}" class="form-control" id="" disabled>
+                                                                            <input type="text"
+                                                                                value="{{ $case->client->fax ?? '' }}"
+                                                                                class="form-control" id="" disabled>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">هاتف</label>
-                                                                            <input type="text" value="{{ $case->client->phone ?? ''}}"  class="form-control" id="" disabled>
+                                                                            <input type="text"
+                                                                                value="{{ $case->client->phone ?? '' }}"
+                                                                                class="form-control" id="" disabled>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">الوظيفة</label>
-                                                                            <input type="text"value="{{ $case->client->job ?? ''}}" class="form-control" id="" disabled>
+                                                                            <input type="text"
+                                                                                value="{{ $case->client->job ?? '' }}"
+                                                                                class="form-control" id="" disabled>
                                                                         </div>
                                                                     </div>
 
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">العنوان</label>
-                                                                            <input type="text" value="{{ $case->client->address ?? ''}}" class="form-control" id="" disabled>
+                                                                            <input type="text"
+                                                                                value="{{ $case->client->address ?? '' }}"
+                                                                                class="form-control" id="" disabled>
                                                                         </div>
                                                                     </div>
 
@@ -333,22 +389,27 @@
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">اسم الخصم</label>
-                                                                            <input type="text" value="{{$case->oppon->name  ?? ''}}" class="form-control" id="" disabled>
+                                                                            <input type="text"
+                                                                                value="{{ $case->oppon->name ?? '' }}"
+                                                                                class="form-control" id="" disabled>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">رقم الهوية</label>
-                                                                            <input type="text" value="{{ $case->oppon->identity_no  ?? ''}}" class="form-control" id="" disabled>
+                                                                            <input type="text"
+                                                                                value="{{ $case->oppon->identity_no ?? '' }}"
+                                                                                class="form-control" id="" disabled>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">الجنسية</label>
-                                                                            <select class="custom-select" name="nationality_id" disabled>
+                                                                            <select class="custom-select"
+                                                                                name="nationality_id" disabled>
                                                                                 @foreach ($nationalities as $type)
                                                                                     <option
-                                                                                        {{  $case->oppon->nationality_id == $type->id ? 'selected' : '' }}
+                                                                                        {{ $case->oppon->nationality_id == $type->id ? 'selected' : '' }}
                                                                                         value="{{ $type->id }}">
                                                                                         {{ $type->name }}</option>
                                                                                 @endforeach
@@ -358,20 +419,22 @@
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">تاريخ الميلاد</label>
-                                                                            <input type="text" autocomplete="off" @if($case->oppon) value="{{date('Y/m/d', strtotime($case->oppon->birth_date))}}" @endif
-                                                                                name="birth_date" class="form-control txt-rtl hijri-date-default"
+                                                                            <input type="text" autocomplete="off"
+                                                                                @if ($case->oppon) value="{{ date('Y/m/d', strtotime($case->oppon->birth_date)) }}" @endif name="birth_date"
+                                                                                class="form-control txt-rtl hijri-date-default"
                                                                                 id="">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">نوع الهوية</label>
-                                                                            <select class="custom-select" name="identity_type_id" disabled>
+                                                                            <select class="custom-select"
+                                                                                name="identity_type_id" disabled>
                                                                                 <option value="0"
-                                                                                    {{$case->oppon && $case->oppon->identity_type_id == 0 ? 'selected' : '' }}>
+                                                                                    {{ $case->oppon && $case->oppon->identity_type_id == 0 ? 'selected' : '' }}>
                                                                                     Passport</option>
                                                                                 <option value="1"
-                                                                                    {{$case->oppon && $case->oppon->identity_type_id == 1 ? 'selected' : '' }}>
+                                                                                    {{ $case->oppon && $case->oppon->identity_type_id == 1 ? 'selected' : '' }}>
                                                                                     ID</option>
 
                                                                             </select>
@@ -380,15 +443,19 @@
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">العنوان</label>
-                                                                            <input type="text" value="{{ $case->oppon->address ?? ''}}" class="form-control" id="" disabled>
+                                                                            <input type="text"
+                                                                                value="{{ $case->oppon->address ?? '' }}"
+                                                                                class="form-control" id="" disabled>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">المدينة</label>
-                                                                            <select class="custom-select" name="city_id" disabled>
+                                                                            <select class="custom-select" name="city_id"
+                                                                                disabled>
                                                                                 @foreach ($cities as $type)
-                                                                                    <option {{ $case->oppon->city_id == $type->id ? 'selected' : '' }}
+                                                                                    <option
+                                                                                        {{ $case->oppon->city_id == $type->id ? 'selected' : '' }}
                                                                                         value="{{ $type->id }}">
                                                                                         {{ $type->name }}</option>
                                                                                 @endforeach
@@ -398,31 +465,41 @@
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">رقم الجوال</label>
-                                                                            <input type="text" value="{{ $case->oppon->mobile  ?? ''}}" class="form-control" id="" disabled>
+                                                                            <input type="text"
+                                                                                value="{{ $case->oppon->mobile ?? '' }}"
+                                                                                class="form-control" id="" disabled>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">البريد الالكتروني</label>
-                                                                            <input type="text" value="{{ $case->oppon->email ?? '' }}" class="form-control" id="" disabled>
+                                                                            <input type="text"
+                                                                                value="{{ $case->oppon->email ?? '' }}"
+                                                                                class="form-control" id="" disabled>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">هاتف</label>
-                                                                            <input type="text"  value="{{ $case->oppon->phone ?? '' }}" class="form-control" id="" disabled>
+                                                                            <input type="text"
+                                                                                value="{{ $case->oppon->phone ?? '' }}"
+                                                                                class="form-control" id="" disabled>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">فاكس</label>
-                                                                            <input type="text" value="{{ $case->oppon->fax ?? '' }}" class="form-control" id="" disabled>
+                                                                            <input type="text"
+                                                                                value="{{ $case->oppon->fax ?? '' }}"
+                                                                                class="form-control" id="" disabled>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group">
                                                                             <label for="">الوظيفة</label>
-                                                                            <input type="text" value="{{ $case->oppon->job ?? '' }}" class="form-control" id="" disabled>
+                                                                            <input type="text"
+                                                                                value="{{ $case->oppon->job ?? '' }}"
+                                                                                class="form-control" id="" disabled>
                                                                         </div>
                                                                     </div>
 
@@ -432,93 +509,121 @@
 
                                                         <div class="card-footer">
 
-                                                            <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                            data-target="#archive{{ $case->id }}">تحويل إلي الارشيف</button>
+                                                            <button type="button" class="btn btn-primary"
+                                                                data-toggle="modal"
+                                                                data-target="#archive{{ $case->id }}">تحويل إلي
+                                                                الارشيف</button>
                                                         </div>
- <!-- archive Modal -->
- <div class="modal fade dir-rtl" id="archive{{ $case->id }}" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <form action="{{ route('archiveCase') }}" method="POST">
-                @csrf
-                <input type="hidden" name="case_id" value="{{ $case->id }}">
-                <div class="modal-header bg-light">
-                    <h5 class="modal-title" id="exampleModalLabel">تأكيد الأرشفة</h5>
-                    <button type="button" class="close m-0 p-0 text-white" data-dismiss="modal"
-                        aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body text-center">
-                    <h3><i class="fas fa-fire text-primary"></i></h3>
-                    <h4>تأكيد تحويل القضية للارشيف</h4>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
-                    <button type="submit" class="btn btn-success">تأكيد</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+                                                        <!-- archive Modal -->
+                                                        <div class="modal fade dir-rtl" id="archive{{ $case->id }}"
+                                                            tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <form action="{{ route('archiveCase') }}"
+                                                                        method="POST">
+                                                                        @csrf
+                                                                        <input type="hidden" name="case_id"
+                                                                            value="{{ $case->id }}">
+                                                                        <div class="modal-header bg-light">
+                                                                            <h5 class="modal-title"
+                                                                                id="exampleModalLabel">تأكيد الأرشفة</h5>
+                                                                            <button type="button"
+                                                                                class="close m-0 p-0 text-white"
+                                                                                data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body text-center">
+                                                                            <h3><i class="fas fa-fire text-primary"></i>
+                                                                            </h3>
+                                                                            <h4>تأكيد تحويل القضية للارشيف</h4>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary"
+                                                                                data-dismiss="modal">إلغاء</button>
+                                                                            <button type="submit"
+                                                                                class="btn btn-success">تأكيد</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="tab-pane fade" id="custom-tabs-one-2" role="tabpanel" aria-labelledby="custom-tabs-one-2-tab">
+                                                <div class="tab-pane fade " id="custom-tabs-one-2" role="tabpanel"
+                                                    aria-labelledby="custom-tabs-one-2-tab">
                                                     @include('cases.teamMember')
                                                 </div>
-                                                <div class="tab-pane fade" id="custom-tabs-one-3" role="tabpanel" aria-labelledby="custom-tabs-one-3-tab">
-                                                 @include('cases.regulations')
+                                                <div class="tab-pane fade" id="custom-tabs-one-3" role="tabpanel"
+                                                    aria-labelledby="custom-tabs-one-3-tab">
+                                                    @include('cases.regulations')
                                                 </div>
-                                                <div class="tab-pane fade" id="custom-tabs-one-4" role="tabpanel" aria-labelledby="custom-tabs-one-4-tab">
-                                                @include('cases.diary')
+                                                <div class="tab-pane fade" id="custom-tabs-one-4" role="tabpanel"
+                                                    aria-labelledby="custom-tabs-one-4-tab">
+                                                    @include('cases.diary')
                                                 </div>
-                                                <div class="tab-pane fade" id="custom-tabs-one-5" role="tabpanel" aria-labelledby="custom-tabs-one-5-tab">
-                                                  @include('cases.letters')
+                                                <div class="tab-pane fade" id="custom-tabs-one-5" role="tabpanel"
+                                                    aria-labelledby="custom-tabs-one-5-tab">
+                                                    @include('cases.letters')
                                                 </div>
-                                                <div class="tab-pane fade" id="custom-tabs-one-6" role="tabpanel" aria-labelledby="custom-tabs-one-6-tab">
-                                                 @include('cases.sessions')
+                                                <div class="tab-pane fade" id="custom-tabs-one-6" role="tabpanel"
+                                                    aria-labelledby="custom-tabs-one-6-tab">
+                                                    @include('cases.sessions')
                                                 </div>
-                                                <div class="tab-pane fade" id="custom-tabs-one-7" role="tabpanel" aria-labelledby="custom-tabs-one-7-tab">
-                                               @include('cases.attachment')
+                                                <div class="tab-pane fade" id="custom-tabs-one-7" role="tabpanel"
+                                                    aria-labelledby="custom-tabs-one-7-tab">
+                                                    @include('cases.attachment')
                                                 </div>
                                                 @hasrole('Admin')
-                                                <div class="tab-pane fade" id="custom-tabs-one-8" role="tabpanel" aria-labelledby="custom-tabs-one-8-tab">
-                                          @include('cases.fees')
-                                                </div>
+                                                    <div class="tab-pane fade" id="custom-tabs-one-8" role="tabpanel"
+                                                        aria-labelledby="custom-tabs-one-8-tab">
+                                                        @include('cases.fees')
+                                                    </div>
                                                 @endhasrole
-                                                <div class="tab-pane fade" id="custom-tabs-one-9" role="tabpanel" aria-labelledby="custom-tabs-one-9-tab">
-                                               @include('cases.petiation')
+                                                <div class="tab-pane fade " id="custom-tabs-one-9" role="tabpanel"
+                                                    aria-labelledby="custom-tabs-one-9-tab">
+                                                    @include('cases.petiation')
                                                 </div>
-                                                <div class="tab-pane fade mb-3" id="custom-tabs-one-10" role="tabpanel" aria-labelledby="custom-tabs-one-10-tab">
-                                                <span><h6> إضافة إجراء </span>
+                                                <div class="tab-pane fade show active mb-3" id="custom-tabs-one-10"
+                                                    role="tabpanel" aria-labelledby="custom-tabs-one-10-tab">
+                                                    <span>
+                                                        <h6> إضافة إجراء
+                                                    </span>
                                                     <div class="btn-group">
-                                                        <button type="button" class="btn btn-default btn-flat">
+                                                        <button type="button" class="btn btn-default btn-flat"
+                                                            data-toggle="modal" data-target="#add-tab3_show">
                                                             <i class="fas fa-check"></i>
                                                             لوائح اعتراضية
                                                         </button>
-                                                        <button type="button" class="btn btn-default btn-flat">
+                                                        <button type="button" class="btn btn-default btn-flat"
+                                                            data-toggle="modal" data-target="#add-tab4_show">
                                                             <i class="fas fa-check"></i>
                                                             مذكرات
                                                         </button>
-                                                        <button type="button" class="btn btn-default btn-flat">
+                                                        <button type="button" class="btn btn-default btn-flat"
+                                                            data-toggle="modal" data-target="#add-tab5_show">
                                                             <i class="fas fa-check"></i>
-                                                          خطابات
+                                                            خطابات
                                                         </button>
-                                                        <button type="button" class="btn btn-default btn-flat">
+                                                        <button type="button" class="btn btn-default btn-flat"
+                                                            data-toggle="modal" data-target="#add-tab9_show">
                                                             <i class="fas fa-check"></i>
                                                             التماس إعادة النظر
-                                                          </button>
-                                                          <button type="button" class="btn btn-default btn-flat">
+                                                        </button>
+                                                        <button type="button" class="btn btn-default btn-flat"
+                                                            data-toggle="modal" data-target="#add-tab6_show">
                                                             <i class="fas fa-check"></i>
                                                             جلسات
-                                                          </button>
-                                                          <button type="button" class="btn btn-default btn-flat">
+                                                        </button>
+                                                        <button type="button" class="btn btn-default btn-flat"
+                                                            data-toggle="modal" data-target="#add-tab7_show">
                                                             <i class="fas fa-check"></i>
                                                             المرفقات
-                                                          </button>
-                                                      </div>
-                                @include('cases.presdure')
+                                                        </button>
+                                                    </div>
+                                                    @include('cases.presdure')
+
                                                 </div>
                                             </div>
                                         </div>
@@ -531,100 +636,561 @@
                     </div>
                 </div>
                 <!-- /.col -->
+                <!-- Add Tab-3 Modal regulation -->
+                <div class="modal fade dir-rtl" id="add-tab3_show" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header bg-light">
+                                <h5 class="modal-title" id="exampleModalLabel">إضافة بيانات لوائح اعتراضية</h5>
+                                <button type="button" class="close m-0 p-0 text-white" data-dismiss="modal"
+                                    aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <h3><i class="fas fa-edit text-success"></i></h3>
+                                <form role="form" action="{{ route('regulation.store') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="case_id" value="{{ $case->id }}">
 
-                @endsection
 
-                @section('scripts')
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label>الوقائع</label>
+                                                    <textarea name="facts" class="form-control"
+                                                        rows="5">{{ old('facts') }}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label>الدفوع</label>
+                                                    <textarea name="defenses" class="form-control"
+                                                        rows="5">{{ old('defenses') }}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label>الطلبات</label>
+                                                    <textarea name="requirements" class="form-control"
+                                                        rows="5">{{ old('requirements') }}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label>نص</label>
+                                                    <textarea name="text" class="form-control"
+                                                        rows="5">{{ old('text') }}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="">تاريخ اللائحة</label>
+                                                    <input type="text" autocomplete="off" value=""
+                                                        class="form-control txt-rtl hijri-date-default"
+                                                        name="regulation_date" class="form-control" id="">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label for="">تاريخ التسليم </label>
+                                                    <input type="text" autocomplete="off" value=""
+                                                        class="form-control txt-rtl hijri-date-default"
+                                                        name="regulation_end_date" class="form-control" id="">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label for="">الزميل المكلف</label>
+                                                    <select class="custom-select" name="member_id">
+                                                        @foreach ($users as $type)
+                                                            <option {{ old('member_id') == $type->id ? 'selected' : '' }}
+                                                                value="{{ $type->id }}">
+                                                                {{ $type->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                    <!-- /.card-body -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
+                                        <button type="submit" class="btn btn-success">تأكيد</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Tab-4 diary Modal -->
+                <div class="modal fade dir-rtl" id="add-tab4_show" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header bg-light">
+                                <h5 class="modal-title" id="exampleModalLabel">إضافة بيانات المذكرات </h5>
+                                <button type="button" class="close m-0 p-0 text-white" data-dismiss="modal"
+                                    aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <h3><i class="fas fa-edit text-success"></i></h3>
+                                <form role="form" action="{{ route('diary.store') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="case_id" value="{{ $case->id }}">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label>نص المذكرة</label>
+                                                    <textarea name="text" class="form-control content2"
+                                                        rows="20">{{ old('text') }}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="">تاريخ المذكرة</label>
+                                                    <input type="text" autocomplete="off" value=""
+                                                        class="form-control txt-rtl hijri-date-default" name="diary_date"
+                                                        class="form-control" id="">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="">تاريخ التسليم </label>
+                                                    <input type="text" autocomplete="off" value=""
+                                                        class="form-control txt-rtl hijri-date-default"
+                                                        name="diary_end_date" class="form-control" id="">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="">الزميل المكلف</label>
+                                                    <select class="custom-select" name="member_id">
+                                                        @foreach ($users as $type)
+                                                            <option
+                                                                {{ old('member_id') == $type->id ? 'selected' : '' }}
+                                                                value="{{ $type->id }}">
+                                                                {{ $type->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label>ملاحظات </label>
+                                                    <textarea class="form-control" name="notes"
+                                                        rows="5">{{ old('notes') }}</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.card-body -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
+                                        <button type="submit" class="btn btn-success">تأكيد</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Tab-5letters  Modal -->
+                <div class="modal fade dir-rtl" id="add-tab5_show" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header bg-light">
+                                <h5 class="modal-title" id="exampleModalLabel">إضافة بيانات الخطابات </h5>
+                                <button type="button" class="close m-0 p-0 text-white" data-dismiss="modal"
+                                    aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <h3><i class="fas fa-edit text-success"></i></h3>
+                                <form role="form" action="{{ route('letter.store') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="case_id" value="{{ $case->id }}">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label>نص الخطاب </label>
+                                                    <textarea id="mytextarea content2" name="text"
+                                                        class="form-control content" rows="20"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="">تاريخ الخطاب </label>
+                                                    <input type="text" autocomplete="off" value=""
+                                                        class="form-control txt-rtl hijri-date-default" name="letter_date"
+                                                        class="form-control" id="">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="">تاريخ التسليم </label>
+                                                    <input type="text" autocomplete="off" value=""
+                                                        class="form-control txt-rtl hijri-date-default"
+                                                        name="letter_end_date" class="form-control" id="">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="">رقم الصادر </label>
+                                                    <input type="text" name="letter_no" class="form-control" id="">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="">الزميل المكلف</label>
+                                                    <select class="custom-select" name="member_id">
+                                                        @foreach ($users as $type)
+                                                            <option
+                                                                {{ old('member_id') == $type->id ? 'selected' : '' }}
+                                                                value="{{ $type->id }}">
+                                                                {{ $type->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label>ملاحظات </label>
+                                                    <textarea name="notes" class="form-control" rows="5"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.card-body -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
+                                        <button type="submit" class="btn btn-success">تأكيد</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Tab-9 petaintion Modal -->
+                <div class="modal fade dir-rtl" id="add-tab9_show" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header bg-light">
+                                <h5 class="modal-title" id="exampleModalLabel">إضافة بيانات التماس </h5>
+                                <button type="button" class="close m-0 p-0 text-white" data-dismiss="modal"
+                                    aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <h3><i class="fas fa-edit text-success"></i></h3>
+                                <form role="form" action="{{ route('petition.store') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="case_id" value="{{ $case->id }}">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label>نص الإلتماس </label>
+                                                    <textarea id="mytextarea content3" name="text"
+                                                        class="form-control content3" rows="20"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="">تاريخ الإلتماس </label>
+                                                    <input type="text" autocomplete="off" value=""
+                                                        class="form-control txt-rtl hijri-date-default"
+                                                        name="petition_date" class="form-control" id="">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="">تاريخ التسليم </label>
+                                                    <input type="text" autocomplete="off" value=""
+                                                        class="form-control txt-rtl hijri-date-default"
+                                                        name="petition_end_date" class="form-control" id="">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="">الزميل المكلف</label>
+                                                    <select class="custom-select" name="member_id">
+                                                        @foreach ($users as $type)
+                                                            <option {{ old('member_id') == $type->id ? 'selected' : '' }}
+                                                                value="{{ $type->id }}">
+                                                                {{ $type->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            {{-- <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="">الحالة</label>
+                                    <input type="text" class="form-control" id="" readonly>
+                                </div>
+                            </div> --}}
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label>ملاحظات </label>
+                                                    <textarea name="notes" class="form-control" rows="5"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.card-body -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
+                                        <button type="submit" class="btn btn-success">تأكيد</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Tab-6 Modalsession -->
+                <div class="modal fade dir-rtl" id="add-tab6_show" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header bg-light">
+                                <h5 class="modal-title" id="exampleModalLabel">إضافة بيانات الجلسات </h5>
+                                <button type="button" class="close m-0 p-0 text-white" data-dismiss="modal"
+                                    aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <h3><i class="fas fa-edit text-success"></i></h3>
+                                <form role="form" action="{{ route('session.store') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="case_id" value="{{ $case->id }}">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label> طلبات الجلسة </label>
+                                                    <textarea id="mytextarea " name="text" class="form-control "
+                                                        rows="10"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="">تاريخ الجلسة </label>
+                                                    <input type="text" autocomplete="off" value=""
+                                                        class="form-control txt-rtl hijri-date-default" name="session_date"
+                                                        class="form-control" id="">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="">الزميل المكلف</label>
+                                                    <select class="custom-select" name="member_id">
+                                                        @foreach ($users as $type)
+                                                            <option {{ old('member_id') == $type->id ? 'selected' : '' }}
+                                                                value="{{ $type->id }}">
+                                                                {{ $type->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label>تقرير الجلسة </label>
+                                                    <textarea name="notes" class="form-control" rows="5"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.card-body -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
+                                        <button type="submit" class="btn btn-success">تأكيد</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Tab-7 Modal attachment-->
+                <div class="modal fade dir-rtl" id="add-tab7_show" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header bg-light">
+                                <h5 class="modal-title" id="exampleModalLabel">إضافة بيانات المرفقات</h5>
+                                <button type="button" class="close m-0 p-0 text-white" data-dismiss="modal"
+                                    aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <h3><i class="fas fa-edit text-success"></i></h3>
+                                <form action="{{ route('attachment.store') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="hidden" name="case_id" value="{{ $case->id }}">
+                                    <div class="card-body">
+                                        <div class="row">
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="">اضافة ملفات مرفقة</label>
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" name="name"
+                                                            id="customFile">
+                                                        <label class="custom-file-label" for="customFile">إختار ملف</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label>الوصف</label>
+                                                    <textarea name="description" class="form-control"
+                                                        rows="5">{{ old('description') }}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label>ملاحظات </label>
+                                                    <textarea name="notes" class="form-control"
+                                                        rows="5">{{ old('notes') }}</textarea>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- /.card-body -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
+                                        <button type="submit" class="btn btn-success">تأكيد</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            @endsection
+
+            @section('scripts')
 
                 <script>
-function test(){
-    var attach = $('input[name="attach"]').val();
+                    function test() {
+                        var attach = $('input[name="attach"]').val();
 
 
-var link = document.createElement("a");
-link.download = 'attach';
-link.href = attach;
-link.click();
-}
-//                     jQuery(document).ready(function() {
-//  //dawnload files
-//                         $('#downloadCurrent').click(function() {
-//                             alert('link')
-//                             var attach = $('input[name="attach"]').val();
+                        var link = document.createElement("a");
+                        link.download = 'attach';
+                        link.href = attach;
+                        link.click();
+                    }
+                    //                     jQuery(document).ready(function() {
+                    //  //dawnload files
+                    //                         $('#downloadCurrent').click(function() {
+                    //                             alert('link')
+                    //                             var attach = $('input[name="attach"]').val();
 
 
-//                             var link = document.createElement("a");
-//                             link.download = 'attach';
-//                             link.href = attach;
-//                             link.click();
-// alert(link)
+                    //                             var link = document.createElement("a");
+                    //                             link.download = 'attach';
+                    //                             link.href = attach;
+                    //                             link.click();
+                    // alert(link)
 
-//                         });
+                    //                         });
 
                     // });
 
-   /*rich text*/
-        /*rich text powerpaste*/
-        $(document).ready(function() {
+                    /*rich text*/
+                    /*rich text powerpaste*/
+                    $(document).ready(function() {
 
-tinymce.init({
-    selector: 'textarea.content',
-    toolbar: 'undo redo | formatselect | ' +
-        'bold italic forecolor backcolor | alignleft aligncenter ' +
-        'alignright alignjustify | bullist numlist outdent indent | ' +
-        'removeformat |forecolor backcolor',
-    statusbar: false,
-    plugins: [
-        'textcolor', 'advlist autolink lists link image charmap print preview anchor',
-        'searchreplace visualblocks code fullscreen',
-        'insertdatetime media table paste code help wordcount '
-    ],
+                        tinymce.init({
+                            selector: 'textarea.content',
+                            toolbar: 'undo redo | formatselect | ' +
+                                'bold italic forecolor backcolor | alignleft aligncenter ' +
+                                'alignright alignjustify | bullist numlist outdent indent | ' +
+                                'removeformat |forecolor backcolor',
+                            statusbar: false,
+                            plugins: [
+                                'textcolor', 'advlist autolink lists link image charmap print preview anchor',
+                                'searchreplace visualblocks code fullscreen',
+                                'insertdatetime media table paste code help wordcount '
+                            ],
 
-    menubar: false,
-    init_instance_callback: "insert_contents",
-    height: "480",
-});
-});
-tinymce.init({
-selector: 'textarea.content2',
-toolbar: 'undo redo | formatselect | ' +
-    'bold italic forecolor backcolor | alignleft aligncenter ' +
-    'alignright alignjustify | bullist numlist outdent indent | ' +
-    'removeformat |forecolor backcolor',
-statusbar: false,
-plugins: [
-    'textcolor', 'advlist autolink lists link image charmap print preview anchor',
-    'searchreplace visualblocks code fullscreen',
-    'insertdatetime media table paste code help wordcount '
-],
+                            menubar: false,
+                            init_instance_callback: "insert_contents",
+                            height: "480",
+                        });
+                    });
+                    tinymce.init({
+                        selector: 'textarea.content2',
+                        toolbar: 'undo redo | formatselect | ' +
+                            'bold italic forecolor backcolor | alignleft aligncenter ' +
+                            'alignright alignjustify | bullist numlist outdent indent | ' +
+                            'removeformat |forecolor backcolor',
+                        statusbar: false,
+                        plugins: [
+                            'textcolor', 'advlist autolink lists link image charmap print preview anchor',
+                            'searchreplace visualblocks code fullscreen',
+                            'insertdatetime media table paste code help wordcount '
+                        ],
 
-menubar: false,
-init_instance_callback: "insert_contents3",
-height: "480",
-});
+                        menubar: false,
+                        init_instance_callback: "insert_contents3",
+                        height: "480",
+                    });
 
-tinymce.init({
-selector: 'textarea.content3',
-toolbar: 'undo redo | formatselect | ' +
-    'bold italic forecolor backcolor | alignleft aligncenter ' +
-    'alignright alignjustify | bullist numlist outdent indent | ' +
-    'removeformat |forecolor backcolor',
-statusbar: false,
-plugins: [
-    'textcolor', 'advlist autolink lists link image charmap print preview anchor',
-    'searchreplace visualblocks code fullscreen',
-    'insertdatetime media table paste code help wordcount '
-],
+                    tinymce.init({
+                        selector: 'textarea.content3',
+                        toolbar: 'undo redo | formatselect | ' +
+                            'bold italic forecolor backcolor | alignleft aligncenter ' +
+                            'alignright alignjustify | bullist numlist outdent indent | ' +
+                            'removeformat |forecolor backcolor',
+                        statusbar: false,
+                        plugins: [
+                            'textcolor', 'advlist autolink lists link image charmap print preview anchor',
+                            'searchreplace visualblocks code fullscreen',
+                            'insertdatetime media table paste code help wordcount '
+                        ],
 
-menubar: false,
-init_instance_callback: "insert_contents3",
-height: "480",
-});
+                        menubar: false,
+                        init_instance_callback: "insert_contents3",
+                        height: "480",
+                    });
 
 
-function insert_contents(inst) {
-inst.setContent(
-    `  <p dir="rtl"><h1 style="text-align: center;">مذكرة جوابية</h1>
+                    function insert_contents(inst) {
+                        inst.setContent(
+                            `  <p dir="rtl"><h1 style="text-align: center;">مذكرة جوابية</h1>
 <p style="text-align: right;">
     <b >/فضيلة </b> <p style="text-align: left;">سلمه الله</p>
 </p>
@@ -632,8 +1198,7 @@ inst.setContent(
 <p style="text-align: right;">
     <b >:إشارة إلى الدعوى </b>
 </p></p>`);
-}
-
+                    }
                 </script>
 
-                @endsection
+            @endsection

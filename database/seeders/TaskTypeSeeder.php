@@ -15,12 +15,13 @@ class TaskTypeSeeder extends Seeder
     public function run()
     {
         $types = [
-            'لايحة إعتراضيه',
-            'مذكرة',
-            'خطاب',
-            'إلتماس إعادة النظر',
+            // 'لايحة إعتراضيه',
+            // 'مذكرة',
+            // 'خطاب',
+            // 'إلتماس إعادة النظر',
 
-
+'جلسات',
+'مرفقات',
         ];
    // for update data commit olde and open new and udate admin user
         foreach ($types as $type) {
