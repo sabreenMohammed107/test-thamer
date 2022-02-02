@@ -53865,3 +53865,28 @@ a.text-muted:hover {
     background-repeat: no-repeat;
     opacity: 0.7;
 }
+.dark-mode .btn-default,
+.dark-mode .btn-app{
+    border-color: transparent;
+}
+.pdf-title {
+    font-size: 1.25rem;
+}
+.invoice-col{
+    color:#b1946c;
+}
+.invoice-content{
+    margin-top: 10px;
+    border-top: solid 5px #b1946c ;
+    border-bottom: solid 15px #b1946c ;
+}
+.pdf-footer{
+    font-size: 1rem;
+}
+.invoice-footer{
+    position: absolute;
+    bottom: 15px;
+    left: 5px;
+    padding: 5px 10px;
+    border-top-right-radius: .5rem;
+}
