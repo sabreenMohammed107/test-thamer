@@ -10578,7 +10578,8 @@ a.text-light:focus {
 }
 
 .text-dark {
-    color: #343a40 !important;
+    /* color: #343a40 !important; */
+    color: #c0a47a !important;
 }
 
 a.text-dark:hover,
@@ -53848,17 +53849,17 @@ a.text-muted:hover {
 
 .watermarked {
     position: relative;
-    /*width: 80%;*/
+    /* width: 80%; */
 }
 
 .watermarked:after {
     content: "";
     display: block;
-    width: 70%;
+    width: 50%;
     height: 100%;
     position: absolute;
-    top: 30%;
-    left: 42%;
+    top: 35%;
+    left: 35%;
     background-image: url("/webassets/dist/img/bg.png");
     background-size: 200px 200px;
     background-position: 30px 30px;
@@ -53889,4 +53890,25 @@ a.text-muted:hover {
     left: 5px;
     padding: 5px 10px;
     border-top-right-radius: .5rem;
+}
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active, .sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active{
+    background-color: #c0a47a !important;
+}
+.card-primary.card-outline{
+    border-top: 3px solid #c0a47a !important;
+}
+.bg-info{
+    background-color: #c0a47a !important;
+}
+.bg-light{
+    background-color: #c0a47a !important;
+    color:#fff !important;
+}
+.btn-primary{
+    background-color: #c0a47a !important;
+    border-color: #c0a47a !important;
+}
+.btn-success{
+    background-color: #c0a47a !important;
+    border-color: #c0a47a !important;
 }

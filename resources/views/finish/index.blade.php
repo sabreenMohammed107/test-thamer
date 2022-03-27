@@ -27,7 +27,7 @@
                     </thead>
                     <tbody>
                         @foreach ($finsh as $index => $row)
-                        <tr class="bg-light">
+                        <tr class="">
                             <th>{{ $index + 1 }}</th>
                         {{-- <tr class="text-warning"> --}}
 
