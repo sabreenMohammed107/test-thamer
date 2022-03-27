@@ -9,6 +9,8 @@ use App\Models\Session;
 use App\Models\Person;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+
 class HomeController extends Controller
 {
     /**
@@ -36,6 +38,9 @@ class HomeController extends Controller
         $clients=Person::where('preson_type','=',0)->get()->count();
         $oppont=Person::where('preson_type','=',1)->get()->count();
 $users=User::all()->count();
-        return view('home', compact('cases','unfinsh','finsh','commingSessions','oldSessions','clients','oppont','users'));
+$usersNow=User::all();
+$Notifications=Auth::user()->notification;
+        return view('home', compact('cases','unfinsh','finsh','commingSessions','oldSessions',
+        'clients','oppont','users','usersNow','Notifications'));
     }
 }

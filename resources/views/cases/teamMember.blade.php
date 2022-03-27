@@ -1,5 +1,5 @@
-<h3 class="card-title float-sm-left"><a href="" class="btn btn-success" data-toggle="modal"
-        data-target="#add-tab2">إضافة</a></h3>
+{{-- <h3 class="card-title float-sm-left"><a href="" class="btn btn-success" data-toggle="modal"
+        data-target="#add-tab2">إضافة</a></h3> --}}
 <table id="example1" class="table table-bordered table-striped">
     <thead class="bg-info">
         <tr>
@@ -8,7 +8,7 @@
             <th>تاريخ التكليف</th>
             <th>نشط</th>
             <th>ملاحظات</th>
-            <th>الإجراءات</th>
+            {{-- <th>الإجراءات</th> --}}
         </tr>
     </thead>
     <tbody>
@@ -26,7 +26,7 @@
                 <th>{{ date('Y/m/d', strtotime($row->incharge_date)) }} </th>
                 <th>@if ($row->active == 1) <i class="fas fa-check" title="view"></i>@else <i class="fas fa-times" title="view"></i> @endif</th>
                 <th>{{ $row->notes }}</th>
-                <th>
+                {{-- <th>
                     <div class="btn-group">
                         <button type="button" class="btn btn-default" data-toggle="modal"
                             data-target="#view-tab2{{ $row->id }}"><i class="fas fa-eye"
@@ -35,12 +35,12 @@
                             data-target="#edit-tab2{{ $row->id }}"><i class="fas fa-edit"
                                 title="edit"></i></button> --}}
                         {{-- <button type="button" class="btn btn-default"><i class="fas fa-print" title="print"></i></button> --}}
-                        @can('cases-delete')
+                        {{-- @can('cases-delete')
                     <button type="button" class="btn btn-default" data-toggle="modal"
                     data-target="#del{{ $row->id }}"><i class="fas fa-trash-alt"></i></button>
                                      @endcan
                     </div>
-                </th>
+                </th>  --}}
             </tr>
 <!-- Delete Modal -->
 <div class="modal fade dir-rtl" id="del{{ $row->id }}" tabindex="-1" role="dialog"
@@ -97,7 +97,7 @@
                                                 <label for="inputEmail3" class="col-sm-4 col-form-label">إسم
                                                     المكلف</label>
                                                 <div class="col-sm-8">
-                                                    <select class="custom-select dynamic" name="member_id"
+                                                    <select class="custom-select dynamic" disabled name="member_id"
                                                         id="member_id">
                                                         <option>اختر </option>
 
@@ -159,11 +159,16 @@
                                         $diary = App\Models\Diary::where([['case_id', '=',  $row->case_id], ['member_id', '=', $row->member_id]])->first();
                                         $letter = App\Models\Letter::where([['case_id', '=', $row->case_id], ['member_id', '=', $row->member_id]])->first();
                                         $petition = App\Models\Petition::where([['case_id', '=',  $row->case_id], ['member_id', '=', $row->member_id]])->first();
-                                        $task1=App\Models\Case_members_task::where([['task_type_id',1],['case_id', '=',$row->case_id], ['member_id', '=',  $row->member_id], ['task_date', '=', $regulation->regulation_date ?? null]])->first();
-                                        $task2=App\Models\Case_members_task::where([['task_type_id',2],['case_id', '=',$row->case_id], ['member_id', '=',  $row->member_id], ['task_date', '=', $diary->diary_date ?? null ]])->first();
-                                        $task3=App\Models\Case_members_task::where([['task_type_id',3],['case_id', '=',$row->case_id], ['member_id', '=',  $row->member_id], ['task_date', '=', $letter->letter_date ?? null]])->first();
-                                        $task4=App\Models\Case_members_task::where([['task_type_id',4],['case_id', '=',$row->case_id], ['member_id', '=',  $row->member_id], ['task_date', '=', $petition->petition_date ?? null]])->first();
-                                    ?>
+                                        if (isset($regulation))
+                                        $task1=App\Models\Case_members_task::where('regulation_id',$regulation->id)->first();
+                                        if (isset($diary))
+                                        $task2=App\Models\Case_members_task::where('diary_id',$diary->id)->first();
+                                        if (isset($letter))
+                                        $task3=App\Models\Case_members_task::where('letter_id',$letter->id)->first();
+                                        if (isset($petition))
+                                        $task4=App\Models\Case_members_task::where('petition_id',$petition->id)->first();
+
+                                  ?>
 
                                         <div class="col-sm-4">
                                             <div class="form-group d-flex flex-row">
@@ -288,7 +293,7 @@
                                                 <label for="inputEmail3" class="col-sm-4 col-form-label">إسم
                                                     المكلف</label>
                                                 <div class="col-sm-8">
-                                                    <select class="custom-select dynamic" name="member_id"
+                                                    <select class="custom-select dynamic" disabled name="member_id"
                                                         id="member_id">
                                                         <option>اختر </option>
 
@@ -351,11 +356,15 @@
                                         $letter = App\Models\Letter::where([['case_id', '=', $row->case_id], ['member_id', '=', $row->member_id]])->first();
                                         $petition = App\Models\Petition::where([['case_id', '=',  $row->case_id], ['member_id', '=', $row->member_id]])->first();
 
-                                        $task1=App\Models\Case_members_task::where([['task_type_id',1],['case_id', '=',$row->case_id], ['member_id', '=',  $row->member_id], ['task_date', '=', $regulation->regulation_date ?? null]])->first();
-                                        $task2=App\Models\Case_members_task::where([['task_type_id',2],['case_id', '=',$row->case_id], ['member_id', '=',  $row->member_id], ['task_date', '=', $diary->diary_date ?? null]])->first();
-                                        $task3=App\Models\Case_members_task::where([['task_type_id',3],['case_id', '=',$row->case_id], ['member_id', '=',  $row->member_id], ['task_date', '=', $letter->letter_date ?? null]])->first();
-                                        $task4=App\Models\Case_members_task::where([['task_type_id',4],['case_id', '=',$row->case_id], ['member_id', '=',  $row->member_id], ['task_date', '=', $petition->petition_date ?? null]])->first();
-                                      ?>
+                                        if (isset($regulation))
+                                        $task1=App\Models\Case_members_task::where('regulation_id',$regulation->id)->first();
+                                        if (isset($diary))
+                                        $task2=App\Models\Case_members_task::where('diary_id',$diary->id)->first();
+                                        if (isset($letter))
+                                        $task3=App\Models\Case_members_task::where('letter_id',$letter->id)->first();
+                                        if (isset($petition))
+                                        $task4=App\Models\Case_members_task::where('petition_id',$petition->id)->first();
+   ?>
 
                                         <div class="col-sm-4">
                                             <div class="form-group d-flex flex-row">
@@ -489,7 +498,7 @@
                                     <label for="inputEmail3" class="col-sm-4 col-form-label">إسم المكلف</label>
                                     <div class="col-sm-8">
                                         <select class="custom-select" name="member_id">
-                                            @foreach ($users as $type)
+                                            @foreach ($memTeam as $type)
                                             <option
                                                 {{  old('member_id') == $type->id ? 'selected' : '' }}
                                                 value="{{ $type->id }}">

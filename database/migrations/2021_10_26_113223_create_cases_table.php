@@ -25,6 +25,8 @@ class CreateCasesTable extends Migration
             $table->foreignId('current_resposible_id')->nullable();
             $table->foreignId('court_id')->nullable();
             $table->string('exec_dision_no')->nullable();
+            $table->string('exec_Deed_no')->nullable(); //رقم سند التنفيذ
+            $table->datetime('exec_Deed_date')->nullable(); //تاريخ سند التنفيذ
             $table->integer('court_case_no')->nullable();
             $table->text('client_low_description')->nullable();
             $table->foreignId('case_type_id')->nullable();

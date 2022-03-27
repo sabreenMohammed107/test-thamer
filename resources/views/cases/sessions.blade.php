@@ -6,7 +6,7 @@
             <th>#</th>
             <th>اسم المحكمة</th>
             <th>تاريخ الجلسة </th>
-            <th>الزميل المكلف</th>
+            <th>المكلف</th>
             <th>ملاحظات</th>
             {{-- <th>انجاز</th> --}}
             <th>الإجراءات</th>
@@ -92,7 +92,7 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="form-group">
-                                                <label>نص الجلسة </label>
+                                                <label>طلبات الجلسة </label>
                                                 <textarea name="text" class="form-control "
                                                     rows="10">{{ $row->text }}</textarea>
                                             </div>
@@ -108,7 +108,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label for="">الزميل المكلف</label>
+                                                <label for="">المكلف</label>
                                                 <select class="custom-select dynamic" name="member_id" id="member_id">
                                                     <option>اختر </option>
 
@@ -122,7 +122,7 @@
                                         </div>
                                         <div class="col-sm-12">
                                             <div class="form-group">
-                                                <label>ملاحظات </label>
+                                                <label>تقرير الجلسة </label>
                                                 <textarea name="notes" class="form-control"
                                                     rows="5">{{ $row->notes }}</textarea>
                                             </div>
@@ -160,7 +160,7 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="form-group">
-                                                <label>نص الجلسة </label>
+                                                <label>طلبات الجلسة</label>
                                                 <textarea name="text" class="form-control "
                                                     rows="10">{{ $row->text }}</textarea>
                                             </div>
@@ -176,7 +176,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label for="">الزميل المكلف</label>
+                                                <label for="">المكلف</label>
                                                 <select class="custom-select dynamic" name="member_id" id="member_id">
                                                     <option>اختر </option>
 
@@ -190,7 +190,7 @@
                                         </div>
                                         <div class="col-sm-12">
                                             <div class="form-group">
-                                                <label>ملاحظات </label>
+                                                <label>تقرير الجلسة </label>
                                                 <textarea name="notes" class="form-control"
                                                     rows="5">{{ $row->notes }}</textarea>
                                             </div>
@@ -245,7 +245,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="">الزميل المكلف</label>
+                                    <label for="">المكلف</label>
                                     <select class="custom-select" name="member_id">
                                         @foreach ($users as $type)
                                             <option {{ old('member_id') == $type->id ? 'selected' : '' }}

@@ -56,10 +56,10 @@
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" id="custom-tabs-one-6-tab" data-toggle="pill" href="#custom-tabs-one-6" role="tab" aria-controls="custom-tabs-one-6" aria-selected="false">جلسات </a>
-                                                </li>
+                                                </li>--}}
                                                 <li class="nav-item">
                                                     <a class="nav-link" id="custom-tabs-one-7-tab" data-toggle="pill" href="#custom-tabs-one-7" role="tab" aria-controls="custom-tabs-one-7" aria-selected="false">المرفقات </a>
-                                                </li> --}}
+                                                </li>
                                                 @hasrole('Admin')
                                                     <li class="nav-item">
                                                         <a class="nav-link" id="custom-tabs-one-8-tab" data-toggle="pill"
@@ -273,7 +273,7 @@
                                                                                 name="nationality_id" disabled>
                                                                                 @foreach ($nationalities as $type)
                                                                                     <option
-                                                                                        {{ $case->client->nationality_id == $type->id ? 'selected' : '' }}
+                                                                                        {{ $case->client && $case->client->nationality_id == $type->id ? 'selected' : '' }}
                                                                                         value="{{ $type->id }}">
                                                                                         {{ $type->name }}</option>
                                                                                 @endforeach
@@ -284,7 +284,7 @@
                                                                         <div class="form-group">
                                                                             <label for="">رقم الهوية</label>
                                                                             <input type="text"
-                                                                                value="{{ $case->client->identity_no ?? '' }}"
+                                                                                value="{{$case->client && $case->client->identity_no ?? '' }}"
                                                                                 class="form-control" id="" disabled>
                                                                         </div>
                                                                     </div>
@@ -294,10 +294,10 @@
                                                                             <select class="custom-select"
                                                                                 name="identity_type_id" disabled>
                                                                                 <option value="0"
-                                                                                    {{ $case->oppon && $case->client->identity_type_id == 0 ? 'selected' : '' }}>
+                                                                                    {{ $case->client && $case->client->identity_type_id == 0 ? 'selected' : '' }}>
                                                                                     Passport</option>
                                                                                 <option value="1"
-                                                                                    {{ $case->oppon && $case->client->identity_type_id == 1 ? 'selected' : '' }}>
+                                                                                    {{ $case->client && $case->client->identity_type_id == 1 ? 'selected' : '' }}>
                                                                                     ID</option>
 
                                                                             </select>
@@ -319,7 +319,7 @@
                                                                                 disabled>
                                                                                 @foreach ($cities as $type)
                                                                                     <option
-                                                                                        {{ $case->client->city_id == $type->id ? 'selected' : '' }}
+                                                                                        {{ $case->client && $case->client->city_id == $type->id ? 'selected' : '' }}
                                                                                         value="{{ $type->id }}">
                                                                                         {{ $type->name }}</option>
                                                                                 @endforeach
@@ -409,7 +409,7 @@
                                                                                 name="nationality_id" disabled>
                                                                                 @foreach ($nationalities as $type)
                                                                                     <option
-                                                                                        {{ $case->oppon->nationality_id == $type->id ? 'selected' : '' }}
+                                                                                        {{$case->oppon &&  $case->oppon->nationality_id == $type->id ? 'selected' : '' }}
                                                                                         value="{{ $type->id }}">
                                                                                         {{ $type->name }}</option>
                                                                                 @endforeach
@@ -455,7 +455,7 @@
                                                                                 disabled>
                                                                                 @foreach ($cities as $type)
                                                                                     <option
-                                                                                        {{ $case->oppon->city_id == $type->id ? 'selected' : '' }}
+                                                                                        {{ $case->oppon && $case->oppon->city_id == $type->id ? 'selected' : '' }}
                                                                                         value="{{ $type->id }}">
                                                                                         {{ $type->name }}</option>
                                                                                 @endforeach
@@ -509,46 +509,9 @@
 
                                                         <div class="card-footer">
 
-                                                            <button type="button" class="btn btn-primary"
-                                                                data-toggle="modal"
-                                                                data-target="#archive{{ $case->id }}">تحويل إلي
-                                                                الارشيف</button>
+
                                                         </div>
-                                                        <!-- archive Modal -->
-                                                        <div class="modal fade dir-rtl" id="archive{{ $case->id }}"
-                                                            tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                                                            aria-hidden="true">
-                                                            <div class="modal-dialog" role="document">
-                                                                <div class="modal-content">
-                                                                    <form action="{{ route('archiveCase') }}"
-                                                                        method="POST">
-                                                                        @csrf
-                                                                        <input type="hidden" name="case_id"
-                                                                            value="{{ $case->id }}">
-                                                                        <div class="modal-header bg-light">
-                                                                            <h5 class="modal-title"
-                                                                                id="exampleModalLabel">تأكيد الأرشفة</h5>
-                                                                            <button type="button"
-                                                                                class="close m-0 p-0 text-white"
-                                                                                data-dismiss="modal" aria-label="Close">
-                                                                                <span aria-hidden="true">&times;</span>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="modal-body text-center">
-                                                                            <h3><i class="fas fa-fire text-primary"></i>
-                                                                            </h3>
-                                                                            <h4>تأكيد تحويل القضية للارشيف</h4>
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-secondary"
-                                                                                data-dismiss="modal">إلغاء</button>
-                                                                            <button type="submit"
-                                                                                class="btn btn-success">تأكيد</button>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane fade " id="custom-tabs-one-2" role="tabpanel"

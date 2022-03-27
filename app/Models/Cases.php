@@ -33,6 +33,8 @@ class Cases extends Model
         'expert_name',
         'case_status_id',
         'notes',
+        'exec_Deed_date',
+        'exec_Deed_no'
     ];
 
     public function client()
@@ -48,6 +50,11 @@ class Cases extends Model
     public function current()
     {
         return $this->belongsTo('App\Models\User', 'current_resposible_id');
+    }
+
+    public function court()
+    {
+        return $this->belongsTo('App\Models\Court', 'court_id');
     }
 
     public function branch()

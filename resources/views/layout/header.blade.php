@@ -52,10 +52,17 @@
                                 </a>
                                 <ul class="nav nav-treeview">
                                     {{-- @can('cases-list') --}}
+
                                     <li class="nav-item">
                                         <a href="{{route('cases.index')}}" class="nav-link">
                                             <i class="far fa-dot-circle nav-icon"></i>
-                                            <p>قضايا</p>
+                                            <p>قضايا </p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{route('contract.index')}}" class="nav-link">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>عقود</p>
                                         </a>
                                     </li>
                                     {{-- @endcan --}}
@@ -300,6 +307,23 @@
                             </li>
                         </ul>
                     </li>-->
+                    <li class="nav-item has-treeview">
+                        <a href="" class="nav-link">
+                            <i class="nav-icon fas fa-chart-pie"></i>
+                            <p>
+                                أرشيف المكتب
+                                <i class="left fas fa-angle-right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('archive.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>قضايا الأرشيف</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="nav-item has-treeview">
                         <a href="" class="nav-link">
                             <i class="nav-icon fa fa-users"></i>

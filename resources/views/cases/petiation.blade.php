@@ -7,7 +7,7 @@
             <th>نص الالتماس </th>
             <th>تاريخ الالتماس </th>
             <th>تاريخ التسليم</th>
-            <th>الزميل المكلف</th>
+            <th>المكلف</th>
             <th>الحالة</th>
             <th>ملاحظات</th>
             <th>انجاز</th>
@@ -23,14 +23,25 @@
                 $task = App\Models\Case_members_task::where([['task_type_id', 4], ['case_id', '=', $row->case_id], ['member_id', '=', $row->member_id], ['task_date', '=', $row->petition_date]])->first();
                 ?>
                 <th>{{ date('Y/m/d', strtotime($row->petition_date)) }} </th>
-                <th>@if ($task){{ date('Y/m/d', strtotime($task->end_date)) }}@endif </th>
+                <th>
+                    @if ($task)
+                        {{ date('Y/m/d', strtotime($task->end_date)) }}
+                    @endif
+                </th>
                 <th>{{ $row->member->name ?? '' }}</th>
-                <th>@if($task && $task->task_status_id==1) منجزة @else غير منجزة @endif</th>
+                <th>
+                    @if ($task && $task->task_status_id == 1)
+                        منجزة
+                    @else
+                        غير منجزة
+                    @endif
+                </th>
                 <th>{{ $row->notes }}</th>
                 <th>
                     <div class="btn-group">
-                        <button type="button"  @if($task &&$task->task_status_id==1) disabled @endif class="btn btn-default" data-toggle="modal"
-                            data-target="#done1{{ $row->id }}"><i class="fas fa-check" title="view"></i></button>
+                        <button type="button" @if ($task && $task->task_status_id == 1) disabled @endif class="btn btn-default"
+                            data-toggle="modal" data-target="#done1{{ $row->id }}"><i class="fas fa-check"
+                                title="view"></i></button>
                     </div>
                 </th>
                 <th>
@@ -134,8 +145,9 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label for="">تاريخ الإلتماس </label>
-                                                <input type="text" autocomplete="off" class="form-control txt-rtl hijri-date-default"
-                                                    value="" name="petition_date" id="inputEmail3"
+                                                <input type="text" autocomplete="off"
+                                                    class="form-control txt-rtl hijri-date-default" value=""
+                                                    name="petition_date" id="inputEmail3"
                                                     placeholder="{{ date('d-m-Y', strtotime($row->petition_date)) }}">
                                             </div>
                                         </div> <?php
@@ -144,15 +156,16 @@ $task = App\Models\Case_members_task::where([['task_type_id', 4], ['case_id', '=
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label for="">تاريخ التسليم </label>
-                                                <input type="text" autocomplete="off" class="form-control txt-rtl hijri-date-default"
-                                                    value="" name="petition_end_date" id="inputEmail3"
-                                                    placeholder="@if ($task){{ date('d-m-Y', strtotime($task->end_date)) }}@endif">
+                                                <input type="text" autocomplete="off"
+                                                    class="form-control txt-rtl hijri-date-default" value=""
+                                                    name="petition_end_date" id="inputEmail3"
+                                                    placeholder="@if ($task) {{ date('d-m-Y', strtotime($task->end_date)) }} @endif">
 
                                             </div>
                                         </div>
                                         {{-- <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label for="">الزميل المكلف</label>
+                                                <label for="">المكلف</label>
                                                 <select class="custom-select dynamic" name="member_id" id="member_id">
                                                     <option>اختر </option>
 
@@ -213,8 +226,9 @@ $task = App\Models\Case_members_task::where([['task_type_id', 4], ['case_id', '=
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label for="">تاريخ الإلتماس </label>
-                                                <input type="text" autocomplete="off" class="form-control txt-rtl hijri-date-default"
-                                                    value="" name="petition_date" id="inputEmail3"
+                                                <input type="text" autocomplete="off"
+                                                    class="form-control txt-rtl hijri-date-default" value=""
+                                                    name="petition_date" id="inputEmail3"
                                                     placeholder="{{ date('d-m-Y', strtotime($row->petition_date)) }}">
                                             </div>
                                         </div> <?php
@@ -223,15 +237,16 @@ $task = App\Models\Case_members_task::where([['task_type_id', 4], ['case_id', '=
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label for="">تاريخ التسليم </label>
-                                                <input type="text" autocomplete="off" class="form-control txt-rtl hijri-date-default"
-                                                    value="" name="petition_end_date" id="inputEmail3"
-                                                    placeholder="@if ($task){{ date('d-m-Y', strtotime($task->end_date)) }}@endif">
+                                                <input type="text" autocomplete="off"
+                                                    class="form-control txt-rtl hijri-date-default" value=""
+                                                    name="petition_end_date" id="inputEmail3"
+                                                    placeholder="@if ($task) {{ date('d-m-Y', strtotime($task->end_date)) }} @endif">
 
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label for="">الزميل المكلف</label>
+                                                <label for="">المكلف</label>
                                                 <select class="custom-select dynamic" name="member_id" id="member_id">
                                                     <option>اختر </option>
 
@@ -297,22 +312,24 @@ $task = App\Models\Case_members_task::where([['task_type_id', 4], ['case_id', '=
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="">تاريخ الإلتماس   </label>
-                                    <input type="text" autocomplete="off" value="" class="form-control txt-rtl hijri-date-default"
-                                        name="petition_date" class="form-control" id="">
+                                    <label for="">تاريخ الإلتماس </label>
+                                    <input type="text" autocomplete="off" value=""
+                                        class="form-control txt-rtl hijri-date-default" name="petition_date"
+                                        class="form-control" id="">
 
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="">تاريخ التسليم </label>
-                                    <input type="text" autocomplete="off" value="" class="form-control txt-rtl hijri-date-default"
-                                        name="petition_end_date" class="form-control" id="">
+                                    <input type="text" autocomplete="off" value=""
+                                        class="form-control txt-rtl hijri-date-default" name="petition_end_date"
+                                        class="form-control" id="">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="">الزميل المكلف</label>
+                                    <label for="">المكلف</label>
                                     <select class="custom-select" name="member_id">
                                         @foreach ($users as $type)
                                             <option {{ old('member_id') == $type->id ? 'selected' : '' }}

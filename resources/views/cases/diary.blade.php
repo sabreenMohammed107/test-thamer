@@ -6,7 +6,7 @@
             <th>نص المذكرة</th>
             <th>تاريخ المذكرة </th>
             <th>تاريخ التسليم</th>
-            <th>الزميل المكلف</th>
+            <th> المكلف</th>
             <th> الحاله</th>
             <th>ملاحظات</th>
             <th>انجاز</th>
@@ -147,7 +147,7 @@
                                 </div>
                                 {{-- <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="">الزميل المكلف</label>
+                                        <label for=""> المكلف</label>
                                         <select class="custom-select dynamic" name="member_id"
                                     id="member_id">
                                     <option>اختر </option>
@@ -224,7 +224,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="">الزميل المكلف</label>
+                                        <label for=""> المكلف</label>
                                         <select class="custom-select dynamic" name="member_id"
                                     id="member_id">
                                     <option>اختر </option>
@@ -303,7 +303,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="">الزميل المكلف</label>
+                                        <label for=""> المكلف</label>
                                         <select class="custom-select" name="member_id">
                                             @foreach ($users as $type)
                                             <option

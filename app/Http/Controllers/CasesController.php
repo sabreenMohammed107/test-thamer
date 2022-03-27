@@ -18,6 +18,7 @@ use App\Models\Nationality;
 use App\Models\Person;
 use App\Models\Petition;
 use App\Models\Session;
+use App\Models\task_type;
 use App\Models\User;
 use App\Models\Users_branch;
 use Auth;
@@ -63,10 +64,14 @@ class CasesController extends Controller
 
         $user = Auth::user();
         if ($user->hasRole('Admin')) {
-            $data = Cases::orderBy('id', 'DESC')->paginate(200);
+            $data = Cases::where('case_status_id', '!=' , 2)->orWhereNull('case_status_id')->orderBy('id', 'DESC')->paginate(200);
 
         } else {
-            $data = Cases::where('current_resposible_id', $user->id)->orderBy('id', 'DESC')->paginate(200);
+            //show to all case members
+            $data = Cases::where('case_status_id', '!=' , 2)->orWhereNull('case_status_id')->whereHas('member', function($q)use($user){
+                $q->where('member_id', '=', $user->id);
+            })->paginate(200);
+            // $data = Cases::where('current_resposible_id', $user->id)->orderBy('id', 'DESC')->paginate(200);
 
         }
 
@@ -113,7 +118,7 @@ class CasesController extends Controller
         ], [
 
             'name.required' => 'حقل الاسم مطلوب',
-            'current_resposible_id.required' => 'حقل الزميل مطلوب',
+            'current_resposible_id.required' => 'حقل المكلف مطلوب',
             'branch_id.required' => 'حقل الفرع مطلوب',
 
         ]);
@@ -123,8 +128,9 @@ class CasesController extends Controller
         {
             // Disable foreign key checks!
             DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-            $input = $request->except(['_token', 'start_date']);
+            $input = $request->except(['_token', 'start_date', 'exec_Deed_date']);
             $input['start_date'] = Carbon::parse($request->get('start_date'));
+            $input['exec_Deed_date'] = Carbon::parse($request->get('exec_Deed_date'));
             $case = $this->object::create($input);
             $case_id = $case->id;
             \Session::put('case_id', $case_id);
@@ -141,13 +147,27 @@ class CasesController extends Controller
                 ];
                 Case_members::create($data);
             }
+            //save in case tasks
+            $type = task_type::where('id', 7)->first();
+            $tasks = [
+                'case_id' => $case_id,
+                'transfer_case_id' => $request->get('current_resposible_id'),
+                'task_description' => $type->type,
+                'task_type_id' => 7,
+                'task_date' => Carbon::now(),
+                'task_status_id' => 1,
+                'end_date' => Carbon::parse($request->get('start_date')),
+                'control_by_id' => Auth::user()->id,
+            ];
+
+            Case_members_task::create($tasks);
             DB::commit();
             // Enable foreign key checks!
             DB::statement('SET FOREIGN_KEY_CHECKS=1;');
             return redirect()->route($this->routeName . 'edit', $case->id)->with('flash_success', $this->message);
             // return redirect()->back()->with(['flash_success'=> $this->message,'case_id'=>$case->id]);
 
-        } catch (\Throwable $e) {
+        } catch (\Throwable$e) {
             // throw $th;
             DB::rollback();
             // return redirect()->back()->withInput()->with('flash_danger', 'حدث خطأ الرجاء معاودة المحاولة في وقت لاحق');
@@ -177,8 +197,8 @@ class CasesController extends Controller
         //team member
         $members = Case_members::where('case_id', $id)->get();
         $users = User::all();
-
-        // $member_regulation=Interceptions_regulation::where([['general_account','=',$request->get('general_account')],['help_account','=',$request->get('help_account')]]);
+        $membersIds = Case_members::where('case_id', $id)->pluck('member_id');
+        $memTeam = User::whereNotIn('id', $membersIds)->get();
         // regulation
         $regulations = Interceptions_regulation::where('case_id', $id)->get();
         //letters
@@ -196,7 +216,7 @@ class CasesController extends Controller
 //presdure
         $presdures = Case_members_task::where('case_id', $id)->get();
         return view($this->viewName . 'show', compact('case', 'opponent', 'client', 'courts', 'branches', 'caseTypes', 'clients', 'oppenonts', 'nationalities', 'cities'
-            , 'members', 'users',
+            , 'members', 'users', 'memTeam',
             'regulations', 'letters', 'diaries', 'petitions', 'sessions', 'attachments', 'fees', 'presdures'));
 
     }
@@ -241,7 +261,7 @@ class CasesController extends Controller
         ], [
 
             'name.required' => 'حقل الاسم مطلوب',
-            'current_resposible_id.required' => 'حقل الزميل مطلوب',
+            'current_resposible_id.required' => 'حقل المكلف مطلوب',
             'branch_id.required' => 'حقل الفرع مطلوب',
 
         ]);
@@ -251,9 +271,12 @@ class CasesController extends Controller
         {
             // Disable foreign key checks!
             DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-            $input = $request->except(['_token', 'start_date']);
+            $input = $request->except(['_token', 'start_date', 'exec_Deed_date']);
             if (!empty($request->get('start_date'))) {
                 $input['start_date'] = Carbon::parse($request->get('start_date'));
+            }
+            if (!empty($request->get('exec_Deed_date'))) {
+                $input['exec_Deed_date'] = Carbon::parse($request->get('exec_Deed_date'));
             }
 
             $this->object::findOrFail($id)->update($input);
@@ -273,20 +296,35 @@ class CasesController extends Controller
                 if (!empty($request->get('start_date'))) {
                     $data['incharge_date'] = Carbon::parse($request->get('start_date'));
                 }
-                if($caseMember){
+                if ($caseMember) {
                     $caseMember->update($data);
-                }else{
-                    Case_members::create($data);
                 }
+                //  else {
+                //     Case_members::create($data);
+                // }
 
             }
+
+             //save in case tasks
+             $type = task_type::where('id', 7)->first();
+             $tasks = [
+                 'case_id' => $id,
+                 'transfer_case_id' => $request->get('current_resposible_id'),
+
+                 'task_date' => Carbon::now(),
+                 'task_status_id' => 1,
+                 'end_date' => Carbon::parse($request->get('start_date')),
+                 'control_by_id' => Auth::user()->id,
+             ];
+             Case_members_task::where('case_id',$id)->where('transfer_case_id',$this->object::findOrFail($id)->transfer_case_id)->update($tasks);
+
             DB::commit();
             // Enable foreign key checks!
             DB::statement('SET FOREIGN_KEY_CHECKS=1;');
             return redirect()->route($this->routeName . 'edit', $id)->with('flash_success', $this->message);
             // return redirect()->back()->with(['flash_success'=> $this->message,'case_id'=>$case->id]);
 
-        } catch (\Throwable $e) {
+        } catch (\Throwable$e) {
             // throw $th;
             DB::rollback();
             // return redirect()->back()->withInput()->with('flash_danger', 'حدث خطأ الرجاء معاودة المحاولة في وقت لاحق');
@@ -357,13 +395,17 @@ class CasesController extends Controller
         if (empty($request->get("all"))) {
             if (!empty($request->get("user")) && !empty($request->get("branch"))) {
                 if (!empty($request->get("user"))) {
-                    $cases->where('current_resposible_id', '=', $request->get("user"));
+                    $cases->where('current_resposible_id', '=', $request->get("user"))->orwhereHas('member', function($q)use($request){
+                        $q->where('member_id', '=',  $request->get("user"));
+                });
                 }
                 if (!empty($request->get("branch"))) {
                     $cases->where('branch_id', '=', $request->get("branch"));
                 }
             } else {
-                $cases->where('current_resposible_id', '=', $user->id);
+                $cases->where('current_resposible_id', '=', $user->id)->orwhereHas('member', function($q)use($user){
+                    $q->where('member_id', '=',  $user->id);
+            });
             }
 
         }
@@ -404,7 +446,7 @@ class CasesController extends Controller
             DB::statement('SET FOREIGN_KEY_CHECKS=1;');
             return redirect()->back()->with('flash_success', $this->message);
 
-        } catch (\Throwable $e) {
+        } catch (\Throwable$e) {
             // throw $th;
             DB::rollback();
             return redirect()->back()->withInput()->with('flash_danger', $e->getMessage());
@@ -440,7 +482,7 @@ class CasesController extends Controller
             DB::statement('SET FOREIGN_KEY_CHECKS=1;');
             return redirect()->back()->with('flash_success', $this->message);
 
-        } catch (\Throwable $e) {
+        } catch (\Throwable$e) {
             // throw $th;
             DB::rollback();
             return redirect()->back()->withInput()->with('flash_danger', $e->getMessage());
@@ -456,7 +498,7 @@ class CasesController extends Controller
             $case->update();
             return redirect()->route($this->routeName . 'edit', $case->id)->with('flash_success', $this->message);
 
-        } catch (\Exception $e) {
+        } catch (\Exception$e) {
             // return redirect()->back()->withInput()->with('flash_danger', 'حدث خطأ الرجاء معاودة المحاولة في وقت لاحق');
 
             return redirect()->back()->withInput()->with('flash_danger', $e->getMessage());
@@ -472,7 +514,7 @@ class CasesController extends Controller
             $case->update();
             return redirect()->route($this->routeName . 'edit', $case->id)->with('flash_success', $this->message);
 
-        } catch (\Exception $e) {
+        } catch (\Exception$e) {
             // return redirect()->back()->withInput()->with('flash_danger', 'حدث خطأ الرجاء معاودة المحاولة في وقت لاحق');
 
             return redirect()->back()->withInput()->with('flash_danger', $e->getMessage());
@@ -501,5 +543,20 @@ class CasesController extends Controller
         $case->update(['case_status_id' => 2]);
         return redirect()->back()->withInput()->with('flash_success', 'تم أرشفة القضية');
 
+    }
+
+
+    public function searchAdmin(Request $request)
+    {
+
+        $cases = Cases::orderBy('id', 'DESC');
+                if (!empty($request->get("user"))) {
+                    $cases->where('current_resposible_id', '=', $request->get("user"))->orwhereHas('member', function($q)use($request){
+                        $q->where('member_id', '=',  $request->get("user"));
+                });
+            }
+
+        $data = $cases->paginate(200);
+        return view($this->viewName . 'preIndex', compact('data'))->render();
     }
 }

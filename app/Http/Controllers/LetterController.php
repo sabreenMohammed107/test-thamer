@@ -2,13 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Attachment;
+use App\Models\Branch;
 use App\Models\Cases;
+use App\Models\Case_members;
 use App\Models\Case_members_task;
+use App\Models\Case_type;
+use App\Models\City;
+use App\Models\Court;
+use App\Models\Diary;
+use App\Models\Fees_installment;
+use App\Models\Interceptions_regulation;
 use App\Models\Letter;
+use App\Models\Nationality;
+use App\Models\Person;
+use App\Models\Petition;
+use App\Models\Session;
+use App\Models\task_type;
+use App\Models\User;
+use App\Models\Users_branch;
 use Carbon\Carbon;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use PDF;
+
 class LetterController extends Controller
 {
     protected $object;
@@ -66,25 +85,49 @@ class LetterController extends Controller
 
                 'case_id' => $request->get('case_id'),
                 'member_id' => $request->get('member_id'),
-                'letter_date' => Carbon::parse($request->get('letter_date')),
+                // 'letter_date' => Carbon::parse($request->get('letter_date')),
                 'text' => $request->get('text'),
                 'notes' => $request->get('notes'),
 
             ];
+            if ($request->get('letter_date')) {
+                $data['letter_date'] = Carbon::parse($request->get('letter_date'));
+            } else {
+                $data['letter_date'] = Carbon::now();
+            }
             // dd($request->get('regulation_end_date'));
-            Letter::create($data);
+            $letter = Letter::create($data);
+
+            $type = task_type::where('id', 3)->first();
             $tasks = [
                 'case_id' => $request->get('case_id'),
                 'member_id' => $request->get('member_id'),
-                'task_description' => 'خطاب',
+                'letter_id' => $letter->id,
+                'task_description' => $type->type,
                 'task_type_id' => 3,
-                'task_date' => Carbon::parse($request->get('letter_date')),
                 'task_status_id' => 2,
+                'control_by_id' => Auth::user()->id,
                 'end_date' => Carbon::parse($request->get('letter_end_date')),
 
             ];
+            if ($request->get('letter_date')) {
+                $tasks['task_date'] = Carbon::parse($request->get('letter_date'));
+            } else {
+                $tasks['task_date'] = Carbon::now();
+            }
             Case_members_task::create($tasks);
 
+            //save case member totaly=1 ,partly =2
+            $members = [
+                'case_id' => $request->get('case_id'),
+                'member_id' => $request->get('member_id'),
+                'incharge_type' => 2,
+                'incharge_date' => Carbon::now(),
+                'active' => 1,
+                'controlled_by' => Auth::user()->id,
+
+            ];
+            Case_members::create($members);
             DB::commit();
             // Enable foreign key checks!
             DB::statement('SET FOREIGN_KEY_CHECKS=1;');
@@ -94,7 +137,7 @@ class LetterController extends Controller
             // return redirect()->route($this->routeName . 'create')->with('flash_success', $this->message);
             return redirect()->back()->with('flash_success', $this->message);
 
-        } catch (\Throwable $e) {
+        } catch (\Throwable$e) {
             // throw $th;
             DB::rollback();
             // return redirect()->back()->withInput()->with('flash_danger', 'حدث خطأ الرجاء معاودة المحاولة في وقت لاحق');
@@ -122,7 +165,40 @@ class LetterController extends Controller
      */
     public function edit($id)
     {
-        //
+        $case = Cases::where('id', $id)->first();
+        $courts = Court::all();
+        $branches = Branch::all();
+        $caseTypes = Case_type::all();
+        $clients = Person::where('preson_type', 0)->get();
+        $oppenonts = Person::where('preson_type', 1)->get();
+        $nationalities = Nationality::all();
+        $cities = City::all();
+        $client = new Person();
+        $opponent = new Person();
+        //team member
+        $members = Case_members::where('case_id', $id)->get();
+        $users = User::all();
+        $membersIds = Case_members::where('case_id', $id)->pluck('member_id');
+        $memTeam = User::whereNotIn('id', $membersIds)->get();
+        // regulation
+        $regulations = Interceptions_regulation::where('case_id', $id)->get();
+        //letters
+        $letters = Letter::where('case_id', $id)->get();
+        //diaries
+        $diaries = Diary::where('case_id', $id)->get();
+        //petition
+        $petitions = Petition::where('case_id', $id)->get();
+        //sessions
+        $sessions = Session::where('case_id', $id)->get();
+        //attach
+        $attachments = Attachment::where('case_id', $id)->get();
+        //fees
+        $fees = Fees_installment::where('case_id', $id)->get();
+//presdure
+        $presdures = Case_members_task::where('case_id', $id)->get();
+        return view('presdure.addLetter', compact('case', 'opponent', 'client', 'courts', 'branches', 'caseTypes', 'clients', 'oppenonts', 'nationalities', 'cities'
+            , 'members', 'users', 'memTeam',
+            'regulations', 'letters', 'diaries', 'petitions', 'sessions', 'attachments', 'fees', 'presdures'));
     }
 
     /**
@@ -156,26 +232,18 @@ class LetterController extends Controller
             Letter::findOrFail($id)->update($data);
 
             $tasks = [
-                'case_id' => $request->get('case_id'),
+
                 'member_id' => $request->get('member_id'),
-                'task_description' => 'خطاب',
-                'task_type_id' => 3,
-                'task_status_id' => 2];
 
-            $tasks['task_date'] = Carbon::parse(Letter::findOrFail($id)->letter_date);
+                'task_status_id' => 2,
+                'control_by_id' => Auth::user()->id,
+                'end_date' => Carbon::parse($request->get('letter_end_date')),
 
-            if (!empty($request->get('letter_end_date'))) {
-                $tasks['end_date'] = Carbon::parse($request->get('letter_end_date'));
+            ];
+            if ($request->get('letter_date')) {
+                $tasks['task_date'] = Carbon::parse($request->get('letter_date'));
             }
-
-            $task = Case_members_task::where([['task_type_id', 3], ['case_id', '=', $request->get('case_id')], ['member_id', '=', $request->get('member_id')], ['task_date', '=', Letter::findOrFail($id)->letter_date]])
-                ->first();
-            if ($task) {
-                $task->update($tasks);
-            } else {
-                Case_members_task::create($tasks);
-            }
-            // $task->save($tasks);
+            Case_members_task::where('letter_id', $id)->update($tasks);
 
             DB::commit();
             // Enable foreign key checks!
@@ -186,7 +254,7 @@ class LetterController extends Controller
             // return redirect()->route($this->routeName . 'create')->with('flash_success', $this->message);
             return redirect()->back()->with('flash_success', $this->message);
 
-        } catch (\Throwable $e) {
+        } catch (\Throwable$e) {
             // throw $th;
             DB::rollback();
             // return redirect()->back()->withInput()->with('flash_danger', 'حدث خطأ الرجاء معاودة المحاولة في وقت لاحق');
@@ -219,17 +287,35 @@ class LetterController extends Controller
         }
 
     }
-    public function done(Request $request){
+    public function done(Request $request)
+    {
 
-        $letter=Letter::where('id', $request->get('letter'))->first();
-        $task=Case_members_task::where([['task_type_id',3],['case_id', '=', $request->case_id],['task_date','=',$letter->letter_date]])->first();
+        $letter = Letter::where('id', $request->get('letter'))->first();
+        $task = Case_members_task::where('letter_id', $request->get('letter'))->first();
         $tasks = [
 
-            'task_status_id' => 1
+            'task_status_id' => 1,
         ];
         if ($task) {
             $task->update($tasks);
         }
         return redirect()->back()->with('flash_success', $this->message);
+    }
+
+    public function report($id)
+    {
+        $letter = Letter::where('id', $id)->first();
+        $data = [
+            'letter' => $letter,
+            'Title' => 'خطاب',
+        ];
+        $title = 'خطاب';
+        $pdf = PDF::loadView('cases.pdfLetter', $data);
+        $pdf->allow_charset_conversion = false;
+        $pdf->autoScriptToLang = true;
+        $pdf->autoLangToFont = true;
+
+        return $pdf->stream('medium.pdf');
+
     }
 }

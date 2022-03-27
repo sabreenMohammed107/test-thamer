@@ -35,10 +35,10 @@
                         <label for="">نوع الهوية</label>
                         <select class="custom-select" name="identity_type_id">
                             <option value="0"
-                                {{ $row->oppon && $row->client->identity_type_id == 0 ? 'selected' : '' }}>
+                                {{$row->client  && $row->client->identity_type_id == 0 ? 'selected' : '' }}>
                                 Passport</option>
                             <option value="1"
-                                {{ $row->oppon && $row->client->identity_type_id == 1 ? 'selected' : '' }}>
+                                {{ $row->client  && $row->client->identity_type_id == 1 ? 'selected' : '' }}>
                                 ID</option>
 
                         </select>
@@ -47,7 +47,7 @@
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label for="">تاريخ الميلاد</label>
-                        <input type="text" autocomplete="off" @if($row->oppon) value="{{date('Y/m/d', strtotime($row->client->birth_date))}}" @endif
+                        <input type="text" autocomplete="off" @if($row->client ) value="{{date('Y/m/d', strtotime($row->client->birth_date))}}" @endif
                             name="birth_date" class="form-control txt-rtl hijri-date-default"
                             id="">
                     </div>
@@ -57,7 +57,7 @@
                         <label for="">المدينة</label>
                         <select class="custom-select" name="city_id">
                             @foreach ($cities as $type)
-                                <option {{ $row->client->city_id == $type->id ? 'selected' : '' }}
+                                <option {{ $row->client && $row->client->city_id == $type->id ? 'selected' : '' }}
                                     value="{{ $type->id }}">
                                     {{ $type->name }}</option>
                             @endforeach
