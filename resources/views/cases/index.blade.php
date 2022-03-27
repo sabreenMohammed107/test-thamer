@@ -16,7 +16,14 @@
             <!-- /.card-header -->
 
             <div class="card-body">
+                @hasrole('Admin')
+                <div class="col-sm-3 mt-5">
+<input type="hidden" name="admin_id" value="{{Auth::user()->id}}" >
+                    <button id="send_data_admin" type="button" class="btn btn-primary" data-dismiss="modal">قضايا الادمن</button>
+                </div>
+                @endhasrole
                 <div class="row">
+
                     <div class="col-sm-3">
                         <div class="form-group">
                             <br />
@@ -122,6 +129,29 @@ $( '#send_data' ).click( function() {
 
 
    });
+   $( '#send_data_admin' ).click( function() {
+
+let user = $('#admin_id').val();
+
+$.ajax({
+        url:"{{route('dynamicCasesAdmin.searchAdmin')}}",
+
+        method: "get",
+        data:
+{
+
+user:user,
+},
+        success: function(result) {
+
+            $('#preIndex').html(result);
+
+
+        }
+    });
+
+
+});
 
             });
             // end ready

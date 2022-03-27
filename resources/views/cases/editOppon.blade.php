@@ -57,7 +57,7 @@
                         <label for="">المدينة</label>
                         <select class="custom-select" name="city_id">
                             @foreach ($cities as $type)
-                                <option {{ $row->oppon->city_id == $type->id ? 'selected' : '' }}
+                                <option {{$row->oppon && $row->oppon->city_id == $type->id ? 'selected' : '' }}
                                     value="{{ $type->id }}">
                                     {{ $type->name }}</option>
                             @endforeach

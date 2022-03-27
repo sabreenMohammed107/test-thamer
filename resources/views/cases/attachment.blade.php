@@ -5,7 +5,7 @@
             <th>#</th>
             <th>اسم الملف</th>
             <th>الوصف</th>
-            <th>تحميل الملف</th>
+            <th> الملف</th>
 
             <th>ملاحظات</th>
             <th>الإجراءات</th>
@@ -19,8 +19,11 @@
             <th>{{$row->description}}</th>
             <th>
                 <div class="btn-group">
-                    <a  id="downloadCurrent" href="{{ asset('uploads/attachment')}}/{{$row->name}}" download="" class="btn btn-default"><i class="fas fa-download" title="download"></i>
+                    {{-- <a  id="downloadCurrent" href="{{ asset('uploads/attachment')}}/{{$row->name}}" download="" class="btn btn-default"><i class="fas fa-download" title="download"></i> --}}
                     {{-- <input type="text" name="attach" value="{{ asset('uploads/attachment')}}/{{$row->name}}" alt="{{$row->name}}" /> --}}
+                {{-- </a> --}}
+                <a  id="downloadCurrent" href="{{ asset('uploads/attachment')}}/{{$row->name}}" target="_blank" class="btn btn-default"><i class="fas fa-download" title="فتح الملف"></i>
+                    {{$row->name}}
                 </a>
                 </div>
             </th>

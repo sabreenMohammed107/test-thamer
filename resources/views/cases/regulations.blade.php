@@ -3,13 +3,13 @@
     <thead class="bg-info">
         <tr>
             <th>#</th>
-            <th>الوقائع</th>
+            <th>منطوق الحكم</th>
             <th>الدفوع</th>
             <th>الطلبات</th>
-            <th>نص</th>
+            <th>الشكلية الموضوعية</th>
             <th>تاريخ اللائحة </th>
             <th>تاريخ التسليم</th>
-            <th>الزميل المكلف</th>
+            <th>المكلف</th>
             <th>الحالة</th>
             <!--<th>ملاحظات</th>-->
             <th>انجاز</th>
@@ -132,7 +132,7 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="form-group">
-                                                <label>الوقائع</label>
+                                                <label>منطوق الحكم</label>
                                                 <textarea name="facts" class="form-control"
                                                     rows="5">{{ $row->facts }}</textarea>
                                             </div>
@@ -153,7 +153,7 @@
                                         </div>
                                         <div class="col-sm-12">
                                             <div class="form-group">
-                                                <label>نص</label>
+                                                <label>الشكلية الموضوعية</label>
                                                 <textarea name="text" class="form-control"
                                                     rows="5">{{ $row->text }}</textarea>
                                             </div>
@@ -182,7 +182,7 @@
                                         </div>
                                         {{-- <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="">الزميل المكلف</label>
+                                    <label for="">المكلف</label>
                                     <select class="custom-select dynamic" name="member_id"
                                     id="member_id">
                                     <option>اختر </option>
@@ -243,7 +243,7 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>الوقائع</label>
+                                                <label>منطوق الحكم</label>
                                                 <textarea name="facts" class="form-control"
                                                     rows="5">{{ $row->facts }}</textarea>
                                             </div>
@@ -264,7 +264,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>نص</label>
+                                                <label>الشكلية الموضوعية</label>
                                                 <textarea name="text" class="form-control"
                                                     rows="5">{{ $row->text }}</textarea>
                                             </div>
@@ -292,7 +292,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label for="">الزميل المكلف</label>
+                                                <label for="">المكلف</label>
                                                 <select class="custom-select dynamic" name="member_id" id="member_id">
                                                     <option>اختر </option>
 
@@ -357,7 +357,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label>الوقائع</label>
+                                    <label>منطوق الحكم</label>
                                     <textarea name="facts" class="form-control"
                                         rows="5">{{ old('facts') }}</textarea>
                                 </div>
@@ -378,7 +378,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label>نص</label>
+                                    <label>الشكلية الموضوعية</label>
                                     <textarea name="text" class="form-control"
                                         rows="5">{{ old('text') }}</textarea>
                                 </div>
@@ -401,7 +401,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="">الزميل المكلف</label>
+                                    <label for="">المكلف</label>
                                     <select class="custom-select" name="member_id">
                                         @foreach ($users as $type)
                                             <option {{ old('member_id') == $type->id ? 'selected' : '' }}

@@ -10,13 +10,14 @@ use App\Models\Diary;
 use App\Models\Interceptions_regulation;
 use App\Models\Letter;
 use App\Models\Petition;
+use App\Models\task_type;
 use App\Models\User;
-use Auth;
+
 use Carbon\Carbon;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Auth;
 class CaseMembersController extends Controller
 {
     protected $object;
@@ -76,7 +77,7 @@ class CaseMembersController extends Controller
             $input = [
                 'case_id' => $request->get('case_id'),
                 'member_id' => $request->get('member_id'),
-                'incharge_type' => 1,
+                'incharge_type' => 2,
                 'incharge_date' => Carbon::parse($request->get('incharge_date')),
                 'active' => 1,
                 'controlled_by' => Auth::user()->id,
@@ -92,19 +93,25 @@ class CaseMembersController extends Controller
 
                 ];
                 // dd($request->get('regulation_end_date'));
-                Interceptions_regulation::create($data);
-                $tasks = [
-                    'case_id' => $request->get('case_id'),
-                    'member_id' => $request->get('member_id'),
-                    'task_description' => 'لايحه اعتراضيه',
-                    'task_type_id' => 1,
-                    'task_date' => Carbon::now(),
-                    'task_status_id' => 2,
-                    'end_date' => Carbon::parse($request->get('regulation_end_date')),
+                $regulation=Interceptions_regulation::create($data);
+                $type = task_type::where('id', 1)->first();
+            $tasks = [
+                'case_id' => $request->get('case_id'),
+                'member_id' => $request->get('member_id'),
+                'regulation_id' => $regulation->id,
+                'task_description' => $type->type,
+                'task_type_id' => 1,
+                'task_status_id' => 1,
+                'control_by_id' => Auth::user()->id,
+                'end_date' => Carbon::parse($request->get('regulation_end_date')),
 
-                ];
-                Case_members_task::create($tasks);
-            }
+            ];
+
+               $tasks['task_date'] = Carbon::now();
+
+            Case_members_task::create($tasks);
+        }
+            // Diary
 
             if ($request->has('diary')) {
                 $data = [
@@ -113,18 +120,24 @@ class CaseMembersController extends Controller
                     'diary_date' => Carbon::now(),
 
                 ];
-                Diary::create($data);
-                $tasks = [
-                    'case_id' => $request->get('case_id'),
-                    'member_id' => $request->get('member_id'),
-                    'task_description' => ' مذكرة',
-                    'task_type_id' => 2,
-                    'task_date' => Carbon::now(),
-                    'task_status_id' => 2,
-                    'end_date' => Carbon::parse($request->get('diary_end_date')),
+                $diary=Diary::create($data);
+            $type = task_type::where('id', 2)->first();
+            $tasks = [
+                'case_id' => $request->get('case_id'),
+                'member_id' => $request->get('member_id'),
+                'diary_id' => $diary->id,
+                'task_description' => $type->type,
+                'task_type_id' => 2,
+                'task_status_id' => 1,
+                'control_by_id' => Auth::user()->id,
+                'end_date' => Carbon::parse($request->get('diary_end_date')),
 
-                ];
-                Case_members_task::create($tasks);
+            ];
+
+                $tasks['task_date'] = Carbon::now();
+
+            Case_members_task::create($tasks);
+
             }
             if ($request->has('letter')) {
                 $data = [
@@ -133,18 +146,23 @@ class CaseMembersController extends Controller
                     'letter_date' => Carbon::now(),
 
                 ];
-                Letter::create($data);
+                $letter= Letter::create($data);
                 //member task
+                $type = task_type::where('id', 3)->first();
                 $tasks = [
                     'case_id' => $request->get('case_id'),
                     'member_id' => $request->get('member_id'),
-                    'task_description' => 'خطاب ',
+                    'letter_id' => $letter->id,
+                    'task_description' => $type->type,
                     'task_type_id' => 3,
-                    'task_date' => Carbon::now(),
-                    'task_status_id' => 2,
+                    'task_status_id' => 1,
+                    'control_by_id' => Auth::user()->id,
                     'end_date' => Carbon::parse($request->get('letter_end_date')),
 
                 ];
+
+                   $tasks['task_date'] = Carbon::now();
+
                 Case_members_task::create($tasks);
             }
             if ($request->has('petition')) {
@@ -154,18 +172,23 @@ class CaseMembersController extends Controller
                     'petition_date' => Carbon::now(),
 
                 ];
-                Petition::create($data);
-                //member task
+                $petition= Petition::create($data);
+
+                $type = task_type::where('id', 4)->first();
                 $tasks = [
                     'case_id' => $request->get('case_id'),
                     'member_id' => $request->get('member_id'),
-                    'task_description' => ' التماس اعادة النظر',
+                    'petition_id' => $petition->id,
+                    'task_description' => $type->type,
                     'task_type_id' => 4,
-                    'task_date' => Carbon::now(),
-                    'task_status_id' => 2,
+                    'task_status_id' => 1,
+                    'control_by_id' => Auth::user()->id,
                     'end_date' => Carbon::parse($request->get('petition_end_date')),
 
                 ];
+
+                   $tasks['task_date'] = Carbon::now();
+
                 Case_members_task::create($tasks);
             }
 
@@ -247,7 +270,7 @@ class CaseMembersController extends Controller
                     'regulation_date' => Carbon::now(),
 
                 ];
-                Interceptions_regulation::create($data);
+                // Interceptions_regulation::create($data);
 
                 $tasks = [
                     'case_id' => $request->get('case_id'),
@@ -259,18 +282,30 @@ class CaseMembersController extends Controller
                 if(!empty($request->get('regulation_end_date'))){
             $tasks['end_date']=Carbon::parse($request->get('regulation_end_date'));
                 }
+                $regulation = Interceptions_regulation::where([['case_id', '=', $request->get('case_id')], ['member_id', '=', $request->get('member_id')], ['regulation_date', '=', Case_members::findOrFail($id)->created_at]])->first();
+                if ($regulation) {
+                    $task =Case_members_task::where('regulation_id',$regulation->id)->first();
+                    $regulation->update($data);
 
-                Case_members_task::create($tasks);
-            } else {
+                    $task->update($tasks);
+                }else{
+                    Interceptions_regulation::create($data);
+
+                    Case_members_task::create($tasks);
+
+                }
+            }
+            else {
 
                 $regulation = Interceptions_regulation::where([['case_id', '=', $request->get('case_id')], ['member_id', '=', $request->get('member_id')], ['regulation_date', '=', Case_members::findOrFail($id)->created_at]])->first();
                 if ($regulation) {
+                    $task =Case_members_task::where('regulation_id',$regulation->id)->first();
+                    if ($task) {
+                        $task->delete();
+                    }
                     $regulation->delete();
                 }
-                $task = Case_members_task::where([['task_type_id', 1], ['case_id', '=', $request->get('case_id')], ['member_id', '=', $request->get('member_id')], ['task_date', '=', Case_members::findOrFail($id)->created_at]])->first();
-                if ($task) {
-                    $task->delete();
-                }
+
 
             }
 
@@ -281,7 +316,7 @@ class CaseMembersController extends Controller
                     'diary_date' => Carbon::now(),
 
                 ];
-                Diary::create($data);
+                // Diary::create($data);
                 $tasks = [
                     'case_id' => $request->get('case_id'),
                     'member_id' => $request->get('member_id'),
@@ -295,16 +330,31 @@ class CaseMembersController extends Controller
                 if(!empty($request->get('diary_end_date'))){
                     $tasks['end_date']=Carbon::parse($request->get('diary_end_date'));
                                                }
-                Case_members_task::create($tasks);
-            } else {
+                // Case_members_task::create($tasks);
                 $diary = Diary::where([['case_id', '=', $request->get('case_id')], ['member_id', '=', $request->get('member_id')], ['diary_date', '=', Case_members::findOrFail($id)->created_at]])->first();
                 if ($diary) {
+                    $task =Case_members_task::where('diary_id',$diary->id)->first();
+                    $diary->update($data);
+
+                    $task->update($tasks);
+                }else{
+                    Diary::create($data);
+
+                    Case_members_task::create($tasks);
+
+                }
+            } else {
+                $diary = Diary::where([['case_id', '=', $request->get('case_id')], ['member_id', '=', $request->get('member_id')], ['diary_date', '=', Case_members::findOrFail($id)->created_at]])->first();
+
+
+                if ($diary) {
+                    $task =Case_members_task::where('diary_id',$diary->id)->first();
+                    if ($task) {
+                        $task->delete();
+                    }
                     $diary->delete();
                 }
-                $task = Case_members_task::where([['task_type_id', 2], ['case_id', '=', $request->get('case_id')], ['member_id', '=', $request->get('member_id')], ['task_date', '=', Case_members::findOrFail($id)->created_at]])->first();
-                if ($task) {
-                    $task->delete();
-                }
+
             }
             if ($request->has('letter')) {
                 $data = [
@@ -314,7 +364,7 @@ class CaseMembersController extends Controller
 
                 ];
 
-                Letter::create($data);
+                // Letter::create($data);
                 //member task
                 $tasks = [
                     'case_id' => $request->get('case_id'),
@@ -329,16 +379,29 @@ class CaseMembersController extends Controller
                 if(!empty($request->get('letter_end_date'))){
                     $tasks['end_date']=Carbon::parse($request->get('letter_end_date'));
                                     }
-                Case_members_task::create($tasks);
+                // Case_members_task::create($tasks);
+                $letter = Letter::where([['case_id', '=', $request->get('case_id')], ['member_id', '=', $request->get('member_id')], ['letter_date', '=', Case_members::findOrFail($id)->created_at]])->first();
+                if ($letter) {
+                    $task =Case_members_task::where('letter_id',$letter->id)->first();
+                    $letter->update($data);
+
+                    $task->update($tasks);
+                }else{
+                    Letter::create($data);
+
+                    Case_members_task::create($tasks);
+
+                }
             } else {
                 $letter = Letter::where([['case_id', '=', $request->get('case_id')], ['member_id', '=', $request->get('member_id')], ['letter_date', '=', Case_members::findOrFail($id)->created_at]])->first();
                 if ($letter) {
+                    $task =Case_members_task::where('letter_id',$letter->id)->first();
+                    if ($task) {
+                        $task->delete();
+                    }
                     $letter->delete();
                 }
-                $task = Case_members_task::where([['task_type_id', 3], ['case_id', '=', $request->get('case_id')], ['member_id', '=', $request->get('member_id')], ['task_date', '=', Case_members::findOrFail($id)->created_at]])->first();
-                if ($task) {
-                    $task->delete();
-                }
+
             }
             if ($request->has('petition')) {
                 $data = [
@@ -347,7 +410,7 @@ class CaseMembersController extends Controller
                     'petition_date' => Carbon::now(),
 
                 ];
-                Petition::create($data);
+                // Petition::create($data);
                 //member task
                 $tasks = [
                     'case_id' => $request->get('case_id'),
@@ -362,16 +425,29 @@ class CaseMembersController extends Controller
                 if(!empty($request->get('petition_end_date'))){
                     $tasks['end_date']=Carbon::parse($request->get('petition_end_date'));
                                                 }
-                Case_members_task::create($tasks);
+                // Case_members_task::create($tasks);
+                $petition = Petition::where([['case_id', '=', $request->get('case_id')], ['member_id', '=', $request->get('member_id')], ['petition_date', '=', Case_members::findOrFail($id)->created_at]])->first();
+                if ($petition) {
+                    $task =Case_members_task::where('petition_id',$petition->id)->first();
+                    $petition->update($data);
+
+                    $task->update($tasks);
+                }else{
+                    Petition::create($data);
+
+                    Case_members_task::create($tasks);
+
+                }
             } else {
                 $petition = Petition::where([['case_id', '=', $request->get('case_id')], ['member_id', '=', $request->get('member_id')], ['petition_date', '=', Case_members::findOrFail($id)->created_at]])->first();
                 if ($petition) {
+                    $task =Case_members_task::where('petition_id',$petition->id)->first();
+                    if ($task) {
+                        $task->delete();
+                    }
                     $petition->delete();
                 }
-                $task = Case_members_task::where([['task_type_id', 4], ['case_id', '=', $request->get('case_id')], ['member_id', '=', $request->get('member_id')], ['task_date', '=', Case_members::findOrFail($id)->created_at]])->first();
-                if ($task) {
-                    $task->delete();
-                }
+
             }
 
             DB::commit();

@@ -22,6 +22,6 @@ class Session extends Model
     }
     public function case()
     {
-        return $this->belongsTo('App\Models\User','member_id');
+        return $this->belongsTo('App\Models\Cases','case_id');
     }
 }

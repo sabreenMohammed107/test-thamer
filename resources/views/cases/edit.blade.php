@@ -105,7 +105,7 @@
                                                                     </div>
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
-                                                                            <label for="">الزميل المكلف</label>
+                                                                            <label for=""> المكلف</label>
                                                                             <select class="custom-select   dynamix"
                                                                                 name="current_resposible_id" id="users">
                                                                                 <option value="{{$row->current_resposible_id}}">{{$row->current->name ?? ''}} </option>
@@ -133,6 +133,24 @@
                                                                                 value="{{ $row->exec_dision_no }}"
                                                                                 name="exec_dision_no" class="form-control"
                                                                                 id="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group">
+                                                                            <label for="">رقم سند التنفيذ </label>
+                                                                            <input type="text"
+                                                                                value="{{ $row->exec_Deed_no }}"
+                                                                                name="exec_dision_no" class="form-control"
+                                                                                id="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group">
+                                                                            <label for="">تاريخ سند التنفيذ </label>
+                                                                            <input type="text" autocomplete="off" value=""
+                                                                            name="start_date" class="form-control txt-rtl hijri-date-default"
+                                                                            id="" placeholder="{{date('Y/m/d', strtotime($row->exec_Deed_date))}}">
+
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-6">

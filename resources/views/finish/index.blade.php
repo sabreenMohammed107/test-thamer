@@ -37,7 +37,13 @@
 
                             <th>{{ date('Y/m/d', strtotime($row->task_date)) }}</th>
                             <th>{{ date('Y/m/d', strtotime($row->end_date)) }}</th>
-                            <th>{{ $row->member->name ?? '' }}</th>
+                            <th>
+                                @if ($row->task_type_id == 7)
+                                {{ $row->transfer->name ?? '' }}
+                            @else
+                                {{ $row->member->name ?? '' }}
+                            @endif
+                                </th>
                             <th>{{ $row->task_description}} </th>
                             <th>{{ $row->notes}} </th>
                         </tr>

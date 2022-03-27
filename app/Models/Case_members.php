@@ -22,7 +22,9 @@ protected $cascadeDeletes = ['diary','regulation','letter','petition','task'];
     'active',
     'controlled_by',
     'notes',
-    'case_id',
+    'referral',
+    'reason',
+
     ];
     public function case()
     {

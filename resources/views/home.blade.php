@@ -215,6 +215,80 @@
 
         <!-- /.col -->
     </div>
+    <div class="row">
+        <div class="col-xl-6 col-md-12">
+            <div class="ms-panel ms-panel-fh">
+                <div class="ms-panel-header">
+                    <h5> <a href="#">
+                        <span class="info-box-text">إشعارات النظام</span></a></h5>
+
+                </div>
+                <div class="ms-panel-body" style="overflow-y:scroll;max-height:500px; color:#fff">
+                    <ul class="ms-activity-log">
+                        @foreach (Auth::user()->notifications as $Notification)
+
+                            <li>
+                            <a href="{{$Notification->NotificationLink}}" style="display:inline-block;color:#fff;font-size:16px;text-decoration: normal">
+
+                            <div class="ms-btn-icon btn-pill icon btn-success">
+                                <i class="flaticon-tick-inside-circle"></i>
+                            </div>
+
+                            <span style="font-size:12px"> <i class="material-icons"> تاريخ </i>{{date('d-m-Y', strtotime($Notification->created_at))}} - </span>
+                            <span style="font-size:12px" > <i class="material-icons"> الساعة </i>{{date(' h:i:s', strtotime($Notification->created_at))}}  </span>
+                          <p class="fs-14">{{$Notification->data['reson']}}</p>
+                          </a>
+                        </li>
+
+                        @endforeach
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6 col-md-12">
+            <div class="ms-panel">
+                <div class="ms-panel-header">
+                    <h5>
+                    <a href="{{route('users.index')}}">
+                        <span class="info-box-text">المستخدمين</span></a></h5>
+                                    </div>
+                <div class="ms-panel-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover thead-light">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th scope="col">الاسم</th>
+                                    <th scope="col">الهاتف</th>
+                                    <th scope="col">البريد الالكترونى</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php
+                                    $i = 1
+                                @endphp
+                                @foreach ($usersNow as $r)
+                                    <tr>
+                                    <td>{{$i}}</td>
+                                    <td class="ms-table-f-w"> {{$r->name}} </td>
+                                    <td>{{$r->Phone}}</td>
+                                    <td>{{$r->Email}}</td>
+                                </tr>
+                                @php
+                                    $i++
+                                @endphp
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
     {{-- <div class="col-md-6">
         <div class="form-group">
             <label>

@@ -5,7 +5,7 @@
             <th>#</th>
             <th>تاريخ الدفعة</th>
             <th>القيمة</th>
-            <th>تم دفعها</th>
+            {{-- <th>تم دفعها</th> --}}
             <th>ملاحظات</th>
             <th>الإجراءات</th>
         </tr>
@@ -16,7 +16,7 @@
             <th>{{ $index + 1 }}</th>
             <th>{{date('Y/m/d', strtotime($row->installment_date))}} </th>
             <th>{{$row->pay_amount}}</th>
-            <th>@if($row->paid==1)<i class="fas fa-check" title="view"></i> @else <i class="fas fa-times" title="view"></i> @endif</th>
+            {{-- <th>@if($row->paid==1)<i class="fas fa-check" title="view"></i> @else <i class="fas fa-times" title="view"></i> @endif</th> --}}
             <th>{{$row->notes}}</th>
             <th>
                 <div class="btn-group">

@@ -106,7 +106,7 @@
                                                                     </div>
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
-                                                                            <label for="">الزميل المكلف</label>
+                                                                            <label for=""> المكلف</label>
                                                                             <select class="custom-select   dynamix"
                                                                                 name="current_resposible_id" id="users">
                                                                                 <option>اختر </option>
@@ -133,6 +133,26 @@
                                                                             <input type="text"
                                                                                 value="{{ old('exec_dision_no') }}"
                                                                                 name="exec_dision_no" class="form-control"
+                                                                                id="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group">
+                                                                            <label for="">رقم سند التنفيذ </label>
+                                                                            <input type="text"
+                                                                                value="{{ old('exec_Deed_no') }}"
+                                                                                name="exec_dision_no" class="form-control"
+                                                                                id="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group">
+                                                                            <label for="">تاريخ سند التنفيذ </label>
+                                                                            <input type="text"
+                                                                                value="dd-mm-YYYY"
+                                                                                name="exec_Deed_date"
+                                                                                autocomplete="off"
+                                                                                class="form-control txt-rtl hijri-date-default"
                                                                                 id="">
                                                                         </div>
                                                                     </div>
@@ -599,7 +619,7 @@
                                 </div>
                                 <!-- /.card-body -->
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
+                                    <a href="{{route('cases.index') }}" class="btn btn-secondary">إلغاء</a>
                                     <button type="submit" class="btn btn-danger">تأكيد</button>
                                 </div>
                             </form>
@@ -738,7 +758,7 @@
                                 </div>
                                 <!-- /.card-body -->
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
+                                    {{-- <a href="{{route('cases.show', $row->id) }}" class="btn btn-secondary">إلغاء</a> --}}
                                     <button type="submit" class="btn btn-danger">تأكيد</button>
                                 </div>
                             </form>

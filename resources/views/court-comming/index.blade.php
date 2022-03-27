@@ -18,26 +18,31 @@
                                 <th>#</th>
                                 <th>أيام تبقيه</th>
                                 <th>تاريخ الجلسة </th>
-                                <th>اسم القضية</th>
-                                <th>اسم المحكمة </th>
+                                <th> القضية</th>
+                                <th> المحكمة </th>
 
-                                <th>المكلف بها</th>
+                                <th>المكلف </th>
                                 <th>معلومات عن الجلسة </th>
                             </tr>
                         </thead>
                         <tbody>
+                            <?php
+                            $date = Carbon\Carbon::now()->addMonth();
+                            Alkoumi\LaravelHijriDate\Hijri::Date('l ، j F ، Y', $date);
+                            $nowHijri = Alkoumi\LaravelHijriDate\Hijri::Date('Y/m/d');
+                            ?>
                             @foreach ($commingSessions as $index => $row)
                                 <tr class="bg-light">
                                     <th>{{ $index + 1 }}</th>
                                     <?php
-                                    $remaining_days = Carbon\Carbon::now()->diffInDays(Carbon\Carbon::parse($row->session_date));
+                                    $remaining_days = Carbon\Carbon::parse($nowHijri)->diffInDays(Carbon\Carbon::parse($row->session_date));
                                     ?>
                                     <th>{{ $remaining_days }}</th>
                                     <th>{{ date('Y/m/d', strtotime($row->session_date)) }}</th>
-                                    <th> {{$row->case->name ?? '' }}</th>
+                                    <th> {{ $row->case->name ?? '' }}</th>
                                     <th>{{ $row->case->court->name ?? '' }}</th>
                                     <th>{{ $row->member->name ?? '' }}</th>
-                                    <th> {{ $row->text}}</th>
+                                    <th> {{ $row->text }}</th>
 
                                 </tr>
                             @endforeach
