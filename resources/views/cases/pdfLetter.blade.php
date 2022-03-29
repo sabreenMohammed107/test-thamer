@@ -29,8 +29,8 @@
         body,
         .body {
             box-sizing: border-box;
-            font-family: 'Tajawal', sans-serif;
-                        font-style: normal;
+            font-family: Cairo;
+            font-style: normal;
             font-weight: 400;
             line-height: 1.5;
             text-align: right;
@@ -192,9 +192,9 @@
             <div class="body-page">
                 <htmlpageheader name="page-header">
                     <div style="background: #3f474e;direction: rtl;
-                    padding:10px 10px;border-top: solid 5px #b1946c ;
-                     border-bottom: solid 15px #b1946c ; width:100%">
-                        <div style="width: 32%;float: left;color: #b1946ca2;font-size:18px;padding:20px 0">
+                    padding:10px 10px;border-top: solid 5px #c0a47a ;
+                     border-bottom: solid 15px #c0a47a ; width:100%">
+                        <div style="width: 32%;float: left;color: #c0a47a;font-size:18px;padding:20px 0">
                             Office of Lawyer
                             <span>
                                 <br>
@@ -208,7 +208,7 @@
                                     src="{{ public_path('webassets/dist/img/logo2.png') }}" /></span>
 
                         </div>
-                        <div style="width: 30%;float: left;color: #b1946ca2;font-size:18px;padding:20px 0">
+                        <div style="width: 30%;float: left;color: #c0a47a;font-size:18px;padding:20px 0">
                             مكتب المحامي
                             <span>
                                 <strong><span>ثامر بن ساري العنزي</span></strong><br>
@@ -223,7 +223,7 @@
 
                 <htmlpagefooter name="page-footer">
                     <div style="align-items: flex-start;
-    border-bottom: solid 15px #b1946c ">
+    border-bottom: solid 15px #c0a47a ">
                         <div class="footer" style="background: #3f474e;text-align:right;border-radius:0  30px 0 0; padding:20px ;
   ">
                             <strong><span> <span style="font-size: 14px; margin:1px"> t.s.a.lawyer@gmail.com </span>
