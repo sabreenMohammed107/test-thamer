@@ -217,18 +217,18 @@
     </div>
     <div class="row">
         <div class="col-xl-6 col-md-12">
-            <div class="ms-panel ms-panel-fh">
+            <div class="ms-panel ms-panel-fh" style="background-color: #fff;">
                 <div class="ms-panel-header">
                     <h5> <a href="#">
                         <span class="info-box-text">إشعارات النظام</span></a></h5>
 
                 </div>
-                <div class="ms-panel-body" style="overflow-y:scroll;max-height:500px; color:#fff">
+                <div class="ms-panel-body" style="overflow-y:scroll;max-height:500px; color:#000">
                     <ul class="ms-activity-log">
                         @foreach (Auth::user()->notifications as $Notification)
 
                             <li>
-                            <a href="{{$Notification->NotificationLink}}" style="display:inline-block;color:#fff;font-size:16px;text-decoration: normal">
+                            <a href="{{$Notification->NotificationLink}}" style="display:inline-block;color:#000;font-size:16px;text-decoration: normal">
 
                             <div class="ms-btn-icon btn-pill icon btn-success">
                                 <i class="flaticon-tick-inside-circle"></i>
@@ -248,14 +248,14 @@
         </div>
         <div class="col-xl-6 col-md-12">
             <div class="ms-panel">
-                <div class="ms-panel-header">
+                <div class="ms-panel-header"style="background-color: #fff;">
                     <h5>
                     <a href="{{route('users.index')}}">
                         <span class="info-box-text">المستخدمين</span></a></h5>
                                     </div>
-                <div class="ms-panel-body p-0">
+                <div class="ms-panel-body p-0"style="background-color: #fff;">
                     <div class="table-responsive">
-                        <table class="table table-hover thead-light">
+                        <table class="table table-hover thead-light" style="color: #000">
                             <thead>
                                 <tr>
                                     <th>#</th>
