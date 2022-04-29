@@ -26,7 +26,7 @@
                         </thead>
                         <tbody>
                             @foreach ($oldSessions as $index => $row)
-                                <tr class="bg-light">
+                                <tr class="">
                                     <th>{{ $index + 1 }}</th>
 
                                     <th>{{ date('Y/m/d', strtotime($row->session_date)) }}</th>
