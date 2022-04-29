@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300&display=swap" rel="stylesheet">
-    <title>العنوان</title>
+
+    <title>Report</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <style>
+
+
         @page {
             header: page-header;
 
@@ -31,25 +29,7 @@
 
         }
 
-        html,
-        body,
-        .body {
-            box-sizing: border-box;
-            font-family: 'Tajawal', sans-serif;
-                        font-style: normal;
-            font-weight: 400;
-            line-height: 1.5;
-            text-align: right;
-            text-align: start;
-            text-decoration: none;
-            text-shadow: none;
-            text-transform: none;
-            letter-spacing: normal;
-            word-break: normal;
-            word-spacing: normal;
-            white-space: normal;
-            line-break: auto;
-        }
+
 
         .body-page {
             padding: 35px 0 0;
@@ -190,8 +170,29 @@
 
     </style>
 </head>
+<?php
 
-<body>
+// $defaultConfig = (new Mpdf\Config\ConfigVariables())->getDefaults();
+// $fontDirs = $defaultConfig['fontDir'];
+
+// $defaultFontConfig = (new Mpdf\Config\FontVariables())->getDefaults();
+// $fontData = $defaultFontConfig['fontdata'];
+
+// $mpdf = new \Mpdf\Mpdf([
+//     'fontDir' => array_merge($fontDirs, [
+
+//         __DIR__ . '/webassets/dist/fonts',
+//     ]),
+//     'fontdata' => $fontData + [
+//         'frutiger' => [
+//             'R' => 'Roboto-Regular.ttf',
+//             'I' => 'Roboto-Bold.ttf',
+//         ]
+//     ],
+//     'default_font' => 'frutiger'
+// ]);
+?>
+<body style="font-family: 'Cairo', sans-serif !important;">
 
     <div id="mastercontainer" class="body">
         <span>

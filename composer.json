@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.3|^8.1",
         "alkoumi/laravel-hijri-date": "^1.0",
+        "barryvdh/laravel-dompdf": "^1.0",
         "carlos-meneses/laravel-mpdf": "^2.1",
         "dyrynda/laravel-cascade-soft-deletes": "^4.1",
         "fideloper/proxy": "^4.2",

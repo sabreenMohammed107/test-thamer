@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Attachment;
 use App\Models\Branch;
 use App\Models\Cases;
@@ -19,13 +20,13 @@ use App\Models\Petition;
 use App\Models\Session;
 use App\Models\task_type;
 use App\Models\User;
-use App\Models\Users_branch;
 use Carbon\Carbon;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use PDF;
+
 class RegulationController extends Controller
 {
     protected $object;
@@ -96,7 +97,7 @@ class RegulationController extends Controller
                 $data['regulation_date'] = Carbon::now();
             }
             // dd($request->get('regulation_end_date'));
-            $regulation=Interceptions_regulation::create($data);
+            $regulation = Interceptions_regulation::create($data);
 
             $type = task_type::where('id', 1)->first();
             $tasks = [
@@ -111,22 +112,22 @@ class RegulationController extends Controller
 
             ];
             if ($request->get('regulation_date')) {
-               $tasks['task_date'] = Carbon::parse($request->get('regulation_date'));
+                $tasks['task_date'] = Carbon::parse($request->get('regulation_date'));
             } else {
-               $tasks['task_date'] = Carbon::now();
+                $tasks['task_date'] = Carbon::now();
             }
             Case_members_task::create($tasks);
-    //save case member totaly=1 ,partly =2
-    $members = [
-        'case_id' => $request->get('case_id'),
-        'member_id' => $request->get('member_id'),
-        'incharge_type' => 2,
-        'incharge_date' => Carbon::now(),
-        'active' => 1,
-        'controlled_by' => Auth::user()->id,
+            //save case member totaly=1 ,partly =2
+            $members = [
+                'case_id' => $request->get('case_id'),
+                'member_id' => $request->get('member_id'),
+                'incharge_type' => 2,
+                'incharge_date' => Carbon::now(),
+                'active' => 1,
+                'controlled_by' => Auth::user()->id,
 
-    ];
-    Case_members::create($members);
+            ];
+            Case_members::create($members);
             DB::commit();
             // Enable foreign key checks!
             DB::statement('SET FOREIGN_KEY_CHECKS=1;');
@@ -225,7 +226,6 @@ class RegulationController extends Controller
                 'text' => $request->get('text'),
                 'notes' => $request->get('notes'),
 
-
             ];
             if ($request->get('regulation_date')) {
                 $data['regulation_date'] = Carbon::parse($request->get('regulation_date'));
@@ -244,9 +244,9 @@ class RegulationController extends Controller
 
             ];
             if ($request->get('regulation_date')) {
-               $tasks['task_date'] = Carbon::parse($request->get('regulation_date'));
+                $tasks['task_date'] = Carbon::parse($request->get('regulation_date'));
             }
-            Case_members_task::where('regulation_id',$id)->update($tasks);
+            Case_members_task::where('regulation_id', $id)->update($tasks);
 
             DB::commit();
             // Enable foreign key checks!
@@ -295,7 +295,7 @@ class RegulationController extends Controller
     {
 
         $regulation = Interceptions_regulation::where('id', $request->get('regulation'))->first();
-        $task = Case_members_task::where('regulation_id',$request->get('regulation'))->first();
+        $task = Case_members_task::where('regulation_id', $request->get('regulation'))->first();
 
         $tasks = [
 
@@ -315,10 +315,14 @@ class RegulationController extends Controller
             'Title' => 'لايحة إعتراضية',
         ];
         $title = 'لايحة إعتراضية';
-        $pdf = PDF::loadView('cases.pdfRegulation', $data);
+        $pdf = PDF::loadView('cases.pdfRegulation', $data, [], [
+
+        ]);
+
         $pdf->allow_charset_conversion = false;
         $pdf->autoScriptToLang = true;
         $pdf->autoLangToFont = true;
+        $pdf->default_font='dejavusans';
 
         return $pdf->stream('medium.pdf');
 
