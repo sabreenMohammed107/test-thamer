@@ -56,8 +56,9 @@ class CourtCron extends Command
       $commingSessions=Session::whereDate('session_date','>',$nowHijri)->get();
       foreach($commingSessions as $commingSession){
         foreach($users as $user){
+            $remaining_days = Carbon::parse($nowHijri)->diffInDays(Carbon::parse($commingSession->session_date));
+
             if ( $user->hasRole('Admin')) {
-                $remaining_days = Carbon::parse($nowHijri)->diffInDays(Carbon::parse($commingSession->session_date));
                 \Log::info($remaining_days);
                 if($remaining_days == 1){
                     \Log::info("Admin! + " .$user->id .''.$commingSession->session_date);
@@ -68,11 +69,16 @@ class CourtCron extends Command
             }
             else {
                 if($user->id == $commingSession->member_id ){
+                    \Log::info($remaining_days);
+                if($remaining_days == 1){
                     \Log::info("User !" .$commingSession->session_date);
+                    $user->notify(new SessionNotification($commingSession));
+                }
+
                 }
             }
       }
-        \Log::info("Cron is working fine!");
+
     }
 }
 }

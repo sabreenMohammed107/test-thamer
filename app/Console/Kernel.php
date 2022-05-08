@@ -35,9 +35,9 @@ class Kernel extends ConsoleKernel
         //          ->weekly()->mondays()->at('08:00')->withoutOverlapping();
 
 
-        $schedule->command('court:cron')
-        ->everyMinute();
-        // $schedule->command('court:cron')->dailyAt('10:00');
+        // $schedule->command('court:cron')
+        // ->everyMinute();
+        $schedule->command('court:cron')->dailyAt('10:00');
     }
 
     /**
