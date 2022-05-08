@@ -5,20 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300&display=swap" rel="stylesheet">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300&display=swap" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 
     <title>العنوان</title>
     <style>
 
+
+body {
+    font-family: examplefont, sans-serif;
+letter-spacing: 2px;
+padding-right: 0 !important;
+text-align: justify; /*for arabic and space char */
+   letter-spacing: 0;
+}
         @page {
             header: page-header;
-            font-family: 'Cairo' !important;
+            /* font-family: 'examplefont' !important; */
             footer: page-footer;
             margin:0cm 0cm;
             margin-top: 300px;
@@ -29,7 +31,8 @@
 
         }
         div#mastercontainer {
-            font-family: 'Cairo' !important;
+            font-family: examplefont, sans-serif;
+
     width: 100%;
     height: 100%;
     min-height: 100%;
@@ -38,33 +41,10 @@
 
         }
 
-<<<<<<< HEAD
-
-=======
-        html,
-        body,
-        .body {
-            box-sizing: border-box;
-            font-family: 'Cairo' !important;
-                        font-style: normal;
-            font-weight: 400;
-            line-height: 1.5;
-            text-align: right;
-            text-align: start;
-            text-decoration: none;
-            text-shadow: none;
-            text-transform: none;
-            letter-spacing: normal;
-            word-break: normal;
-            word-spacing: normal;
-            white-space: normal;
-            line-break: auto;
-        }
->>>>>>> a12d81c90ad107153ee674904b9550fef027aec4
 
         .body-page {
             padding: 35px 0 0;
-            direction: ltr;
+            direction: rtl;
             /* background: #ddd; */
             width: 100%;
         }
@@ -201,31 +181,10 @@
 
     </style>
 </head>
-<?php
 
-// $defaultConfig = (new Mpdf\Config\ConfigVariables())->getDefaults();
-// $fontDirs = $defaultConfig['fontDir'];
+<body >
 
-// $defaultFontConfig = (new Mpdf\Config\FontVariables())->getDefaults();
-// $fontData = $defaultFontConfig['fontdata'];
-
-// $mpdf = new \Mpdf\Mpdf([
-//     'fontDir' => array_merge($fontDirs, [
-
-//         __DIR__ . '/webassets/dist/fonts',
-//     ]),
-//     'fontdata' => $fontData + [
-//         'frutiger' => [
-//             'R' => 'Roboto-Regular.ttf',
-//             'I' => 'Roboto-Bold.ttf',
-//         ]
-//     ],
-//     'default_font' => 'frutiger'
-// ]);
-?>
-<body style="font-family: 'Cairo', sans-serif !important;">
-
-    <div id="mastercontainer" class="body">
+    <div id="mastercontainer" class="body" >
         <span>
             <div class="body-page">
                 <htmlpageheader name="page-header">

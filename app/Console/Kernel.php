@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        Commands\CourtCron::class,
     ];
 
     /**
@@ -25,6 +25,19 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+        // $schedule->command('emails:send')
+        //          ->dailyAt('08:00')->withoutOverlapping();
+
+        // $schedule->command('emails:evening-status')
+        //          ->dailyAt('17:00')->withoutOverlapping();
+
+        // $schedule->command('email:weekly-report')
+        //          ->weekly()->mondays()->at('08:00')->withoutOverlapping();
+
+
+        $schedule->command('court:cron')
+        ->everyMinute();
+        // $schedule->command('court:cron')->dailyAt('10:00');
     }
 
     /**

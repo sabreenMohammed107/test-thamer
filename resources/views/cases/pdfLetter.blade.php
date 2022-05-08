@@ -45,6 +45,13 @@
             line-break: auto;
         }
 
+        body {
+    font-family: examplefont, sans-serif;
+letter-spacing: 2px;
+padding-right: 0 !important;
+text-align: justify; /*for arabic and space char */
+   letter-spacing: 0;
+}
         .body-page {
             padding: 35px 0 0;
             direction: ltr;

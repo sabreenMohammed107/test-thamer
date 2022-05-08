@@ -2,20 +2,26 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="{{route('home')}}" class="brand-link">
-            <img src="{{ asset('webassets/dist/img/zz.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-            <span class="brand-text font-weight-light">ثامر بن ساري العنزي</span>
+            {{-- <img src="{{ asset('webassets/dist/img/zz.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
+            <p class="brand-text font-weight-light ml-3" style="font-size: 20px">ثامر بن ساري العنزي</p>
+            {{-- <p class="m-0 text-dark">ثامر بن ساري العنزي</p> --}}
         </a>
 
         <!-- Sidebar -->
         <div class="sidebar dir-rtl">
             <!-- Sidebar user panel (optional) -->
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            {{-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
                     <img src="{{ asset('webassets/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
                     <a href="{{route('home')}}" class="d-block">{{Auth::user()->name}}</a>
                 </div>
+            </div> --}}
+
+            <div class="user-panel" style="background: #fff">
+                <img src="{{ asset('webassets/dist/img/bg.jpeg')}}" style="width:100%;height:150px" alt="User Image" />
+
             </div>
 
             <!-- Sidebar Menu -->

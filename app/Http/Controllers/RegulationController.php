@@ -322,8 +322,9 @@ class RegulationController extends Controller
         $pdf->allow_charset_conversion = false;
         $pdf->autoScriptToLang = true;
         $pdf->autoLangToFont = true;
-        $pdf->default_font='dejavusans';
-
+        $pdf->default_font='Quantify';
+        // $pdf->SetFont('examplefont');
+//
         return $pdf->stream('medium.pdf');
 
     }

@@ -35,6 +35,14 @@
 
                             </a>
                             @endforeach
+                            @foreach (Auth::user()->unreadNotifications->where('type','App\Notifications\SessionNotification') as $Notification)
+
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-envelope mr-2"></i>{{$Notification->data['title']}} - {{$Notification->data['loading_date']}}
+                                <span class="float-left text-muted text-sm">{{ Carbon\Carbon::parse($Notification->created_at)->diffForHumans()}}</span>
+
+                            </a>
+                            @endforeach
 
                             <div class="dropdown-divider"></div>
                             @if(auth()->user()->unreadNotifications()->count()>0)

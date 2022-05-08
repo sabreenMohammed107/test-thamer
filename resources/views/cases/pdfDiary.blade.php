@@ -52,6 +52,13 @@
             width: 100%;
         }
 
+        body {
+    font-family: examplefont, sans-serif;
+letter-spacing: 2px;
+padding-right: 0 !important;
+text-align: justify; /*for arabic and space char */
+   letter-spacing: 0;
+}
         .dir-rtl {
             direction: rtl !important;
         }
