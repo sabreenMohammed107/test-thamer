@@ -269,7 +269,7 @@ text-align: justify; /*for arabic and space char */
         <p style="text-align: right;">{{ $regulation->requirements }}</p>
         <p style="text-align: left;font-weight: bold;"> المحامي </p>
         {{-- param --}}
-        <p style="text-align: left;font-weight: bold;padding:0;margin:0">{{ $regulation->member->name }}</p>
+        <p style="text-align: left;font-weight: bold;padding:0;margin:0">{{ $regulation->member->name ?? '' }}</p>
     </div>
 </body>
 

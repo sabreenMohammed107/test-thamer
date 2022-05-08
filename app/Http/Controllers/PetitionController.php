@@ -231,7 +231,7 @@ class PetitionController extends Controller
 
             $tasks = [
 
-                'member_id' => $request->get('member_id'),
+                // 'member_id' => $request->get('member_id'),
 
                 'task_status_id' => 2,
                 'control_by_id' => Auth::user()->id,

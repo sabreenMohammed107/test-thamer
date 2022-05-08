@@ -216,7 +216,7 @@ Case_members::create($members);
             $data = [
 
                 'case_id' => $request->get('case_id'),
-                'member_id' => $request->get('member_id'),
+                // 'member_id' => $request->get('member_id'),
                 'text' => $request->get('text'),
                 'notes' => $request->get('notes'),
 

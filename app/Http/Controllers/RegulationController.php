@@ -218,7 +218,7 @@ class RegulationController extends Controller
             $data = [
 
                 'case_id' => $request->get('case_id'),
-                'member_id' => $request->get('member_id'),
+                // 'member_id' => $request->get('member_id'),
                 // 'regulation_date' => $request->get('regulation_date'),
                 'facts' => $request->get('facts'),
                 'defenses' => $request->get('defenses'),
