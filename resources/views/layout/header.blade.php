@@ -87,6 +87,13 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
+                                <a href="{{route('courts.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>المحاكم</p>
+                                </a>
+
+                            </li>
+                            <li class="nav-item">
                                 <a href="{{route('un-finish')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>المهام غير المنجزة</p>

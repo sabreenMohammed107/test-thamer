@@ -262,8 +262,8 @@ text-align: justify; /*for arabic and space char */
                 <span>سلمه الله</span>
             </p>
             <p style="text-align: center">السلام عليكم ورحمة الله وبركاتة</p>
-            <p style="text-align: right"><span style="border-bottom: 2px solid #000;
-                "> : إشارة إلى الدعوى </span></p>
+            {{-- <p style="text-align: right"><span style="border-bottom: 2px solid #000;
+                "> : إشارة إلى الدعوى </span></p> --}}
             {{-- param --}}
             <p style="text-align: right;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
@@ -273,7 +273,7 @@ text-align: justify; /*for arabic and space char */
                 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;</p>
                 <p style="text-align: right"><span style="border-bottom: 2px solid #000;
-                    "> :الطلبات </span></p>
+                    "> :نص المذكرة </span></p>
             {{-- param --}}
             <p style="text-align: right;">{{ $diary->text }}</p>
 
@@ -282,7 +282,7 @@ text-align: justify; /*for arabic and space char */
             {{-- param --}}
             <p style="text-align: left;"> المحامي </p>
             {{-- param --}}
-            <p style="text-align: right;"></p>
+            <p style="text-align: right;">{{ $diary->member->name ?? '' }}</p>
         </div>
 </body>
 
