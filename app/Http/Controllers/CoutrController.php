@@ -26,7 +26,7 @@ class CoutrController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        return view('courts.add');
     }
 
     /**
@@ -64,7 +64,7 @@ return redirect()->route('courts.index')->with('flash_success', 'تم الحفظ
     {
         $row = Court::where('id', '=', $id)->first();
 
-        return view($this->viewName . 'edit', compact('row'));
+        return view('courts.edit', compact('row'));
     }
 
     /**
