@@ -35,11 +35,14 @@
                         <label for="">نوع الهوية</label>
                         <select class="custom-select" name="identity_type_id">
                             <option value="0"
-                                {{$row->oppon && $row->oppon->identity_type_id == 0 ? 'selected' : '' }}>
-                                Passport</option>
-                            <option value="1"
-                                {{$row->oppon && $row->oppon->identity_type_id == 1 ? 'selected' : '' }}>
-                                ID</option>
+                            {{ $row->oppon && $row->oppon->identity_type_id == 0 ? 'selected' : '' }}>
+                            هويه وطنية</option>
+                        <option value="1"
+                            {{ $row->oppon && $row->oppon->identity_type_id == 1 ? 'selected' : '' }}>
+                            هوية مقيم</option>
+                            <option value="2"
+                            {{ $row->oppon && $row->oppon->identity_type_id == 2 ? 'selected' : '' }}>
+                             جواز سفر</option>
 
                         </select>
                     </div>

@@ -543,10 +543,13 @@
                                                 <select class="custom-select" name="identity_type_id">
                                                     <option value="0"
                                                         {{ old('identity_type_id') == 0 ? 'selected' : '' }}>
-                                                        Passport</option>
+                                                        هويه وطنية</option>
                                                     <option value="1"
                                                         {{ old('identity_type_id') == 1 ? 'selected' : '' }}>
-                                                        ID</option>
+                                                        هوية مقيم</option>
+                                                        <option value="2"
+                                                        {{ old('identity_type_id') == 2 ? 'selected' : '' }}>
+                                                         جواز سفر</option>
 
                                                 </select>
                                             </div>
@@ -681,11 +684,14 @@
                                                 <label for="">نوع الهوية</label>
                                                 <select class="custom-select" name="identity_type_id">
                                                     <option value="0"
-                                                        {{ old('identity_type_id') == 0 ? 'selected' : '' }}>
-                                                        Passport</option>
-                                                    <option value="1"
-                                                        {{ old('identity_type_id') == 1 ? 'selected' : '' }}>
-                                                        ID</option>
+                                                    {{ old('identity_type_id') == 0 ? 'selected' : '' }}>
+                                                    هويه وطنية</option>
+                                                <option value="1"
+                                                    {{ old('identity_type_id') == 1 ? 'selected' : '' }}>
+                                                    هوية مقيم</option>
+                                                    <option value="2"
+                                                    {{ old('identity_type_id') == 2 ? 'selected' : '' }}>
+                                                     جواز سفر</option>
 
                                                 </select>
                                             </div>

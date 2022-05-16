@@ -295,10 +295,13 @@
                                                                                 name="identity_type_id" disabled>
                                                                                 <option value="0"
                                                                                     {{ $case->client && $case->client->identity_type_id == 0 ? 'selected' : '' }}>
-                                                                                    Passport</option>
+                                                                                    هويه وطنية</option>
                                                                                 <option value="1"
                                                                                     {{ $case->client && $case->client->identity_type_id == 1 ? 'selected' : '' }}>
-                                                                                    ID</option>
+                                                                                    هوية مقيم</option>
+                                                                                    <option value="2"
+                                                                                    {{ $case->client && $case->client->identity_type_id == 2 ? 'selected' : '' }}>
+                                                                                     جواز سفر</option>
 
                                                                             </select>
                                                                         </div>
@@ -430,13 +433,16 @@
                                                                             <label for="">نوع الهوية</label>
                                                                             <select class="custom-select"
                                                                                 name="identity_type_id" disabled>
-                                                                                <option value="0"
+
+                                                                                    <option value="0"
                                                                                     {{ $case->oppon && $case->oppon->identity_type_id == 0 ? 'selected' : '' }}>
-                                                                                    Passport</option>
+                                                                                    هويه وطنية</option>
                                                                                 <option value="1"
                                                                                     {{ $case->oppon && $case->oppon->identity_type_id == 1 ? 'selected' : '' }}>
-                                                                                    ID</option>
-
+                                                                                    هوية مقيم</option>
+                                                                                    <option value="2"
+                                                                                    {{ $case->oppon && $case->oppon->identity_type_id == 2 ? 'selected' : '' }}>
+                                                                                     جواز سفر</option>
                                                                             </select>
                                                                         </div>
                                                                     </div>
