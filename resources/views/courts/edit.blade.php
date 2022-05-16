@@ -16,7 +16,7 @@
             <div class="card-body">
 
 
-{!! Form::model($user, ['method' => 'PATCH','route' => ['courts.update', $row->id]]) !!}
+{!! Form::model($row, ['method' => 'PATCH','route' => ['courts.update', $row->id]]) !!}
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
