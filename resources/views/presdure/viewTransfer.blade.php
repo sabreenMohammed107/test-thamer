@@ -72,7 +72,7 @@
     </div>
     <!-- /.card-body -->
     <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
+      <a  href="{{route('cases.show', $prosed->case_id) }}" class="btn btn-secondary">إلغاء</a>
         {{-- <button type="submit" class="btn btn-success">تأكيد</button> --}}
     </div>
 </form>
