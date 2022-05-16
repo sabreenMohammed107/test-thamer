@@ -85,8 +85,9 @@ class FeesController extends Controller
             DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
             $case = Cases::where('id', $request->get('case_id'))->first();
+            return redirect()->route($this->routeName . 'show',$request->get('case_id'))->with('flash_success', $this->message);
 
-            return redirect()->back()->with('flash_success', $this->message);
+            // return redirect()->back()->with('flash_success', $this->message);
 
         } catch (\Throwable $e) {
             // throw $th;

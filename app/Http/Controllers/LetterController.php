@@ -135,7 +135,9 @@ class LetterController extends Controller
             $case = Cases::where('id', $request->get('case_id'))->first();
             // return (new CasesController($case))->show($request->get('case_id'));
             // return redirect()->route($this->routeName . 'create')->with('flash_success', $this->message);
-            return redirect()->back()->with('flash_success', $this->message);
+            // return redirect()->back()->with('flash_success', $this->message);
+            return redirect()->route($this->routeName . 'show',$request->get('case_id'))->with('flash_success', $this->message);
+
 
         } catch (\Throwable$e) {
             // throw $th;
@@ -252,7 +254,9 @@ class LetterController extends Controller
             $case = Cases::where('id', $request->get('case_id'))->first();
             // return (new CasesController($case))->show($request->get('case_id'));
             // return redirect()->route($this->routeName . 'create')->with('flash_success', $this->message);
-            return redirect()->back()->with('flash_success', $this->message);
+            return redirect()->route($this->routeName . 'show',$request->get('case_id'))->with('flash_success', $this->message);
+
+            // return redirect()->back()->with('flash_success', $this->message);
 
         } catch (\Throwable$e) {
             // throw $th;
