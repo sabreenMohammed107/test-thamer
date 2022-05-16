@@ -31,8 +31,8 @@
     <td>
         <div class="btn-group">
 
-       <a class="btn btn-default" href="{{ route('courts.edit',$user->id) }}"><i class="fas fa-edit" title="edit"></i></a>
-        {!! Form::open(['method' => 'DELETE','route' => ['courts.destroy', $user->id],'style'=>'display:inline']) !!}
+       <a class="btn btn-default" href="{{ route('courts.edit',$court->id) }}"><i class="fas fa-edit" title="edit"></i></a>
+        {!! Form::open(['method' => 'DELETE','route' => ['courts.destroy', $court->id],'style'=>'display:inline']) !!}
             {{-- {!! Form::submit('Delete', ['class' => 'btn btn-default']) !!} --}}
             {{ Form::button('<i class="fas fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-default'] )  }}
 
