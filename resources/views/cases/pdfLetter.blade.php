@@ -282,7 +282,7 @@ text-align: justify; /*for arabic and space char */
             {{-- param --}}
             <p style="text-align: left;"> المحامي </p>
             {{-- param --}}
-            <p style="text-align: right;"></p>
+            <p style="text-align: left;font-weight: bold;padding:0;margin:0">{{ $letter->member->name ?? '' }}</p>
         </div>
 </body>
 

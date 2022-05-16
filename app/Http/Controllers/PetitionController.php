@@ -309,7 +309,7 @@ class PetitionController extends Controller
     {
         $petition = Petition::where('id', $id)->first();
         $data = [
-            'letter' => $petition,
+            'petition' => $petition,
             'Title' => 'التماس اعادة النظر',
         ];
         $title = 'التماس اعادة النظر';
