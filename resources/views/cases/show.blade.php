@@ -307,7 +307,7 @@
                                                                         <div class="form-group">
                                                                             <label for="">تاريخ الميلاد</label>
                                                                             <input type="text" autocomplete="off" readonly
-                                                                                @if ($case->oppon) value="{{ date('Y/m/d', strtotime($case->client->birth_date)) }}" @endif name="birth_date"
+                                                                                @if ($case->client) value="{{ date('Y/m/d', strtotime($case->client->birth_date)) }}" @endif name="birth_date"
                                                                                 class="form-control txt-rtl hijri-date-default"
                                                                                 id="">
                                                                         </div>
