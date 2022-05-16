@@ -91,7 +91,7 @@ return redirect()->route('courts.index')->with('flash_success', 'تم الحفظ
     public function destroy($id)
     {
         try {
-            $this->object::findOrFail($id)->delete();
+            Court::findOrFail($id)->delete();
 
         } catch (QueryException $q) {
 
