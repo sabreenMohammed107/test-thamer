@@ -1,3 +1,4 @@
+
 @extends('layout.web')
 @section('title', 'إدارة المهام')
 
@@ -19,16 +20,16 @@
 <!-- form start -->
 <form role="form" action="{{ route('memberReferral') }}" method="post">
     @csrf
-    <input type="hidden" name="case_id" value="{{ $case->id }}">
+    <input type="hidden" name="case_id" value="{{ $prosed->case_id }}">
     <div class="card-body">
         <div class="row">
             <div class="col-sm-12">
                 <div class="form-group">
                     <label for="">المكلف</label>
-                    <select class="custom-select" name="member_id">
+                    <select class="custom-select" name="transfer_case_id ">
                         @foreach ($users as $type)
-                            <option {{ Auth::user()->id == $type->id ? 'selected' : '' }}
-                                value="{{ $type->id }}" >
+                            <option {{ $prosed->transfer_case_id  == $type->id ? 'selected' : '' }}
+                                value="{{ $type->id }}">
                                 {{ $type->name }}</option>
                         @endforeach
                     </select>
@@ -37,29 +38,34 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <label for="">تاريخ الإحالة </label>
-                    <input type="text" autocomplete="off" value=""
-                        class="form-control txt-rtl hijri-date-default" name="letter_date"
-                        class="form-control" id="">
+                    <input type="text" readonly value="{{$prosed->end_date}}" name="incharge_date">
+
+                    {{-- <input type="text" autocomplete="off" value=""
+                        class="form-control txt-rtl hijri-date-default" name="incharge_date"
+                        class="form-control" id="" placeholder="@if ($prosed){{ date('d-m-Y', strtotime($prosed->end_date)) }}@endif" > --}}
 
                 </div>
             </div>
+            <?php
+            $member=App\Models\Case_members::where('member_id',$prosed->transfer_case_id)->where('case_id',$prosed->case_id)->first();
+            ?>
             <div class="col-sm-6">
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="">وقت الإحالة </label>
                     <input type="time" id="appt" name="referral"
-                    min="09:00" max="18:00"
+                    min="09:00" max="18:00" value="{{$member->referral}}"
                         class="form-control"
                         >
 
                 </div>
-            </div>
+            </div> --}}
 
 
 
             <div class="col-sm-12">
                 <div class="form-group">
                     <label>سبب الإحالة </label>
-                    <textarea name="reason" class="form-control" rows="5"></textarea>
+                    <textarea name="reason"  class="form-control" rows="5">{{$member->reason}}</textarea>
                 </div>
             </div>
         </div>
@@ -67,7 +73,7 @@
     <!-- /.card-body -->
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
-        <button type="submit" class="btn btn-success">تأكيد</button>
+        {{-- <button type="submit" class="btn btn-success">تأكيد</button> --}}
     </div>
 </form>
 {{-- End Form --}}
