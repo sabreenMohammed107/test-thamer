@@ -82,7 +82,7 @@
                                                                     </div>
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
-                                                                            <label for="">اسم القضيه</label>
+                                                                            <label for=""> القضيه</label>
                                                                             <input type="text" value="{{ $row->name }}"
                                                                                 name="name" class="form-control" id="">
                                                                         </div>
