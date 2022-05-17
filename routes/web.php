@@ -34,6 +34,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('cases', 'App\Http\Controllers\CasesController');
     //CoutrController
     Route::resource('courts', 'App\Http\Controllers\CoutrController');
+
     Route::get('dynamicBranch/fetch', 'App\Http\Controllers\CasesController@fetchUsers')->name('dynamicBranch.fetch');
     Route::get('dynamicCases/search', 'App\Http\Controllers\CasesController@search')->name('dynamicCases.search');
     Route::get('dynamicCasesAdmin/searchAdmin', 'App\Http\Controllers\CasesController@searchAdmin')->name('dynamicCasesAdmin.searchAdmin');

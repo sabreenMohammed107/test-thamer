@@ -1,18 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300&display=swap" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
     <title>العنوان</title>
     <style>
+
+
+body {
+    font-family: examplefont, sans-serif;
+letter-spacing: 2px;
+padding-right: 0 !important;
+text-align: justify; /*for arabic and space char */
+   letter-spacing: 0;
+}
         @page {
             header: page-header;
-
+            /* font-family: 'examplefont' !important; */
             footer: page-footer;
             margin:0cm 0cm;
             margin-top: 300px;
@@ -20,45 +28,27 @@
 
             margin-bottom: 150px;
 
-        }
-
 
         }
+        div#mastercontainer {
+            font-family: examplefont, sans-serif;
 
-        html,
-        body,
-        .body {
-            box-sizing: border-box;
-            font-family: 'Tajawal', sans-serif;
-                        font-style: normal;
-            font-weight: 400;
-            line-height: 1.5;
-            text-align: right;
-            text-align: start;
-            text-decoration: none;
-            text-shadow: none;
-            text-transform: none;
-            letter-spacing: normal;
-            word-break: normal;
-            word-spacing: normal;
-            white-space: normal;
-            line-break: auto;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    margin-bottom: -100px;
+}
+
         }
+
 
         .body-page {
             padding: 35px 0 0;
-            direction: ltr;
+            direction: rtl;
             /* background: #ddd; */
             width: 100%;
         }
 
-        body {
-    font-family: examplefont, sans-serif;
-letter-spacing: 2px;
-padding-right: 0 !important;
-text-align: justify; /*for arabic and space char */
-   letter-spacing: 0;
-}
         .dir-rtl {
             direction: rtl !important;
         }
@@ -76,7 +66,7 @@ text-align: justify; /*for arabic and space char */
         }
 
         .header {
-            padding: 25px 0;
+            padding: 5px 0;
             width: 20%;
             font-size: 10px;
             text-align: center;
@@ -167,7 +157,7 @@ text-align: justify; /*for arabic and space char */
         }
 
         thead tr th {
-            font-weight: 400;
+            font-weight: 100;
             font-size: 12px;
             padding: 10px;
         }
@@ -192,18 +182,18 @@ text-align: justify; /*for arabic and space char */
     </style>
 </head>
 
-<body>
+<body >
 
-    <div class="body">
+    <div id="mastercontainer" class="body" >
         <span>
             <div class="body-page">
                 <htmlpageheader name="page-header">
                     <div style="background: #02283f;direction: rtl;
-                    padding:10px 10px;border-top: solid 5px #c0a47a ;
-                     border-bottom: solid 15px #c0a47a ; width:100%">
-                        <div style="width: 32%;float: left;color: #c0a47a;font-size:18px;padding:20px 0">
+                    padding:10px 10px;border-top: solid 5px #c0a47a  ;
+                     border-bottom: solid 15px #c0a47a  ; width:100%">
+                        <div style="width: 32%;float: left;color: #c0a47a ;font-size:14px;padding:10px 0;text-align:left !important">
                             Office of Lawyer
-                            <span>
+                            <span style="text-align:left !important">
                                 <br>
                                 <strong><span>Thamer Sari Alenazi</span></strong><br>
                                 <span style="font-size:14px;"> Advocates & Legal Consultants</span><br>
@@ -211,11 +201,11 @@ text-align: justify; /*for arabic and space char */
                             </span>
                         </div>
                         <div style="width: 30%;float: left;">
-                            <span><img height="300" style="text-align: right;"
+                            <span><img height="150" style="text-align: right;"
                                     src="{{ public_path('webassets/dist/img/logo2.png') }}" /></span>
 
                         </div>
-                        <div style="width: 30%;float: left;color: #c0a47a;font-size:18px;padding:20px 0">
+                        <div style="width: 30%;float: left;color: #c0a47a ;font-size:14px;padding:20px 0">
                             مكتب المحامي
                             <span>
                                 <strong><span>ثامر بن ساري العنزي</span></strong><br>

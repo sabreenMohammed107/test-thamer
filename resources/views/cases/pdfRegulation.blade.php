@@ -66,7 +66,7 @@ text-align: justify; /*for arabic and space char */
         }
 
         .header {
-            padding: 25px 0;
+            padding: 5px 0;
             width: 20%;
             font-size: 10px;
             text-align: center;
@@ -191,7 +191,7 @@ text-align: justify; /*for arabic and space char */
                     <div style="background: #02283f;direction: rtl;
                     padding:10px 10px;border-top: solid 5px #c0a47a  ;
                      border-bottom: solid 15px #c0a47a  ; width:100%">
-                        <div style="width: 32%;float: left;color: #c0a47a ;font-size:18px;padding:20px 0;text-align:left !important">
+                        <div style="width: 32%;float: left;color: #c0a47a ;font-size:14px;padding:10px 0;text-align:left !important">
                             Office of Lawyer
                             <span style="text-align:left !important">
                                 <br>
@@ -201,11 +201,11 @@ text-align: justify; /*for arabic and space char */
                             </span>
                         </div>
                         <div style="width: 30%;float: left;">
-                            <span><img height="200" style="text-align: right;"
+                            <span><img height="150" style="text-align: right;"
                                     src="{{ public_path('webassets/dist/img/logo2.png') }}" /></span>
 
                         </div>
-                        <div style="width: 30%;float: left;color: #c0a47a ;font-size:18px;padding:20px 0">
+                        <div style="width: 30%;float: left;color: #c0a47a ;font-size:14px;padding:20px 0">
                             مكتب المحامي
                             <span>
                                 <strong><span>ثامر بن ساري العنزي</span></strong><br>
