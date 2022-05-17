@@ -262,8 +262,8 @@ text-align: justify; /*for arabic and space char */
                 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;</p>
-                <p style="text-align: right"><span style="border-bottom: 2px solid #000;
-                    "> :نص المذكرة </span></p>
+                {{-- <p style="text-align: right"><span style="border-bottom: 2px solid #000;
+                    "> :نص المذكرة </span></p> --}}
             {{-- param --}}
             <p style="text-align: right;">{{ $diary->text }}</p>
 
