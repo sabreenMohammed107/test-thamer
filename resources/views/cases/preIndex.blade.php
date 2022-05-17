@@ -2,7 +2,7 @@
     <thead class="bg-light">
         <tr>
             <th>#</th>
-            <th>اسم القضيه</th>
+            <th> القضيه</th>
             <th>الوصف</th>
             <th>اسم العميل </th>
             <th>تاريخ بداية القضية</th>
