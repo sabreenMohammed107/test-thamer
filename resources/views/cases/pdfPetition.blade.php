@@ -209,7 +209,7 @@ text-align: justify; /*for arabic and space char */
                             مكتب المحامي
                             <span>
                                 <strong><span>ثامر بن ساري العنزي</span></strong><br>
-                                للمحاماه والاستشارات القانونية<br>
+                                للمحاماة والاستشارات القانونية<br>
                                 ترخيص رقم 40 / 895<br>
                             </span>
                         </div>
