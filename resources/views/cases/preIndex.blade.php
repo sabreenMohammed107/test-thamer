@@ -33,6 +33,10 @@
                     <button type="button" class="btn btn-default" data-toggle="modal"
                     data-target="#del{{ $row->id }}"><i class="fas fa-trash-alt"></i></button>
                                      @endcan
+
+                                     @can('cases-edit')
+                                     <a href="{{route('caseReport', $row->id) }}" class="btn btn-default"><i class="fa fa-file" title="report"></i></a>
+                                     @endcan
                 </div>
             </th>
         </tr>

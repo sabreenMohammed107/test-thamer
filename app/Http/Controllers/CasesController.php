@@ -7,6 +7,7 @@ use App\Models\Branch;
 use App\Models\Cases;
 use App\Models\Case_members;
 use App\Models\Case_members_task;
+use App\Models\Case_report;
 use App\Models\Case_type;
 use App\Models\City;
 use App\Models\Court;
@@ -558,5 +559,37 @@ class CasesController extends Controller
 
         $data = $cases->paginate(200);
         return view($this->viewName . 'preIndex', compact('data'))->render();
+    }
+
+
+    public function caseReport($id){
+        $reports=Case_report::where('case_id',$id)->get();
+        $case=Cases::where('id',$id)->first();
+        return view('casesReport.index', compact('reports','case'));
+    }
+
+    public function caseCreateReport($id){
+        $case=Cases::where('id',$id)->first();
+        return view('casesReport.add', compact('case'));
+    }
+
+    public function caseStoreReport(Request $request){
+dd($request->all());
+$input = $request->except(['_token','report_date']);
+$input['report_date'] = Carbon::parse($request->get('report_date'));
+Court::create($input);
+return redirect()->route('courts.index')->with('flash_success', 'تم الحفظ بنجاح');
+    }
+
+    public function caseEditReport($id){
+
+    }
+
+    public function caseUpdateReport(Request $request){
+
+    }
+
+    public function caseDeleteReport($id){
+
     }
 }

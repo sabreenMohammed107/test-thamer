@@ -32,6 +32,15 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('users', UserController::class);
     //case route
     Route::resource('cases', 'App\Http\Controllers\CasesController');
+    //caseReport
+    Route::get('caseReport/{id}', 'App\Http\Controllers\CasesController@caseReport')->name('caseReport');
+    Route::get('caseCreateReport/{id}', 'App\Http\Controllers\CasesController@caseCreateReport')->name('caseCreateReport');
+    Route::post('caseStoreReport', 'App\Http\Controllers\CasesController@caseStoreReport')->name('caseStoreReport');
+    Route::get('caseEditReport/{id}', 'App\Http\Controllers\CasesController@caseEditReport')->name('caseEditReport');
+    Route::post('caseUpdateReport', 'App\Http\Controllers\CasesController@caseUpdateReport')->name('caseUpdateReport');
+    Route::post('caseDeleteReport/{id}', 'App\Http\Controllers\CasesController@caseDeleteReport')->name('caseDeleteReport');
+
+
     //CoutrController
     Route::resource('courts', 'App\Http\Controllers\CoutrController');
 

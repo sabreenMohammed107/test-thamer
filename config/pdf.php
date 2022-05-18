@@ -52,8 +52,8 @@ return [
     'custom_font_dir'  => base_path('resources/fonts/'), // don't forget the trailing slash!
     'custom_font_data' => [
       'examplefont' => [
-        'R' => 'Cairo-Regular.ttf',    // regular font
-                'B' => 'Cairo-Bold.ttf',          // optional: bold font
+        'R' => '4_3D.ttf',    // regular font
+                // 'B' => 'Cairo-Bold.ttf',          // optional: bold font
 //                        'useOTL' => 0xFF,
                 'useOTL' => 0x80,
                 'useKashida' => 75,
