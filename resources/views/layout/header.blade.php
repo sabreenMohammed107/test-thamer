@@ -363,14 +363,14 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            @can('roles-list')
+                            {{-- @can('roles-list') --}}
                             <li class="nav-item">
                                 <a href="{{route('roles.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p> قائمه الصلاحيات</p>
                                 </a>
                             </li>
-                            @endcan
+                            {{-- @endcan --}}
                         </ul>
                     </li>
                     <!--<li class="nav-item has-treeview">
