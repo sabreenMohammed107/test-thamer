@@ -13,6 +13,7 @@ class Letter extends Model
         'case_id',
         'member_id',
         'letter_no',
+        'title',
         'letter_date',
         'text',
         'notes',

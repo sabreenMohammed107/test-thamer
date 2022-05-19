@@ -38,7 +38,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('caseStoreReport', 'App\Http\Controllers\CasesController@caseStoreReport')->name('caseStoreReport');
     Route::get('caseEditReport/{id}', 'App\Http\Controllers\CasesController@caseEditReport')->name('caseEditReport');
     Route::post('caseUpdateReport', 'App\Http\Controllers\CasesController@caseUpdateReport')->name('caseUpdateReport');
-    Route::post('caseDeleteReport/{id}', 'App\Http\Controllers\CasesController@caseDeleteReport')->name('caseDeleteReport');
+    Route::delete('caseDeleteReport/{id}', 'App\Http\Controllers\CasesController@caseDeleteReport')->name('caseDeleteReport');
 
 
     //CoutrController

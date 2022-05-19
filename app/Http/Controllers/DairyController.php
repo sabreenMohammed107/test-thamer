@@ -85,6 +85,7 @@ class DairyController extends Controller
                 'member_id' => $request->get('member_id'),
                 // 'diary_date' => Carbon::parse($request->get('diary_date')),
                 'text' => $request->get('text'),
+                'title'=> $request->get('title'),
                 'notes' => $request->get('notes'),
 
             ];
@@ -218,6 +219,7 @@ Case_members::create($members);
                 'case_id' => $request->get('case_id'),
                 // 'member_id' => $request->get('member_id'),
                 'text' => $request->get('text'),
+                'title'=> $request->get('title'),
                 'notes' => $request->get('notes'),
 
             ];

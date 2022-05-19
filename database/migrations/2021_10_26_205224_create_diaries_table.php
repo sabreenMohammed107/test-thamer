@@ -17,6 +17,7 @@ class CreateDiariesTable extends Migration
             $table->id();
             $table->foreignId('case_id')->nullable();
             $table->foreignId('member_id')->nullable();
+            $table->string('title')->nullable();
             $table->datetime('diary_date')->nullable();
             $table->text('text')->nullable();
             $table->text('notes')->nullable();

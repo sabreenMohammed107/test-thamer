@@ -77,7 +77,7 @@ text-align: justify; /*for arabic and space char */
 
         .footer {
             padding: 5px 0;
-            width: 60%;
+            width: 30%;
             font-size: 10px;
             position: fixed;
             margin-top: 100px;
@@ -191,12 +191,12 @@ text-align: justify; /*for arabic and space char */
                     <div style="background: #02283f;direction: rtl;
                     padding:10px 10px;border-top: solid 5px #c0a47a  ;
                      border-bottom: solid 15px #c0a47a  ; width:100%">
-                        <div style="width: 32%;float: left;color: #c0a47a ;font-size:14px;padding:10px 0;text-align:left !important">
+                        <div dir="ltr" style="width: 25%;float: left;color: #c0a47a ;font-size:20px;padding:10px 0;text-align:left !important;margin-left:30px">
                             Office of Lawyer
                             <span style="text-align:left !important">
                                 <br>
                                 <strong><span>Thamer Sari Alenazi</span></strong><br>
-                                <span style="font-size:14px;"> Advocates & Legal Consultants</span><br>
+                                <span style="font-size:20px;"> Advocates & Legal Consultants</span><br>
                                 Lisence No: 895 / 40<br>
                             </span>
                         </div>
@@ -216,30 +216,27 @@ text-align: justify; /*for arabic and space char */
                         <div style="clear: both"></div>
                     </div>
 
-                </htmlpageheader>
+        </htmlpageheader>
 
-                <htmlpagefooter name="page-footer">
-                    <div style="align-items: flex-start;
-    border-bottom: solid 15px #c0a47a;">
-                        <div class="footer" style="background: #02283f;text-align:right;border-radius:0  30px 0 0; padding:20px ;
-  ">
-                            <strong><span> <span style="font-size: 14px; margin:1px"> t.s.a.lawyer@gmail.com </span>
-                                    <span style="font-size: 14px; margin:1px"> 055 33 8 40 48 </span> <span
-                                        style="font-size: 14px; margin:1px">: الرياض </span> </span></strong><br>
-                            <br>
-                            <strong><span> <span style="font-size: 14px; margin:1px"> t.s.a.lawyer@gmail.com </span>
-                                    <span style="font-size: 14px; margin:1px"> 055 33 8 40 48 </span> <span
-                                        style="font-size: 14px; margin:1px"> : حفر الباطن </span> </span></strong><br>
+        <htmlpagefooter name="page-footer">
+            <div style="align-items: flex-start;border-bottom: solid 15px #c0a47a;">
+                <div class="footer" style="background: #02283f;text-align:right;border-radius:0  20px 0 0; padding:5px ;">
+                    <strong><span> <span style="font-size: 14px; margin:1px;"> t.s.a.lawyer@gmail.com </span> <span
+                                style="font-size: 14px; margin:1px"> 055 33 8 40 48 </span> <span
+                                style="font-size: 14px; margin:1px">: الرياض </span> </span></strong><br>
 
-                        </div>
-                    </div>
-                </htmlpagefooter>
+                    <strong><span> <span style="font-size: 14px; margin:1px"> t.s.a.lawyer@gmail.com </span> <span
+                                style="font-size: 14px; margin:1px"> 055 33 8 40 48 </span> <span
+                                style="font-size: 14px; margin:1px"> : حفر الباطن </span> </span></strong><br></div>
+               </div>
             </div>
+        </htmlpagefooter>
+    </div>
         </span>
         {{-- main --}}
         <div class="main" style="margin: 0com 1cm">
             <p style="text-align: center">بسم الله الرحمن الرحيم</p>
-            <p style="text-align: right;">فضيلة  /
+            <p style="text-align: right;">{{$diary->title}}  /
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;

@@ -16,7 +16,6 @@
             <div class="card-body">
 
 
-{{-- {!! Form::open(array('route' => 'caseStoreReport','method'=>'POST')) !!} --}}
 <form action="{{route('caseStoreReport')}}" method="post" >
     @csrf
 <div class="row">
@@ -26,7 +25,7 @@
             <label for="">تاريخ بدايه القضيه </label>
             <input type="text"
                 value="dd-mm-YYYY"
-                name="start_date"
+                name="report_date"
                 autocomplete="off"
                 class="form-control txt-rtl hijri-date-default"
                 id="">
@@ -43,7 +42,7 @@
 
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
         <button type="submit" class="btn btn-primary">حفظ</button>
-        <a href="{{route('courts.index')}}" class="btn btn-danger">إلغاء</a>
+        <a href="{{route('caseReport',$case->id)}}" class="btn btn-danger">إلغاء</a>
 
     </div>
 </div>

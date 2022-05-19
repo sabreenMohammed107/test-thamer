@@ -25,15 +25,15 @@
  </tr>
  @foreach ($reports as $key => $court)
   <tr>
-    <td>{{ ++$i }}</td>
+    <td>{{ ++$key }}</td>
     <td>{{ $court->text }}</td>
-    <td>{{ date('Y/m/d', strtotime($row->report_date)) }}</td>
+    <td>{{ date('Y/m/d', strtotime($court->report_date)) }}</td>
 
     <td>
         <div class="btn-group">
 
-       <a class="btn btn-default" href="{{ route('courts.edit',$court->id) }}"><i class="fas fa-edit" title="edit"></i></a>
-        {!! Form::open(['method' => 'DELETE','route' => ['courts.destroy', $court->id],'style'=>'display:inline']) !!}
+       <a class="btn btn-default" href="{{ route('caseEditReport',$court->id) }}"><i class="fas fa-edit" title="edit"></i></a>
+        {!! Form::open(['method' => 'DELETE','route' => ['caseDeleteReport', $court->id],'style'=>'display:inline']) !!}
             {{-- {!! Form::submit('Delete', ['class' => 'btn btn-default']) !!} --}}
             {{ Form::button('<i class="fas fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-default'] )  }}
 

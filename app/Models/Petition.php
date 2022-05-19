@@ -13,6 +13,7 @@ class Petition extends Model
         'case_id',
     'member_id',
     'petition_date',
+    'title',
     'text',
     'notes',
     ];

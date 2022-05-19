@@ -26,6 +26,13 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="form-group">
+                    <label> الكليشة</label>
+                    <input name="title" class="form-control "
+                        rows="5" value="{{$letter->title}}">
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
                     <label>نص الخطاب </label>
                     <textarea  name="text" class="form-control " rows="5">{{$letter->text}}</textarea>
                 </div>

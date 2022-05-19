@@ -3,8 +3,8 @@
         <tr>
             <th>#</th>
             <th> القضيه</th>
-            <th>الوصف</th>
-            <th>اسم العميل </th>
+            <th>النوع</th>
+            {{-- <th>اسم العميل </th> --}}
             <th>تاريخ بداية القضية</th>
             <th>رقم الملف</th>
             <th>الفرع</th>
@@ -16,8 +16,8 @@
         <tr>
             <th>{{ $index + 1 }}</th>
             <th><a href="{{route('cases.show',$row->id)}}">{{ $row->name }}</a></th>
-            <th>{{ $row->notes }}</th>
-            <th>{{ $row->client->name ?? ''}}</th>
+            <th>{{ $row->type->type ?? '' }}</th>
+            {{-- <th>{{ $row->client->name ?? ''}}</th> --}}
             <th>{{ date('Y/m/d', strtotime($row->start_date)) }} </th>
             <th>{{ $row->file_no }}</th>
             <th>{{ $row->branch->name ?? '' }}</th>

@@ -86,6 +86,7 @@ class LetterController extends Controller
                 'case_id' => $request->get('case_id'),
                 'member_id' => $request->get('member_id'),
                 // 'letter_date' => Carbon::parse($request->get('letter_date')),
+                'title'=> $request->get('title'),
                 'text' => $request->get('text'),
                 'notes' => $request->get('notes'),
 
@@ -222,6 +223,7 @@ class LetterController extends Controller
 
                 'case_id' => $request->get('case_id'),
                 // 'member_id' => $request->get('member_id'),
+                'title'=> $request->get('title'),
                 'text' => $request->get('text'),
                 'notes' => $request->get('notes'),
 

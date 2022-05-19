@@ -126,33 +126,7 @@
                                                                             </select>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-sm-6">
-                                                                        <div class="form-group">
-                                                                            <label for="">رقم قرار التنفيذ </label>
-                                                                            <input type="text"
-                                                                                value="{{ $row->exec_dision_no }}"
-                                                                                name="exec_dision_no" class="form-control"
-                                                                                id="">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-sm-6">
-                                                                        <div class="form-group">
-                                                                            <label for="">رقم سند التنفيذ </label>
-                                                                            <input type="text"
-                                                                                value="{{ $row->exec_Deed_no }}"
-                                                                                name="exec_dision_no" class="form-control"
-                                                                                id="">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-sm-6">
-                                                                        <div class="form-group">
-                                                                            <label for="">تاريخ سند التنفيذ </label>
-                                                                            <input type="text" autocomplete="off" value=""
-                                                                            name="start_date" class="form-control txt-rtl hijri-date-default"
-                                                                            id="" placeholder="{{date('Y/m/d', strtotime($row->exec_Deed_date))}}">
 
-                                                                        </div>
-                                                                    </div>
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
                                                                             <label for="">رقم القضيه في المحكمه</label>
@@ -185,21 +159,7 @@
                                                                             </select>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-sm-6">
-                                                                        <div class="form-group">
-                                                                            <label for="">نوع الاتعاب</label>
-                                                                            <select class="custom-select" id="fees_type"
-                                                                                name="fees_type">
-                                                                                <option
-                                                                                    {{ $row->fees_type == 0 ? 'selected' : '' }}
-                                                                                    value="0">كاش</option>
-                                                                                <option
-                                                                                    {{ $row->fees_type == 1 ? 'selected' : '' }}
-                                                                                    value="1"> قسط</option>
 
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
                                                                             <label for="">رقم الشكوي في الشرطه</label>
@@ -209,17 +169,7 @@
                                                                                 class="form-control" id="">
                                                                         </div>
                                                                     </div>
-                                                                    @hasrole('Admin')
-                                                                        <div class="col-sm-6">
-                                                                            <div class="form-group">
-                                                                                <label for="">قيمه الاتعاب</label>
-                                                                                <input type="text"
-                                                                                    value="{{ $row->case_fees }}"
-                                                                                    name="case_fees" class="form-control"
-                                                                                    id="">
-                                                                            </div>
-                                                                        </div>
-                                                                    @endhasrole
+
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
                                                                             <label for="">رقم القضيه في النيابة
@@ -251,7 +201,7 @@
                                                                                 id="">
                                                                         </div>
 
-                                                                        <div class="col-sm-12">
+                                                                        <div class="col-sm-6">
                                                                             <div class="form-group">
                                                                                 <label for="">الوصف</label>
                                                                                 <textarea class="form-control"
@@ -259,6 +209,64 @@
                                                                                     rows="3">{{ $row->notes }}</textarea>
                                                                             </div>
                                                                         </div>
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label for="">رقم قرار التنفيذ </label>
+                                                                                <input type="text"
+                                                                                    value="{{ $row->exec_dision_no }}"
+                                                                                    name="exec_dision_no" class="form-control"
+                                                                                    id="">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label for="">رقم سند التنفيذ </label>
+                                                                                <input type="text"
+                                                                                    value="{{ $row->exec_Deed_no }}"
+                                                                                    name="exec_dision_no" class="form-control"
+                                                                                    id="">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label for="">تاريخ سند التنفيذ </label>
+                                                                                <input type="text" autocomplete="off" value=""
+                                                                                name="start_date" class="form-control txt-rtl hijri-date-default"
+                                                                                id="" placeholder="{{date('Y/m/d', strtotime($row->exec_Deed_date))}}">
+
+                                                                            </div>
+                                                                        </div>
+                                                                        @hasrole('Admin')
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label for="">نوع الاتعاب</label>
+                                                                                <select class="custom-select" id="fees_type"
+                                                                                    name="fees_type">
+                                                                                    <option
+                                                                                        {{ $row->fees_type == 0 ? 'selected' : '' }}
+                                                                                        value="0">دفعات</option>
+                                                                                    <option
+                                                                                        {{ $row->fees_type == 1 ? 'selected' : '' }}
+                                                                                        value="1"> نسب</option>
+                                                                                        <option
+                                                                                        {{ $row->fees_type == 2 ? 'selected' : '' }}
+                                                                                        value="1"> دفعة واحدة</option>
+
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        @endhasrole
+                                                                        @hasrole('Admin')
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label for="">قيمه الاتعاب</label>
+                                                                                <input type="text"
+                                                                                    value="{{ $row->case_fees }}"
+                                                                                    name="case_fees" class="form-control"
+                                                                                    id="">
+                                                                            </div>
+                                                                        </div>
+                                                                    @endhasrole
                                                                     </div>
                                                                 </div>
                                                                 <!-- /.card-body -->
@@ -356,13 +364,13 @@
                                                             <h5 class="mb-0">
                                                                 <button class="btn btn-link text-white"
                                                                     data-toggle="collapse" data-target="#collapseOne"
-                                                                    aria-expanded="true" aria-controls="collapseOne">
+                                                                    aria-expanded="true"  aria-controls="collapseOne">
                                                                     عرض بيانات العميل
                                                                 </button>
                                                             </h5>
                                                         </div>
 
-                                                        <div id="collapseOne" class="collapse"
+                                                        <div id="collapseOne" class="collapse show"
                                                             aria-labelledby="headingOne" data-parent="#accordion">
                                                             @include('cases.editClient')
                                                         </div>
@@ -464,7 +472,7 @@
                                                             </h5>
                                                         </div>
 
-                                                        <div id="collapseTwo" class="collapse"
+                                                        <div id="collapseTwo" class="collapse show"
                                                             aria-labelledby="headingOne" data-parent="#accordion">
                                                             @include('cases.editOppon')
 

@@ -36,7 +36,10 @@ class Cases extends Model
         'exec_Deed_date',
         'exec_Deed_no'
     ];
-
+    public function type()
+    {
+        return $this->belongsTo('App\Models\Case_type', 'case_type_id');
+    }
     public function client()
     {
         return $this->belongsTo('App\Models\Person', 'client_id');

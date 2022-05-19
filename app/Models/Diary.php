@@ -13,6 +13,7 @@ class Diary extends Model
         'case_id',
     'member_id',
     'diary_date',
+    'title',
     'text',
     'notes',
     ];

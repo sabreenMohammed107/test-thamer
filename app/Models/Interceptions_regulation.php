@@ -19,6 +19,7 @@ class Interceptions_regulation extends Model
         'member_id',
         'regulation_date',
         'facts',
+        'title',
         'defenses',
         'requirements',
         'text',

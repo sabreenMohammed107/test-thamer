@@ -33,7 +33,21 @@
             <br/>
             @foreach($permission as $value)
                 <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
-                {{ $value->name }}</label>
+                {{-- {{ $value->name }} --}}
+
+                {{$value->id==1 ?'قائمه الصلاحيات':''}}
+                {{$value->id==2 ?'اضافة الصلاحيات':''}}
+                {{$value->id==3 ?'تعديل الصلاحيات':''}}
+                {{$value->id==4 ?'حذف الصلاحيات':''}}
+                {{$value->id==5 ?'قائمه المستخدمين':''}}
+                {{$value->id==6 ?'اضافة المستخدمين':''}}
+                {{$value->id==7 ?'تعديل المستخدمين':''}}
+                {{$value->id==8 ?'حذف المستخدمين':''}}
+                {{$value->id==9 ?'قائمه القضايا':''}}
+                {{$value->id==10 ?'اضافة القضايا':''}}
+                {{$value->id==11 ?'تعديل القضايا':''}}
+                {{$value->id==12 ?'حذف القضايا':''}}
+            </label>
             <br/>
             @endforeach
         </div>

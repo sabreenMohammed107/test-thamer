@@ -65,11 +65,11 @@ class CasesController extends Controller
 
         $user = Auth::user();
         if ($user->hasRole('Admin')) {
-            $data = Cases::where('case_status_id', '!=' , 2)->orWhereNull('case_status_id')->orderBy('id', 'DESC')->paginate(200);
+            $data = Cases::where('case_status_id', '!=', 2)->orWhereNull('case_status_id')->orderBy('id', 'DESC')->paginate(200);
 
         } else {
             //show to all case members
-            $data = Cases::where('case_status_id', '!=' , 2)->orWhereNull('case_status_id')->whereHas('member', function($q)use($user){
+            $data = Cases::where('case_status_id', '!=', 2)->orWhereNull('case_status_id')->whereHas('member', function ($q) use ($user) {
                 $q->where('member_id', '=', $user->id);
             })->paginate(200);
             // $data = Cases::where('current_resposible_id', $user->id)->orderBy('id', 'DESC')->paginate(200);
@@ -171,9 +171,9 @@ class CasesController extends Controller
         } catch (\Throwable$e) {
             // throw $th;
             DB::rollback();
-            // return redirect()->back()->withInput()->with('flash_danger', 'حدث خطأ الرجاء معاودة المحاولة في وقت لاحق');
+            return redirect()->back()->withInput()->with('flash_danger', 'حدث خطأ الرجاء معاودة المحاولة في وقت لاحق');
 
-            return redirect()->back()->withInput()->with('flash_danger', $e->getMessage());
+            // return redirect()->back()->withInput()->with('flash_danger', $e->getMessage());
         }
     }
 
@@ -306,18 +306,18 @@ class CasesController extends Controller
 
             }
 
-             //save in case tasks
-             $type = task_type::where('id', 7)->first();
-             $tasks = [
-                 'case_id' => $id,
-                 'transfer_case_id' => $request->get('current_resposible_id'),
+            //save in case tasks
+            $type = task_type::where('id', 7)->first();
+            $tasks = [
+                'case_id' => $id,
+                'transfer_case_id' => $request->get('current_resposible_id'),
 
-                 'task_date' => Carbon::now(),
-                 'task_status_id' => 1,
-                 'end_date' => Carbon::parse($request->get('start_date')),
-                 'control_by_id' => Auth::user()->id,
-             ];
-             Case_members_task::where('case_id',$id)->where('transfer_case_id',$this->object::findOrFail($id)->transfer_case_id)->update($tasks);
+                'task_date' => Carbon::now(),
+                'task_status_id' => 1,
+                'end_date' => Carbon::parse($request->get('start_date')),
+                'control_by_id' => Auth::user()->id,
+            ];
+            Case_members_task::where('case_id', $id)->where('transfer_case_id', $this->object::findOrFail($id)->transfer_case_id)->update($tasks);
 
             DB::commit();
             // Enable foreign key checks!
@@ -396,17 +396,17 @@ class CasesController extends Controller
         if (empty($request->get("all"))) {
             if (!empty($request->get("user")) && !empty($request->get("branch"))) {
                 if (!empty($request->get("user"))) {
-                    $cases->where('current_resposible_id', '=', $request->get("user"))->orwhereHas('member', function($q)use($request){
-                        $q->where('member_id', '=',  $request->get("user"));
-                });
+                    $cases->where('current_resposible_id', '=', $request->get("user"))->orwhereHas('member', function ($q) use ($request) {
+                        $q->where('member_id', '=', $request->get("user"));
+                    });
                 }
                 if (!empty($request->get("branch"))) {
                     $cases->where('branch_id', '=', $request->get("branch"));
                 }
             } else {
-                $cases->where('current_resposible_id', '=', $user->id)->orwhereHas('member', function($q)use($user){
-                    $q->where('member_id', '=',  $user->id);
-            });
+                $cases->where('current_resposible_id', '=', $user->id)->orwhereHas('member', function ($q) use ($user) {
+                    $q->where('member_id', '=', $user->id);
+                });
             }
 
         }
@@ -546,50 +546,74 @@ class CasesController extends Controller
 
     }
 
-
     public function searchAdmin(Request $request)
     {
 
         $cases = Cases::orderBy('id', 'DESC');
-                if (!empty($request->get("user"))) {
-                    $cases->where('current_resposible_id', '=', $request->get("user"))->orwhereHas('member', function($q)use($request){
-                        $q->where('member_id', '=',  $request->get("user"));
-                });
-            }
+        if (!empty($request->get("user"))) {
+            $cases->where('current_resposible_id', '=', $request->get("user"))->orwhereHas('member', function ($q) use ($request) {
+                $q->where('member_id', '=', $request->get("user"));
+            });
+        }
 
         $data = $cases->paginate(200);
         return view($this->viewName . 'preIndex', compact('data'))->render();
     }
 
-
-    public function caseReport($id){
-        $reports=Case_report::where('case_id',$id)->get();
-        $case=Cases::where('id',$id)->first();
-        return view('casesReport.index', compact('reports','case'));
+    public function caseReport($id)
+    {
+        $reports = Case_report::where('case_id', $id)->get();
+        $case = Cases::where('id', $id)->first();
+        return view('casesReport.index', compact('reports', 'case'));
     }
 
-    public function caseCreateReport($id){
-        $case=Cases::where('id',$id)->first();
+    public function caseCreateReport($id)
+    {
+        $case = Cases::where('id', $id)->first();
         return view('casesReport.add', compact('case'));
     }
 
-    public function caseStoreReport(Request $request){
-dd($request->all());
-$input = $request->except(['_token','report_date']);
-$input['report_date'] = Carbon::parse($request->get('report_date'));
-Court::create($input);
-return redirect()->route('courts.index')->with('flash_success', 'تم الحفظ بنجاح');
+    public function caseStoreReport(Request $request)
+    {
+// dd($request->all());
+        $input = $request->except(['_token', 'report_date']);
+        $input['report_date'] = Carbon::parse($request->get('report_date'));
+        Case_report::create($input);
+        return redirect()->route('caseReport',$request->get('case_id'))->with('flash_success', 'تم الحفظ بنجاح');
     }
 
-    public function caseEditReport($id){
+    public function caseEditReport($id)
+    {
+
+        $row = Case_report::where('id', $id)->first();
+        return view('casesReport.edit', compact('row'));
+    }
+
+    public function caseUpdateReport(Request $request)
+    {
+        $input = $request->except(['_token', 'report_date']);
+        $input['report_date'] = Carbon::parse($request->get('report_date'));
+
+        Case_report::findOrFail($request->get('report_id'))->update($input);
+        return redirect()->route('caseReport',$request->get('case_id'))->with('flash_success', 'تم الحفظ بنجاح');
 
     }
 
-    public function caseUpdateReport(Request $request){
+    public function caseDeleteReport($id)
+    {
+        $row = Case_report::where('id', $id)->first();
+        // Delete File ..
 
-    }
+        try {
 
-    public function caseDeleteReport($id){
 
+            $row->delete();
+            return redirect()->back()->withInput()->with('flash_success', 'تم الحذف بنجاح !');
+
+        } catch (QueryException $q) {
+            return redirect()->back()->withInput()->with('flash_danger', $q->getMessage());
+
+            // return redirect()->back()->with('flash_danger', 'هذه القضية مربوطه بجدول اخر ..لا يمكن المسح');
+        }
     }
 }

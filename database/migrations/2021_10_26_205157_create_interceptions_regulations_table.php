@@ -17,6 +17,8 @@ class CreateInterceptionsRegulationsTable extends Migration
             $table->id();
             $table->foreignId('case_id')->nullable();
             $table->foreignId('member_id')->nullable();
+            $table->string('title')->nullable();
+
             $table->datetime('regulation_date')->nullable();
             $table->text('facts')->nullable();
             $table->text('defenses')->nullable();

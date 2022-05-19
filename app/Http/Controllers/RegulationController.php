@@ -89,6 +89,7 @@ class RegulationController extends Controller
                 'requirements' => $request->get('requirements'),
                 'text' => $request->get('text'),
                 'notes' => $request->get('notes'),
+                'title'=> $request->get('title'),
 
             ];
             if ($request->get('regulation_date')) {
@@ -226,6 +227,7 @@ class RegulationController extends Controller
                 'requirements' => $request->get('requirements'),
                 'text' => $request->get('text'),
                 'notes' => $request->get('notes'),
+                'title'=> $request->get('title'),
 
             ];
             if ($request->get('regulation_date')) {

@@ -84,6 +84,7 @@ class PetitionController extends Controller
                 'case_id' => $request->get('case_id'),
                 'member_id' => $request->get('member_id'),
                 // 'petition_date' => Carbon::parse($request->get('petition_date')),
+                'title'=> $request->get('title'),
                 'text' => $request->get('text'),
                 'notes' => $request->get('notes'),
 
@@ -222,6 +223,7 @@ class PetitionController extends Controller
                 'member_id' => $request->get('member_id'),
                 'text' => $request->get('text'),
                 'notes' => $request->get('notes'),
+                'title'=> $request->get('title'),
 
             ];
             if ($request->get('petition_date')) {

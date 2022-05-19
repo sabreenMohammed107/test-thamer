@@ -127,35 +127,7 @@
                                                                             </select>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-sm-6">
-                                                                        <div class="form-group">
-                                                                            <label for="">رقم قرار التنفيذ </label>
-                                                                            <input type="text"
-                                                                                value="{{ old('exec_dision_no') }}"
-                                                                                name="exec_dision_no" class="form-control"
-                                                                                id="">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-sm-6">
-                                                                        <div class="form-group">
-                                                                            <label for="">رقم سند التنفيذ </label>
-                                                                            <input type="text"
-                                                                                value="{{ old('exec_Deed_no') }}"
-                                                                                name="exec_dision_no" class="form-control"
-                                                                                id="">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-sm-6">
-                                                                        <div class="form-group">
-                                                                            <label for="">تاريخ سند التنفيذ </label>
-                                                                            <input type="text"
-                                                                                value="dd-mm-YYYY"
-                                                                                name="exec_Deed_date"
-                                                                                autocomplete="off"
-                                                                                class="form-control txt-rtl hijri-date-default"
-                                                                                id="">
-                                                                        </div>
-                                                                    </div>
+
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
                                                                             <label for="">رقم القضيه في المحكمه</label>
@@ -188,21 +160,7 @@
                                                                             </select>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-sm-6">
-                                                                        <div class="form-group">
-                                                                            <label for="">نوع الاتعاب</label>
-                                                                            <select class="custom-select" id="fees_type"
-                                                                                name="fees_type">
-                                                                                <option
-                                                                                    {{ old('fees_type') == 0 ? 'selected' : '' }}
-                                                                                    value="0">كاش</option>
-                                                                                <option
-                                                                                    {{ old('fees_type') == 1 ? 'selected' : '' }}
-                                                                                    value="1"> قسط</option>
 
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
                                                                             <label for="">رقم الشكوي في الشرطه</label>
@@ -212,17 +170,7 @@
                                                                                 class="form-control" id="">
                                                                         </div>
                                                                     </div>
-                                                                    @hasrole('Admin')
-                                                                        <div class="col-sm-6">
-                                                                            <div class="form-group">
-                                                                                <label for="">قيمه الاتعاب</label>
-                                                                                <input type="text"
-                                                                                    value="{{ old('case_fees') }}"
-                                                                                    name="case_fees" class="form-control"
-                                                                                    id="">
-                                                                            </div>
-                                                                        </div>
-                                                                    @endhasrole
+
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
                                                                             <label for="">رقم القضيه في النيابة
@@ -253,8 +201,8 @@
                                                                                 name="expert_name" class="form-control"
                                                                                 id="">
                                                                         </div>
-
-                                                                        <div class="col-sm-12">
+                                                                    </div>
+                                                                        <div class="col-sm-6">
                                                                             <div class="form-group">
                                                                                 <label for="">الوصف</label>
                                                                                 <textarea class="form-control"
@@ -262,6 +210,67 @@
                                                                                     rows="3">{{ old('notes') }}</textarea>
                                                                             </div>
                                                                         </div>
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label for="">رقم قرار التنفيذ </label>
+                                                                                <input type="text"
+                                                                                    value="{{ old('exec_dision_no') }}"
+                                                                                    name="exec_dision_no" class="form-control"
+                                                                                    id="">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label for="">رقم سند التنفيذ </label>
+                                                                                <input type="text"
+                                                                                    value="{{ old('exec_Deed_no') }}"
+                                                                                    name="exec_dision_no" class="form-control"
+                                                                                    id="">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label for="">تاريخ سند التنفيذ </label>
+                                                                                <input type="text"
+                                                                                    value="dd-mm-YYYY"
+                                                                                    name="exec_Deed_date"
+                                                                                    autocomplete="off"
+                                                                                    class="form-control txt-rtl hijri-date-default"
+                                                                                    id="">
+                                                                            </div>
+                                                                        </div>
+                                                                        @hasrole('Admin')
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label for="">قيمه الاتعاب</label>
+                                                                                <input type="text"
+                                                                                    value="{{ old('case_fees') }}"
+                                                                                    name="case_fees" class="form-control"
+                                                                                    id="">
+                                                                            </div>
+                                                                        </div>
+                                                                    @endhasrole
+                                                                        @hasrole('Admin')
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label for="">نوع الاتعاب</label>
+                                                                                <select class="custom-select" id="fees_type"
+                                                                                    name="fees_type">
+                                                                                    <option
+                                                                                        {{ old('fees_type') == 0 ? 'selected' : '' }}
+                                                                                        value="0">دفعات</option>
+                                                                                    <option
+                                                                                        {{ old('fees_type') == 1 ? 'selected' : '' }}
+                                                                                        value="1"> نسب</option>
+                                                                                        <option
+                                                                                        {{ old('fees_type') == 2 ? 'selected' : '' }}
+                                                                                        value="1"> دفعة واحدة</option>
+
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        @endhasrole
+
                                                                     </div>
                                                                 </div>
                                                                 <!-- /.card-body -->

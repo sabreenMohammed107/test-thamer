@@ -24,6 +24,13 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="form-group">
+                    <label> الكليشة</label>
+                    <input name="title" class="form-control "
+                        rows="5" value="{{ old('title') }}">
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
                     <label>نص المذكرة</label>
                     <textarea name="text" class="form-control "
                         rows="5">{{ old('text') }}</textarea>

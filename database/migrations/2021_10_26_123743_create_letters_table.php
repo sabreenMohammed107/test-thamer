@@ -17,6 +17,7 @@ class CreateLettersTable extends Migration
             $table->id();
             $table->foreignId('case_id')->nullable();
             $table->foreignId('member_id')->nullable();
+            $table->string('title')->nullable();
             $table->string('letter_no')->nullable();
             $table->datetime('letter_date')->nullable();
             $table->text('text')->nullable();
