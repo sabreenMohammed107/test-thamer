@@ -66,6 +66,7 @@
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
                                                                             <label for="">تاريخ بدايه القضيه </label>
+                                                                            <span style="color: red">*</span>
                                                                             <input type="text" autocomplete="off" value=""
                                                                             name="start_date" class="form-control txt-rtl hijri-date-default"
                                                                             id="" placeholder="{{date('Y/m/d', strtotime($row->start_date))}}">
@@ -75,6 +76,7 @@
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
                                                                             <label for="">رقم الملف</label>
+                                                                            <span style="color: red">*</span>
                                                                             <input type="text"
                                                                                 value="{{ $row->file_no }}"
                                                                                 name="file_no" class="form-control" id="">
@@ -83,13 +85,17 @@
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
                                                                             <label for=""> القضيه</label>
+                                                                            <span style="color: red">*</span>
                                                                             <input type="text" value="{{ $row->name }}"
                                                                                 name="name" class="form-control" id="">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
-                                                                            <label for="">الفرع</label>
+                                                                            <label for="">الفرع
+                                                                                <span style="color: red">*</span>
+                                                                            </label>
+
                                                                             <select class="custom-select dynamic"
                                                                                 name="branch_id" id="branch_id">
                                                                                 <option>اختر </option>
@@ -105,7 +111,9 @@
                                                                     </div>
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
-                                                                            <label for=""> المكلف</label>
+                                                                            <label for=""> المكلف
+                                                                                <span style="color: red">*</span>
+                                                                            </label>
                                                                             <select class="custom-select   dynamix"
                                                                                 name="current_resposible_id" id="users">
                                                                                 <option value="{{$row->current_resposible_id}}">{{$row->current->name ?? ''}} </option>
