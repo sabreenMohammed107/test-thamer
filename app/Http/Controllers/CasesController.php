@@ -354,7 +354,7 @@ class CasesController extends Controller
                 }
             }
 
-            $row->member()->delete();
+            $row->member()->forceDelete();
             $row->delete();
             return redirect()->route($this->routeName . 'index')->with('flash_success', 'تم الحذف بنجاح !');
 
