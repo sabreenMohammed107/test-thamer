@@ -70,6 +70,11 @@ class Cases extends Model
         return $this->hasMany('App\Models\Case_members','case_id','id');
     }
 
+    public function tasks()
+    {
+        return $this->hasMany('App\Models\Case_members_task','case_id','id');
+    }
+
     // this is a recommended way to declare event handlers
     // public static function boot() {
     //     parent::boot();
