@@ -119,7 +119,7 @@ class CasesController extends Controller
         ], [
 
             'name.required' => 'حقل الاسم مطلوب',
-            'current_resposible_id.required' => 'حقل المكلف مطلوب',
+            'current_resposible_id.required' => 'حقل المكلف مطلوب يجب اختيار الفرع لاختيار المكلف',
             'branch_id.required' => 'حقل الفرع مطلوب',
 
         ]);

@@ -66,7 +66,7 @@
                                                                         <div class="form-group">
                                                                             <label for="">تاريخ بدايه القضيه </label>
                                                                             <span style="color: red">*</span>
-                                                                            <input type="text" value="dd-mm-YYYY"
+                                                                            <input type="text" value="{{old('start_date')}}"
                                                                                 name="start_date" autocomplete="off"
                                                                                 class="form-control txt-rtl hijri-date-default"
                                                                                 id="">
@@ -115,7 +115,7 @@
 
                                                                             <select class="custom-select   dynamix"
                                                                                 name="current_resposible_id" id="users">
-                                                                                <option>اختر </option>
+                                                                                <option {{ old('type_id') == $type->id ? 'selected' : '' }} >اختر </option>
                                                                             </select>
                                                                         </div>
                                                                     </div>
