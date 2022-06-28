@@ -249,8 +249,8 @@ text-align: justify; /*for arabic and space char */
                 <span>سلمه الله</span>
             </p>
             <p style="text-align: center">السلام عليكم ورحمة الله وبركاتة</p>
-            <p style="text-align: right"><span style="border-bottom: 2px solid #000;
-                "> : إشارة - إلحاقا </span></p>
+            {{-- <p style="text-align: right"><span style="border-bottom: 2px solid #000;
+                "> : إشارة - إلحاقا </span></p> --}}
             {{-- param --}}
             <p style="text-align: right;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
@@ -259,8 +259,8 @@ text-align: justify; /*for arabic and space char */
                 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;</p>
-                <p style="text-align: right"><span style="border-bottom: 2px solid #000;
-                    "> :الطلبات </span></p>
+                {{-- <p style="text-align: right"><span style="border-bottom: 2px solid #000;
+                    "> :الطلبات </span></p> --}}
             {{-- param --}}
             <p style="text-align: right;">{{ $letter->text }}</p>
 
