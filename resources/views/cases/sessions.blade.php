@@ -6,6 +6,7 @@
             <th>#</th>
             <th>اسم المحكمة</th>
             <th>تاريخ الجلسة </th>
+            <th>وقت الجلسة </th>
             <th>المكلف</th>
             <th>ملاحظات</th>
             {{-- <th>انجاز</th> --}}
@@ -18,6 +19,7 @@
                 <th>{{ $index + 1 }}</th>
                 <th>{{ $row->text }}</th>
                 <th>{{ date('Y/m/d', strtotime($row->session_date)) }}</th>
+                <th>{{ $row->session_time ?? '' }}</th>
                 <th>{{ $row->member->name ?? '' }}</th>
                 <th>{{ $row->notes }}</th>
                 {{-- <th>
@@ -108,6 +110,15 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
+                                                <label for="">وقت الجلسة </label>
+                                                <input type="time" autocomplete="off" class="form-control"
+                                                    value="{{ $row->session_time }}" name="session_time" id="inputEmail3"
+                                                   >
+
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
                                                 <label for="">المكلف</label>
                                                 <select class="custom-select dynamic" name="member_id" id="member_id">
                                                     <option>اختر </option>
@@ -171,6 +182,15 @@
                                                 <input type="text" autocomplete="off" class="form-control txt-rtl hijri-date-default"
                                                     value="" name="session_date" id="inputEmail3"
                                                     placeholder="{{ date('d-m-Y', strtotime($row->session_date)) }}">
+
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="">وقت الجلسة </label>
+                                                <input type="time" autocomplete="off" class="form-control"
+                                                    value="{{ $row->session_time }}" name="session_time" id="inputEmail3"
+                                                   >
 
                                             </div>
                                         </div>
@@ -240,6 +260,15 @@
                                     <label for="">تاريخ الجلسة </label>
                                     <input type="text" autocomplete="off" value="" class="form-control txt-rtl hijri-date-default"
                                         name="session_date" class="form-control" id="">
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="">وقت الجلسة </label>
+                                    <input type="time" autocomplete="off" class="form-control"
+                                        name="session_time" id="inputEmail3"
+                                       >
 
                                 </div>
                             </div>

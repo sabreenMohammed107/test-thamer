@@ -14,6 +14,7 @@ class Session extends Model
     'session_date',
     'text',
     'notes',
+    'session_time',
     ];
 
     public function member()

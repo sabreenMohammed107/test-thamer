@@ -84,12 +84,13 @@ class SessionController extends Controller
 
                 'case_id' => $request->get('case_id'),
                 'member_id' => $request->get('member_id'),
+                'session_time'=>$request->get('session_time'),
                 'session_date' => Carbon::parse($request->get('session_date')),
                 'text' => $request->get('text'),
                 'notes' => $request->get('notes'),
 
             ];
-            // dd($request->get('regulation_end_date'));
+
             $session=Session::create($data);
             $type = task_type::where('id', 5)->first();
             $tasks = [
@@ -204,7 +205,7 @@ class SessionController extends Controller
                 'member_id' => $request->get('member_id'),
                 'text' => $request->get('text'),
                 'notes' => $request->get('notes'),
-
+                'session_time'=>$request->get('session_time'),
             ];
             if ($request->get('session_date')) {
                 $data['session_date'] = Carbon::parse($request->get('session_date'));

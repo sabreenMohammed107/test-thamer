@@ -17,6 +17,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>تاريخ الجلسة </th>
+                                <th>وقت الجلسة</th>
                                 <th> القضية</th>
                                 <th> المحكمة </th>
 
@@ -30,6 +31,7 @@
                                     <th>{{ $index + 1 }}</th>
 
                                     <th>{{ date('Y/m/d', strtotime($row->session_date)) }}</th>
+                                    <th>{{ $row->session_time ?? '' }}</th>
                                     <th> {{$row->case->name ?? '' }}</th>
                                     <th>{{ $row->case->court->name ?? '' }}</th>
                                     <th>{{ $row->member->name ?? '' }}</th>

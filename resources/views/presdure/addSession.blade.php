@@ -40,6 +40,15 @@
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
+                    <label for="">وقت الجلسة </label>
+                    <input type="time" autocomplete="off" class="form-control"
+                        name="session_time" id="inputEmail3"
+                       >
+
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
                     <label for="">المكلف</label>
                     <select class="custom-select" name="member_id">
                         @foreach ($users as $type)
