@@ -18,6 +18,7 @@
                                 <th>#</th>
                                 <th>تاريخ الجلسة </th>
                                 <th>وقت الجلسة</th>
+                                <th>رابط الجلسة</th>
                                 <th> القضية</th>
                                 <th> المحكمة </th>
 
@@ -32,6 +33,9 @@
 
                                     <th>{{ date('Y/m/d', strtotime($row->session_date)) }}</th>
                                     <th>{{ $row->session_time ?? '' }}</th>
+                                    <th>
+                                        <a href="{{ $row->session_link}}" target="_blank">{{ $row->session_link}}</a>
+                                       </th>
                                     <th> {{$row->case->name ?? '' }}</th>
                                     <th>{{ $row->case->court->name ?? '' }}</th>
                                     <th>{{ $row->member->name ?? '' }}</th>

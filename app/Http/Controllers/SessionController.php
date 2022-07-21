@@ -85,6 +85,7 @@ class SessionController extends Controller
                 'case_id' => $request->get('case_id'),
                 'member_id' => $request->get('member_id'),
                 'session_time'=>$request->get('session_time'),
+                'session_link'=>$request->get('session_link'),
                 'session_date' => Carbon::parse($request->get('session_date')),
                 'text' => $request->get('text'),
                 'notes' => $request->get('notes'),
@@ -206,6 +207,7 @@ class SessionController extends Controller
                 'text' => $request->get('text'),
                 'notes' => $request->get('notes'),
                 'session_time'=>$request->get('session_time'),
+                'session_link'=>$request->get('session_link'),
             ];
             if ($request->get('session_date')) {
                 $data['session_date'] = Carbon::parse($request->get('session_date'));

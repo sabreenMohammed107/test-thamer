@@ -49,6 +49,15 @@
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
+                    <label for="">رابط الجلسة </label>
+                    <input type="text" autocomplete="off" class="form-control"
+                        name="session_link" id="inputEmail3"
+                       >
+
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
                     <label for="">المكلف</label>
                     <select class="custom-select" name="member_id">
                         @foreach ($users as $type)
