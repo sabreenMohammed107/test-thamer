@@ -28,6 +28,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                        
                             <?php
                             $date = Carbon\Carbon::now()->addMonth();
                             Alkoumi\LaravelHijriDate\Hijri::Date('l ، j F ، Y', $date);
