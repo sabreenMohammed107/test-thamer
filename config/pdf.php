@@ -52,7 +52,9 @@ return [
     'custom_font_dir'  => base_path('resources/fonts/'), // don't forget the trailing slash!
     'custom_font_data' => [
       'examplefont' => [
-        'R' => '4_3D.ttf',    // regular font
+       // 'R' => '4_3D.ttf',    // regular font
+       'R' => 'Calibri.ttf',
+       'B' => 'calibrib.ttf',
                 // 'B' => 'Cairo-Bold.ttf',          // optional: bold font
 //                        'useOTL' => 0xFF,
                 'useOTL' => 0x80,

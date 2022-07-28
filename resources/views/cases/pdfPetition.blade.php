@@ -23,7 +23,7 @@ text-align: justify; /*for arabic and space char */
             /* font-family: 'examplefont' !important; */
             footer: page-footer;
             margin:0cm 0cm;
-            margin-top: 300px;
+            margin-top: 200px;
             width: 100%;
 
             margin-bottom: 150px;

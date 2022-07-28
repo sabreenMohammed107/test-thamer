@@ -23,7 +23,7 @@ text-align: justify; /*for arabic and space char */
             /* font-family: 'examplefont' !important; */
             footer: page-footer;
             margin:0cm 0cm;
-            margin-top: 300px;
+            margin-top: 200px;
             width: 100%;
 
             margin-bottom: 150px;
@@ -236,14 +236,13 @@ text-align: justify; /*for arabic and space char */
         {{-- main --}}
         <div class="main" style="margin: 0com 1cm">
             <p style="text-align: center">بسم الله الرحمن الرحيم</p>
-            <p style="text-align: right;">{{$diary->title}}  /
+            <p style="text-align: right;font-size:18px;font-weight:bold">{{$diary->title}}  /
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+
 
 
                 <span>سلمه الله</span>
@@ -252,17 +251,11 @@ text-align: justify; /*for arabic and space char */
             {{-- <p style="text-align: right"><span style="border-bottom: 2px solid #000;
                 "> : إشارة إلى الدعوى </span></p> --}}
             {{-- param --}}
-            <p style="text-align: right;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;</p>
+
                 {{-- <p style="text-align: right"><span style="border-bottom: 2px solid #000;
                     "> :نص المذكرة </span></p> --}}
             {{-- param --}}
-            <p style="text-align: right;">{{ $diary->text }}</p>
+            <p style="text-align: right;line-height:1.8">{{ $diary->text }}</p>
 
 
 
