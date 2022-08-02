@@ -23,7 +23,7 @@
                 <a href="" class="h4"><img src="{{ asset('webassets/dist/img/logo.png')}}" style="width:100px" /> <b>ثامر بن ساري العنزي</b></a>
             </div>
             <div class="card-body">
-                <p class="login-box-msg">تسجيل دخول إلي ثامر بن ساري العنزي</p>
+                <p class="login-box-msg">تسجيل دخول </p>
 
 
                 <form method="POST" action="{{ route('login') }}">
