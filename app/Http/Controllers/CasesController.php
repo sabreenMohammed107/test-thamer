@@ -69,10 +69,10 @@ class CasesController extends Controller
 
         } else {
             //show to all case members
-            $data = Cases::where('case_status_id', '!=', 2)->orWhereNull('case_status_id')->whereHas('member', function ($q) use ($user) {
-                $q->where('member_id', '=', $user->id);
-            })->paginate(200);
-            // $data = Cases::where('current_resposible_id', $user->id)->orderBy('id', 'DESC')->paginate(200);
+            // $data = Cases::where('case_status_id', '!=', 2)->orWhereNull('case_status_id')->whereHas('member', function ($q) use ($user) {
+            //     $q->where('member_id', '=', $user->id);
+            // })->paginate(200);
+            $data = Cases::where('case_status_id', '!=', 2)->orWhereNull('case_status_id')->where('current_resposible_id', $user->id)->orderBy('id', 'DESC')->paginate(200);
 
         }
 

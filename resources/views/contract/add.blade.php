@@ -118,13 +118,17 @@
                                                     <div class="col-sm-3">
                                                         <div class="form-group">
                                                             <label for="">نوع الهوية</label>
+
                                                             <select class="custom-select" name="first_identity_type_id">
                                                                 <option value="0"
                                                                     {{ old('first_identity_type_id') == 0 ? 'selected' : '' }}>
-                                                                    Passport</option>
+                                                                    هويه وطنية</option>
                                                                 <option value="1"
                                                                     {{ old('first_identity_type_id') == 1 ? 'selected' : '' }}>
-                                                                    ID</option>
+                                                                    هوية مقيم</option>
+                                                                    <option value="2"
+                                                                    {{ old('first_identity_type_id') == 2 ? 'selected' : '' }}>
+                                                                    جواز سفر</option>
 
                                                             </select>
                                                         </div>
@@ -228,13 +232,18 @@
                                                     <div class="col-sm-3">
                                                         <div class="form-group">
                                                             <label for="">نوع الهوية</label>
+
                                                             <select class="custom-select" name="second_identity_type_id">
                                                                 <option value="0"
                                                                     {{ old('second_identity_type_id') == 0 ? 'selected' : '' }}>
-                                                                    Passport</option>
+                                                                    هويه وطنية</option>
                                                                 <option value="1"
                                                                     {{ old('second_identity_type_id') == 1 ? 'selected' : '' }}>
-                                                                    ID</option>
+                                                                    هوية مقيم</option>
+
+                                                                    <option value="1"
+                                                                    {{ old('second_identity_type_id') == 2 ? 'selected' : '' }}>
+                                                                    جواز سفر</option>
 
                                                             </select>
                                                         </div>

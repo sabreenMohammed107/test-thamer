@@ -3,7 +3,7 @@
         <!-- Brand Logo -->
         <a href="{{route('home')}}" class="brand-link">
             {{-- <img src="{{ asset('webassets/dist/img/zz.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
-            <p class="brand-text font-weight-light ml-3" style="font-size: 20px">ثامر بن ساري العنزي</p>
+            <p class="brand-text font-weight-light ml-3" style="font-size: 20px"> نظام إدارة المحاماه</p>
             {{-- <p class="m-0 text-dark">ثامر بن ساري العنزي</p> --}}
         </a>
 
@@ -86,13 +86,13 @@
                                     </li>-->
                                 </ul>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a href="{{route('courts.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>المحاكم</p>
                                 </a>
 
-                            </li>
+                            </li> --}}
                             <li class="nav-item">
                                 <a href="{{route('un-finish')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
@@ -373,7 +373,7 @@
                             {{-- @endcan --}}
                         </ul>
                     </li>
-                    <!--<li class="nav-item has-treeview">
+                    <li class="nav-item has-treeview">
                         <a href="" class="nav-link">
                             <i class="nav-icon fas fa-cogs"></i>
                             <p>
@@ -383,25 +383,25 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="basic-information.html" class="nav-link">
+                                <a href="{{route('courts.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p> البيانات المستخدمة</p>
+                                    <p>  المحاكم</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="system-setting.html" class="nav-link">
+                                <a href="{{route('contract-types.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>أعدادات النظام </p>
+                                    <p> انواع العقود </p>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a href="support.html" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>الدعم الفني </p>
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
-                    </li>-->
+                    </li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

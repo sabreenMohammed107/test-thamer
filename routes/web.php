@@ -43,6 +43,9 @@ Route::group(['middleware' => ['auth']], function() {
 
     //CoutrController
     Route::resource('courts', 'App\Http\Controllers\CoutrController');
+    //contract-types
+
+Route::resource('contract-types', 'App\Http\Controllers\ContractTypes');
 
     Route::get('dynamicBranch/fetch', 'App\Http\Controllers\CasesController@fetchUsers')->name('dynamicBranch.fetch');
     Route::get('dynamicCases/search', 'App\Http\Controllers\CasesController@search')->name('dynamicCases.search');

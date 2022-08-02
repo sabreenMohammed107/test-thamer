@@ -196,7 +196,7 @@ class ContractController extends Controller
 
             $firstSide = [
                 'name' => $request->get('first_name'),
-
+                'preson_type' => 2,
                 'identity_type_id' => $request->get('first_identity_type_id'),
                 'identity_no' => $request->get('first_identity_no'),
                 'nationality_id' => $request->get('first_nationality_id'),
@@ -215,7 +215,7 @@ class ContractController extends Controller
             }
             $secondSide = [
                 'name' => $request->get('second_name'),
-                'preson_type' => 1,
+                'preson_type' => 2,
                 'identity_type_id' => $request->get('second_identity_type_id'),
                 'identity_no' => $request->get('second_identity_no'),
                 'nationality_id' => $request->get('second_nationality_id'),

@@ -6,7 +6,8 @@
             <th>النوع</th>
             {{-- <th>اسم العميل </th> --}}
             <th>تاريخ بداية القضية</th>
-            <th>رقم الملف</th>
+            <th>رقم القضية</th>
+            <th> المكلف</th>
             <th>الفرع</th>
             <th>الاجراءات</th>
         </tr>
@@ -19,7 +20,9 @@
             <th>{{ $row->type->type ?? '' }}</th>
             {{-- <th>{{ $row->client->name ?? ''}}</th> --}}
             <th>{{ date('Y/m/d', strtotime($row->start_date)) }} </th>
+
             <th>{{ $row->file_no }}</th>
+            <th>{{ $row->current->name ?? ''  }}</th>
             <th>{{ $row->branch->name ?? '' }}</th>
             <th>
                 <div class="btn-group">

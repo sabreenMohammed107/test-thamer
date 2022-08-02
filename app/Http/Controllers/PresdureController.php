@@ -272,6 +272,9 @@ class PresdureController extends Controller
   ];
 
   Case_members_task::create($tasks);
+  //new update in 1-8-2022
+
+  Cases::findOrFail($request->get('case_id'))->update(['current_resposible_id'=>$request->get('member_id')]);
 $type=task_type::where('id',7)->first();
   $user = User::where('id',$request->get('member_id'))->first();
 $from=Auth::user();
